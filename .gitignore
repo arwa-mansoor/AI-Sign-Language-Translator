@@ -230,6 +230,13 @@ models/*.onnx
 models/*.pkl
 models/*.tflite
 
+# Training run artifacts (regenerable via src/train.py)
+models/*.json
+models/*.csv
+models/*.txt
+models/*.npz
+!models/.gitkeep
+
 # OS files
 Thumbs.db
 .DS_Store
