@@ -19,7 +19,13 @@ Run:
     python src/train.py --dry-run          # 24 classes, 2 epochs, smoke test
     python src/train.py                    # full 775-class run
     python src/train.py --config configs/transformer.json --epochs 80
+    python src/train.py --classes-file models/vocab-100.txt --run-name bilstm-vocab100
 Config precedence: defaults < --config JSON < explicit CLI flags.
+
+With --classes-file (one sign label per line), training is restricted to that
+vocabulary: label ids are remapped to dense 0..K-1 and the ordered label list
+is saved as models/{run}.vocab.json so src/evaluate.py can restrict a split
+the same way.
 """
 
 import argparse
@@ -56,6 +62,7 @@ class TrainConfig:
     patience: int = 8               # early stopping on val accuracy
     seed: int = 42
     run_name: str = ""              # default: model type ("dry-run-<model>" with --dry-run)
+    classes_file: str = ""          # optional: one label per line; train on this vocabulary only
     dry_run: bool = False
     dry_run_classes: int = 24
 
@@ -112,12 +119,34 @@ def parse_args(argv=None) -> tuple[ModelConfig, TrainConfig]:
 
 # ------------------------------------------------------------------ data ----
 
-def load_split(index_file, n_classes, include_confidence, tmp_dir) -> PSLDataset:
-    """PSLDataset for one split; with n_classes set, keep only the first n_classes ids."""
-    if n_classes is None:
+def load_class_ids(classes_file) -> list[str]:
+    """Labels listed one per line in a classes file ('#' comments and blanks skipped)."""
+    lines = Path(classes_file).read_text(encoding="utf-8").splitlines()
+    return [line.strip() for line in lines
+            if line.strip() and not line.strip().startswith("#")]
+
+
+def restrict_index(index: pd.DataFrame, allowed_labels) -> pd.DataFrame:
+    """Keep only the allowed classes and remap label_id to dense 0..K-1,
+    by original label_id order — identical across splits."""
+    index = index[index["label"].isin(allowed_labels)].copy()
+    remap = {old: new for new, old in enumerate(sorted(index["label_id"].unique()))}
+    index["label_id"] = index["label_id"].map(remap)
+    return index
+
+
+def load_split(index_file, n_classes, include_confidence, tmp_dir,
+               allowed_labels=None) -> PSLDataset:
+    """PSLDataset for one split, optionally restricted to a class subset:
+    n_classes keeps the first n label ids (dry runs); allowed_labels keeps an
+    explicit vocabulary (--classes-file) with ids remapped to dense 0..K-1."""
+    if n_classes is None and allowed_labels is None:
         return PSLDataset(index_file, include_confidence=include_confidence)
     index = pd.read_csv(index_file)
-    index = index[index["label_id"] < n_classes]
+    if n_classes is not None:
+        index = index[index["label_id"] < n_classes]
+    if allowed_labels is not None:
+        index = restrict_index(index, allowed_labels)
     path = Path(tmp_dir) / Path(index_file).name
     index.to_csv(path, index=False)
     return PSLDataset(path, include_confidence=include_confidence)
@@ -326,6 +355,9 @@ def main() -> int:
 
     n_classes = cfg.dry_run_classes if cfg.dry_run else None
     include_confidence = model_cfg.feature_dim == 375
+    allowed_labels = load_class_ids(cfg.classes_file) if cfg.classes_file else None
+    if cfg.classes_file and not allowed_labels:
+        sys.exit(f"no labels found in {cfg.classes_file}")
     if not any(LANDMARKS_DIR.glob("*.csv")):
         sys.exit(f"no landmark CSVs in {LANDMARKS_DIR}\n"
                  "the dataset is gitignored — download it first, see README "
@@ -334,7 +366,8 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmp_dir:
         data = {}
         for name in ("train", "val", "test"):
-            ds = load_split(SPLITS_DIR / f"{name}.csv", n_classes, include_confidence, tmp_dir)
+            ds = load_split(SPLITS_DIR / f"{name}.csv", n_classes, include_confidence,
+                            tmp_dir, allowed_labels)
             print(f"materializing {name:5s} ({len(ds)} samples)...", flush=True)
             data[name] = (ds, *ds.as_arrays())
     train_ds, X_train, y_train = data["train"]
@@ -346,6 +379,11 @@ def main() -> int:
     labels, en_tokens = class_info(train_ds)
     if len(labels) != model_cfg.num_classes:
         sys.exit(f"class count mismatch: {len(labels)} labels vs {model_cfg.num_classes} ids")
+    if allowed_labels is not None:
+        missing = sorted(set(allowed_labels) - set(train_ds.index["label"]))
+        if missing:
+            print(f"warning: {len(missing)} classes from {cfg.classes_file} not in the dataset: "
+                  + ", ".join(missing[:5]) + (" ..." if len(missing) > 5 else ""))
     print(f"data ready in {time.perf_counter() - t0:.1f}s: {len(y_train)}/{len(y_val)}/{len(y_test)} "
           f"train/val/test samples, {model_cfg.num_classes} classes, "
           f"feature_dim {model_cfg.feature_dim}")
@@ -361,6 +399,9 @@ def main() -> int:
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     with open(MODELS_DIR / f"{cfg.run_name}.config.json", "w", encoding="utf-8") as f:
         json.dump(dataclasses.asdict(model_cfg), f, indent=2)
+    if allowed_labels is not None:
+        with open(MODELS_DIR / f"{cfg.run_name}.vocab.json", "w", encoding="utf-8") as f:
+            json.dump(labels, f, ensure_ascii=False)
 
     rows, best_val_acc, best_epoch = train(model, cfg, loss_fn, optimizer,
                                            X_train, y_train, X_val, y_val,
