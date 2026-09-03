@@ -237,6 +237,9 @@ models/*.txt
 models/*.npz
 !models/.gitkeep
 
+# MediaPipe task bundles (auto-downloaded by src/app.py on first run)
+models/mediapipe/
+
 # OS files
 Thumbs.db
 .DS_Store

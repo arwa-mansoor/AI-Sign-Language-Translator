@@ -7,6 +7,10 @@ model inference periodically, and overlays the predicted English + Urdu text
 on the live video feed.  A pyttsx3 text-to-speech callout speaks the English
 translation when a new stable prediction is confirmed.
 
+Uses the MediaPipe Tasks HolisticLandmarker (mediapipe >= 1.0; the older
+mp.solutions.holistic API no longer exists).  The task bundle is downloaded
+once from Google's model CDN into models/mediapipe/ on first run.
+
 Run:
     python src/app.py                       # newest checkpoint, both languages, TTS on
     python src/app.py --run bilstm          # specific run
@@ -17,6 +21,7 @@ Run:
     python src/app.py --threshold 0.7       # higher confidence gate
     python src/app.py --camera 1            # second webcam
     python src/app.py --interval 5          # inference every 5 frames
+    python src/app.py --self-test           # no camera: verify model + landmarker load
 
 Press 'q' or ESC to quit.
 """
@@ -26,12 +31,15 @@ import json
 import sys
 import threading
 import time
+import urllib.request
 from collections import deque
 from pathlib import Path
 
 import cv2
 import mediapipe as mp
 import numpy as np
+from mediapipe.tasks.python import BaseOptions
+from mediapipe.tasks.python import vision
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from data.dataset import (  # noqa: E402
@@ -54,6 +62,16 @@ CONFIDENCE_THRESHOLD = 0.6      # minimum softmax confidence to surface
 STABLE_CONFIRM_FRAMES = 3       # same prediction N times in a row → confirmed
 TTS_COOLDOWN_SEC = 2.0          # minimum seconds between spoken words
 WINDOW_MAX_FRAMES = MAX_FRAMES  # 80 — must match training
+
+BUNDLE_DIR = MODELS_DIR / "mediapipe"
+BUNDLE_FILE = BUNDLE_DIR / "holistic_landmarker.task"
+BUNDLE_URL = ("https://storage.googleapis.com/mediapipe-models/holistic_landmarker/"
+              "holistic_landmarker/float16/latest/holistic_landmarker.task")
+
+POSE_CONNECTIONS = [(c.start, c.end)
+                    for c in vision.PoseLandmarksConnections.POSE_LANDMARKS]
+HAND_CONNECTIONS = [(c.start, c.end)
+                    for c in vision.HandLandmarksConnections.HAND_CONNECTIONS]
 
 
 # ----------------------------------------------------------- helpers ----
@@ -86,36 +104,72 @@ def softmax(logits: np.ndarray) -> np.ndarray:
 
 # ------------------------------------------ landmark extraction ----
 
-def extract_landmarks_holistic(holistic_results):
+def ensure_holistic_bundle() -> Path:
+    """Download the HolisticLandmarker task bundle on first use (~14 MB)."""
+    if not BUNDLE_FILE.is_file():
+        BUNDLE_DIR.mkdir(parents=True, exist_ok=True)
+        print(f"downloading MediaPipe holistic bundle -> {BUNDLE_FILE} ...")
+        urllib.request.urlretrieve(BUNDLE_URL, BUNDLE_FILE)
+        print(f"  done ({BUNDLE_FILE.stat().st_size / 1e6:.1f} MB)")
+    return BUNDLE_FILE
+
+
+def create_landmarker() -> vision.HolisticLandmarker:
+    options = vision.HolisticLandmarkerOptions(
+        base_options=BaseOptions(model_asset_path=str(ensure_holistic_bundle())),
+        running_mode=vision.RunningMode.VIDEO,
+        min_pose_detection_confidence=0.5,
+        min_pose_landmarks_confidence=0.5,
+        min_hand_landmarks_confidence=0.5,
+    )
+    return vision.HolisticLandmarker.create_from_options(options)
+
+
+def _fill(arr: np.ndarray, offset: int, landmarks, limit: int):
+    for i, lm in enumerate(landmarks[:limit]):
+        arr[offset + i] = [lm.x, lm.y, lm.z,
+                           lm.visibility or 0.0, lm.presence or 0.0]
+
+
+def extract_landmarks_holistic(result) -> np.ndarray:
     """Build a (75, 5) array matching the training CSV column order.
 
-    MediaPipe Holistic gives pose + hands in one pass with consistent
-    world-coordinate frames — same layout as the dataset CSVs:
-      pose 0-32, left hand 33-53, right hand 54-74
-    Each landmark: (x, y, z, visibility, presence).
-    Missing landmarks are zero-filled.
+    The dataset CSVs hold MediaPipe *world* landmarks (metres), so the world
+    variants are used here — image-space landmarks would be a train/serve
+    mismatch.  Layout: pose 0-32, left hand 33-53, right hand 54-74, each
+    (x, y, z, visibility, presence).  Missing landmarks stay zero-filled,
+    exactly like the training data.
     """
     arr = np.zeros((N_LANDMARKS, 5), dtype=np.float32)
-
-    # Pose landmarks 0-32
-    if holistic_results.pose_landmarks:
-        for i, lm in enumerate(holistic_results.pose_landmarks.landmark):
-            if i < 33:
-                arr[i] = [lm.x, lm.y, lm.z, lm.visibility, lm.presence]
-
-    # Left hand landmarks 33-53
-    if holistic_results.left_hand_landmarks:
-        for i, lm in enumerate(holistic_results.left_hand_landmarks.landmark):
-            if i < 21:
-                arr[33 + i] = [lm.x, lm.y, lm.z, lm.visibility, lm.presence]
-
-    # Right hand landmarks 54-74
-    if holistic_results.right_hand_landmarks:
-        for i, lm in enumerate(holistic_results.right_hand_landmarks.landmark):
-            if i < 21:
-                arr[54 + i] = [lm.x, lm.y, lm.z, lm.visibility, lm.presence]
-
+    _fill(arr, 0, result.pose_world_landmarks, 33)
+    _fill(arr, 33, result.left_hand_world_landmarks, 21)
+    _fill(arr, 54, result.right_hand_world_landmarks, 21)
     return arr
+
+
+def draw_landmarks(frame, result, mirrored: bool = False):
+    """Draw image-space pose/hand skeletons on the BGR frame (Tasks API has no
+    drawing_utils, so connections are stroked manually).  Set mirrored=True when
+    the frame was flipped for display but detection ran on the original."""
+    h, w = frame.shape[:2]
+
+    def to_px(landmarks):
+        return [(int((1.0 - lm.x) * w) if mirrored else int(lm.x * w),
+                 int(lm.y * h)) for lm in landmarks]
+
+    for landmarks, connections, point_bgr, line_bgr in (
+        (result.pose_landmarks, POSE_CONNECTIONS, (0, 255, 0), (0, 200, 0)),
+        (result.left_hand_landmarks, HAND_CONNECTIONS, (255, 100, 0), (255, 150, 0)),
+        (result.right_hand_landmarks, HAND_CONNECTIONS, (0, 100, 255), (0, 150, 255)),
+    ):
+        if not landmarks:
+            continue
+        pts = to_px(landmarks)
+        for a, b in connections:
+            if a < len(pts) and b < len(pts):
+                cv2.line(frame, pts[a], pts[b], line_bgr, 1)
+        for p in pts:
+            cv2.circle(frame, p, 2, point_bgr, -1)
 
 
 # --------------------------------------- normalization (matches dataset.py) ----
@@ -212,6 +266,31 @@ class TTSEngine:
 
 # --------------------------------------------------------- main app ----
 
+def self_test(model, cfg, class_lookup, holistic) -> int:
+    """Camera-free check: push synthetic frames through landmarker + model."""
+    print("\nself-test (no camera):")
+    frames = []
+    for i in range(WINDOW_MAX_FRAMES):
+        rgb = np.zeros((480, 640, 3), dtype=np.uint8)
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
+        result = holistic.detect_for_video(mp_image, i * 33 + 1)
+        frames.append(extract_landmarks_holistic(result))
+    seq = fit_length(normalize_frame(np.array(frames)))
+    features = seq.reshape(len(seq), -1) if cfg.feature_dim == 375 else to_features(seq)
+    print(f"  landmarker + pipeline: {WINDOW_MAX_FRAMES} frames -> {features.shape}")
+
+    probs = softmax(model(features[np.newaxis], training=False).numpy())[0]
+    top = np.argsort(probs)[::-1][:3]
+    print(f"  model inference:       {len(probs)} classes, top-3 "
+          f"{[(class_lookup.get(int(i), {}).get('label', i), round(float(probs[i]), 3)) for i in top]}")
+    print("  (blank frames -> no landmarks detected, so the prediction is "
+          "meaningless; this only proves the wiring works)")
+
+    holistic.close()
+    print("\nself-test PASSED — plug in a camera and run without --self-test")
+    return 0
+
+
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Real-time PSL sign recognition")
     parser.add_argument("--run", help="checkpoint run name (default: newest)")
@@ -225,6 +304,8 @@ def parse_args(argv=None):
                              "or both (default: both)")
     parser.add_argument("--no-tts", action="store_true",
                         help="disable text-to-speech (auto-disabled in --lang ur mode)")
+    parser.add_argument("--self-test", action="store_true",
+                        help="verify checkpoint + landmarker on a synthetic frame, no camera")
     return parser.parse_args(argv)
 
 
@@ -260,17 +341,11 @@ def main() -> int:
         for cid, label, en, ur in label_entries:
             class_lookup[cid] = {"label": label, "en": en, "ur": ur}
 
-    # ---- init MediaPipe Holistic (pose + hands in one model) ----
-    mp_holistic = mp.solutions.holistic
-    mp_drawing = mp.solutions.drawing_utils
+    # ---- init MediaPipe HolisticLandmarker (pose + hands in one model) ----
+    holistic = create_landmarker()
 
-    holistic = mp_holistic.Holistic(
-        static_image_mode=False,
-        model_complexity=1,
-        smooth_landmarks=True,
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5,
-    )
+    if args.self_test:
+        return self_test(model, cfg, class_lookup, holistic)
 
     # ---- language mode ----
     show_en = args.lang in ("en", "both")
@@ -291,6 +366,8 @@ def main() -> int:
     current_confidence = 0.0
     stable_count = 0             # consecutive frames with same prediction
     last_predicted_label = ""    # last confirmed label (for TTS dedup)
+    start_time = time.perf_counter()
+    last_timestamp_ms = -1       # VIDEO mode needs increasing timestamps
 
     # ---- open camera ----
     cap = cv2.VideoCapture(args.camera)
@@ -305,48 +382,26 @@ def main() -> int:
                 print("frame capture failed")
                 break
 
-            # Flip for mirror view
-            frame = cv2.flip(frame, 1)
+            # Landmarks must come from the UNMIRRORED frame: MediaPipe labels
+            # hands by image side, and the training videos were not mirrored,
+            # so detecting on a flipped frame would swap left/right hands.
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            rgb.flags.writeable = False
 
-            # Extract landmarks via Holistic (pose + both hands)
-            holistic_result = holistic.process(rgb)
+            # Extract landmarks via HolisticLandmarker (pose + both hands).
+            # VIDEO mode needs strictly increasing millisecond timestamps.
+            mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
+            timestamp_ms = int((time.perf_counter() - start_time) * 1000)
+            timestamp_ms = max(timestamp_ms, last_timestamp_ms + 1)
+            last_timestamp_ms = timestamp_ms
+            holistic_result = holistic.detect_for_video(mp_image, timestamp_ms)
 
             landmarks = extract_landmarks_holistic(holistic_result)
             buffer.append(landmarks)
             frame_count += 1
 
-            # Draw landmarks on frame for visual feedback
-            rgb.flags.writeable = True
-            frame = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
-            if holistic_result.pose_landmarks:
-                mp_drawing.draw_landmarks(
-                    frame, holistic_result.pose_landmarks,
-                    mp_holistic.POSE_CONNECTIONS,
-                    landmark_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(0, 255, 0), thickness=1, circle_radius=2),
-                    connection_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(0, 200, 0), thickness=1),
-                )
-            if holistic_result.left_hand_landmarks:
-                mp_drawing.draw_landmarks(
-                    frame, holistic_result.left_hand_landmarks,
-                    mp_holistic.HAND_CONNECTIONS,
-                    landmark_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(255, 100, 0), thickness=1, circle_radius=2),
-                    connection_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(255, 150, 0), thickness=1),
-                )
-            if holistic_result.right_hand_landmarks:
-                mp_drawing.draw_landmarks(
-                    frame, holistic_result.right_hand_landmarks,
-                    mp_holistic.HAND_CONNECTIONS,
-                    landmark_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(0, 100, 255), thickness=1, circle_radius=2),
-                    connection_drawing_spec=mp_drawing.DrawingSpec(
-                        color=(0, 150, 255), thickness=1),
-                )
+            # Mirror for a natural selfie view, and draw with mirrored x
+            frame = cv2.flip(frame, 1)
+            draw_landmarks(frame, holistic_result, mirrored=True)
 
             # ---- periodic inference ----
             if frame_count % args.interval == 0 and len(buffer) >= 10:
