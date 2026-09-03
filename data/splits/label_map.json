@@ -1,0 +1,9053 @@
+{
+ "pk-hfad-1_1": {
+  "id": 0,
+  "en": [
+   "1",
+   "one",
+   "a(article)",
+   "an"
+  ],
+  "ur": [
+   "1",
+   "۱",
+   "ایک",
+   "اک",
+   "اِک",
+   "یکم"
+  ]
+ },
+ "pk-hfad-1_10": {
+  "id": 1,
+  "en": [
+   "10",
+   "ten"
+  ],
+  "ur": [
+   "10",
+   "۱۰",
+   "دس"
+  ]
+ },
+ "pk-hfad-1_100": {
+  "id": 2,
+  "en": [
+   "100",
+   "one hundred",
+   "a hundred"
+  ],
+  "ur": [
+   "100",
+   "۱۰۰",
+   "ایک سو(100)",
+   "ایکسو"
+  ]
+ },
+ "pk-hfad-1_1000": {
+  "id": 3,
+  "en": [
+   "1000",
+   "1,000",
+   "one thousand",
+   "a thousand"
+  ],
+  "ur": [
+   "1000",
+   "1,000",
+   "۱۰۰۰",
+   "ایک ہزار"
+  ]
+ },
+ "pk-hfad-1_10000": {
+  "id": 4,
+  "en": [
+   "10000",
+   "10,000",
+   "ten thousand"
+  ],
+  "ur": [
+   "10000",
+   "10,000",
+   "۱۰۰۰۰",
+   "دس ہزار"
+  ]
+ },
+ "pk-hfad-1_100000": {
+  "id": 5,
+  "en": [
+   "100000",
+   "1,00,000",
+   "100,000",
+   "one lakh"
+  ],
+  "ur": [
+   "100000",
+   "1,00,000",
+   "100,000",
+   "۱۰۰۰۰۰",
+   "ایک لاکھ"
+  ]
+ },
+ "pk-hfad-1_10000000": {
+  "id": 6,
+  "en": [
+   "10000000",
+   "1,00,00,000",
+   "10,000,000",
+   "one crore"
+  ],
+  "ur": [
+   "10000000",
+   "1,00,00,000",
+   "10,000,000",
+   "۱۰۰۰۰۰۰۰",
+   "ایک کروڑ"
+  ]
+ },
+ "pk-hfad-1_4": {
+  "id": 7,
+  "en": [
+   "4",
+   "four"
+  ],
+  "ur": [
+   "4",
+   "۴",
+   "چار"
+  ]
+ },
+ "pk-hfad-1_5": {
+  "id": 8,
+  "en": [
+   "5",
+   "five"
+  ],
+  "ur": [
+   "5",
+   "۵",
+   "پانچ"
+  ]
+ },
+ "pk-hfad-1_500": {
+  "id": 9,
+  "en": [
+   "500",
+   "five hundred"
+  ],
+  "ur": [
+   "500",
+   "۵۰۰",
+   "پانچ سو",
+   "پانچسو"
+  ]
+ },
+ "pk-hfad-1_6": {
+  "id": 10,
+  "en": [
+   "6",
+   "six"
+  ],
+  "ur": [
+   "6",
+   "۶",
+   "چھ"
+  ]
+ },
+ "pk-hfad-1_7": {
+  "id": 11,
+  "en": [
+   "7",
+   "seven"
+  ],
+  "ur": [
+   "7",
+   "۷",
+   "سات"
+  ]
+ },
+ "pk-hfad-1_8": {
+  "id": 12,
+  "en": [
+   "8",
+   "eight"
+  ],
+  "ur": [
+   "8",
+   "۸",
+   "آٹھ"
+  ]
+ },
+ "pk-hfad-1_9": {
+  "id": 13,
+  "en": [
+   "9",
+   "nine"
+  ],
+  "ur": [
+   "9",
+   "۹",
+   "نو"
+  ]
+ },
+ "pk-hfad-1_a(double-handed-letter)": {
+  "id": 14,
+  "en": [
+   "a(double-handed-letter)",
+   "answered",
+   "answer",
+   "answering"
+  ],
+  "ur": [
+   "a(double-handed-letter)",
+   "اے(a-double-handed-letter)",
+   "جواب",
+   "جوابی"
+  ]
+ },
+ "pk-hfad-1_a(single-handed-letter)": {
+  "id": 15,
+  "en": [
+   "a(single-handed-letter)",
+   "ا"
+  ],
+  "ur": [
+   "a(single-handed-letter)",
+   "اے(a-single-handed-letter)",
+   "ا"
+  ]
+ },
+ "pk-hfad-1_aaei(came)": {
+  "id": 16,
+  "en": [
+   "came(آئی)"
+  ],
+  "ur": [
+   "آئی(آنا)"
+  ]
+ },
+ "pk-hfad-1_aaein": {
+  "id": 17,
+  "en": [
+   "come(آئیں)"
+  ],
+  "ur": [
+   "آئیں"
+  ]
+ },
+ "pk-hfad-1_aaey": {
+  "id": 18,
+  "en": [
+   "came(آئے)"
+  ],
+  "ur": [
+   "آئے",
+   "آئیے"
+  ]
+ },
+ "pk-hfad-1_aaia(came)": {
+  "id": 19,
+  "en": [
+   "came(آیا)"
+  ],
+  "ur": [
+   "آیا(آنا)"
+  ]
+ },
+ "pk-hfad-1_aao": {
+  "id": 20,
+  "en": [
+   "come(آؤ)"
+  ],
+  "ur": [
+   "آؤ",
+   "آو",
+   "آئو"
+  ]
+ },
+ "pk-hfad-1_aap": {
+  "id": 21,
+  "en": [
+   "you(formal-آپ)"
+  ],
+  "ur": [
+   "آپ"
+  ]
+ },
+ "pk-hfad-1_aaun": {
+  "id": 22,
+  "en": [
+   "come(آؤں)"
+  ],
+  "ur": [
+   "آؤں",
+   "آوں",
+   "آئوں"
+  ]
+ },
+ "pk-hfad-1_ab": {
+  "id": 23,
+  "en": [
+   "now(اب)"
+  ],
+  "ur": [
+   "اب"
+  ]
+ },
+ "pk-hfad-1_accounting": {
+  "id": 24,
+  "en": [
+   "accounting",
+   "math",
+   "maths",
+   "mathematics"
+  ],
+  "ur": [
+   "حساب",
+   "ریاضی"
+  ]
+ },
+ "pk-hfad-1_ache": {
+  "id": 25,
+  "en": [
+   "ache",
+   "pain",
+   "suffer",
+   "suffering"
+  ],
+  "ur": [
+   "تکلیف",
+   "درد"
+  ]
+ },
+ "pk-hfad-1_achievement": {
+  "id": 26,
+  "en": [
+   "achievement",
+   "conquest",
+   "success",
+   "succeed",
+   "succeeded",
+   "successful",
+   "victory"
+  ],
+  "ur": [
+   "کامیابی",
+   "کامیاب",
+   "فتح"
+  ]
+ },
+ "pk-hfad-1_act-upon": {
+  "id": 27,
+  "en": [
+   "act upon",
+   "process"
+  ],
+  "ur": [
+   "عمل",
+   "کارروائی",
+   "طریقہ کار"
+  ]
+ },
+ "pk-hfad-1_address(noun)": {
+  "id": 28,
+  "en": [
+   "address(noun)"
+  ],
+  "ur": [
+   "ایڈریس",
+   "پتہ(ایڈریس)"
+  ]
+ },
+ "pk-hfad-1_admire": {
+  "id": 29,
+  "en": [
+   "admire",
+   "like(admire)",
+   "liked",
+   "likes(admires)",
+   "liking",
+   "keenness"
+  ],
+  "ur": [
+   "پسند",
+   "رغبت"
+  ]
+ },
+ "pk-hfad-1_advertisement": {
+  "id": 30,
+  "en": [
+   "advertisement",
+   "advertising",
+   "advertise"
+  ],
+  "ur": [
+   "اشتہار",
+   "تشہیر",
+   "ایڈورٹائزمنٹ",
+   "ایڈورٹائزنگ",
+   "اشتہار بازی"
+  ]
+ },
+ "pk-hfad-1_aein": {
+  "id": 31,
+  "en": [
+   "ع"
+  ],
+  "ur": [
+   "ع"
+  ]
+ },
+ "pk-hfad-1_afghanistan": {
+  "id": 32,
+  "en": [
+   "afghanistan"
+  ],
+  "ur": [
+   "افغانستان",
+   "افغانستانی"
+  ]
+ },
+ "pk-hfad-1_again": {
+  "id": 33,
+  "en": [
+   "again"
+  ],
+  "ur": [
+   "دوبارہ",
+   "پھر سے"
+  ]
+ },
+ "pk-hfad-1_age": {
+  "id": 34,
+  "en": [
+   "age"
+  ],
+  "ur": [
+   "عمر(مُدت)",
+   "مدت",
+   "مُدت",
+   "دورانیہ"
+  ]
+ },
+ "pk-hfad-1_air": {
+  "id": 35,
+  "en": [
+   "air"
+  ],
+  "ur": [
+   "ہوا(فضا)",
+   "ہوائی(فضائی)"
+  ]
+ },
+ "pk-hfad-1_airplane": {
+  "id": 36,
+  "en": [
+   "airplane",
+   "aeroplane",
+   "plane(aeroplane)",
+   "aircraft"
+  ],
+  "ur": [
+   "طیارہ",
+   "طیارے",
+   "ہوائی جہاز"
+  ]
+ },
+ "pk-hfad-1_airport": {
+  "id": 37,
+  "en": [
+   "airport",
+   "airfield"
+  ],
+  "ur": [
+   "ہوائی اڈہ",
+   "ہوائی اڈے",
+   "ایئرپورٹ",
+   "ایرپورٹ",
+   "ائیرپورٹ"
+  ]
+ },
+ "pk-hfad-1_alarm(clock)": {
+  "id": 38,
+  "en": [
+   "alarm(clock)"
+  ],
+  "ur": [
+   "الارم"
+  ]
+ },
+ "pk-hfad-1_alayhe-assallam": {
+  "id": 39,
+  "en": [
+   "alayhe assallam"
+  ],
+  "ur": [
+   "ؑ",
+   "علیہ السلام",
+   "علیہ سلام"
+  ]
+ },
+ "pk-hfad-1_alhamra": {
+  "id": 40,
+  "en": [
+   "alhamra"
+  ],
+  "ur": [
+   "الحمرا",
+   "الحمراء"
+  ]
+ },
+ "pk-hfad-1_alif-mad": {
+  "id": 41,
+  "en": [
+   "آ"
+  ],
+  "ur": [
+   "آ(حرف)"
+  ]
+ },
+ "pk-hfad-1_all": {
+  "id": 42,
+  "en": [
+   "all",
+   "every",
+   "entire"
+  ],
+  "ur": [
+   "سب",
+   "تمام",
+   "ہر",
+   "سارا(تمام)",
+   "سارے",
+   "ساری"
+  ]
+ },
+ "pk-hfad-1_allah": {
+  "id": 43,
+  "en": [
+   "allah",
+   "god"
+  ],
+  "ur": [
+   "اللہ",
+   "اللہ تعالی",
+   "خدا",
+   "خُدا",
+   "الہی",
+   "الٰہی",
+   "اِلٰہی",
+   "رب"
+  ]
+ },
+ "pk-hfad-1_allama-iqbal": {
+  "id": 44,
+  "en": [
+   "allama iqbal",
+   "allama mohammad iqbal",
+   "allama muhammad iqbal"
+  ],
+  "ur": [
+   "علامہ اقبال",
+   "علامہ محمد اقبال",
+   "ڈاکٹر علامہ اقبال",
+   "ڈاکٹر علامہ محمد اقبال"
+  ]
+ },
+ "pk-hfad-1_always": {
+  "id": 45,
+  "en": [
+   "always",
+   "forever"
+  ],
+  "ur": [
+   "ہمیشہ"
+  ]
+ },
+ "pk-hfad-1_am": {
+  "id": 46,
+  "en": [
+   "am"
+  ],
+  "ur": [
+   "ہوں"
+  ]
+ },
+ "pk-hfad-1_ambulance": {
+  "id": 47,
+  "en": [
+   "ambulance"
+  ],
+  "ur": [
+   "ایمبولینس"
+  ]
+ },
+ "pk-hfad-1_america(country)": {
+  "id": 48,
+  "en": [
+   "america(country)",
+   "american(country)",
+   "united states of america",
+   "usa",
+   "us(country)"
+  ],
+  "ur": [
+   "امریکہ(ملک)",
+   "امریکی(ملک)",
+   "امریکا(ملک)",
+   "امریکن(ملک)",
+   "ریاست ہائے متحدہ امریکہ",
+   "ریاست ہائے متحدہ امریکا",
+   "ریاستہائےمتحدہ",
+   "ریاستہائےمتحدہ امریکہ"
+  ]
+ },
+ "pk-hfad-1_anarkali": {
+  "id": 49,
+  "en": [
+   "anarkali"
+  ],
+  "ur": [
+   "انارکلی(جگہ)"
+  ]
+ },
+ "pk-hfad-1_and": {
+  "id": 50,
+  "en": [
+   "and"
+  ],
+  "ur": [
+   "اور",
+   "و(اور)"
+  ]
+ },
+ "pk-hfad-1_angel": {
+  "id": 51,
+  "en": [
+   "angel"
+  ],
+  "ur": [
+   "فرشتہ",
+   "فرشتے"
+  ]
+ },
+ "pk-hfad-1_anger": {
+  "id": 52,
+  "en": [
+   "anger",
+   "angry(furious)",
+   "furious",
+   "wrath"
+  ],
+  "ur": [
+   "غصہ",
+   "غصے",
+   "غضبناک",
+   "غضب"
+  ]
+ },
+ "pk-hfad-1_angry(displeased)": {
+  "id": 53,
+  "en": [
+   "angry(displeased)",
+   "offended",
+   "annoyed"
+  ],
+  "ur": [
+   "ناراض",
+   "ناراضی",
+   "ناراضگی",
+   "خفا"
+  ]
+ },
+ "pk-hfad-1_antonym": {
+  "id": 54,
+  "en": [
+   "antonym"
+  ],
+  "ur": [
+   "متضاد"
+  ]
+ },
+ "pk-hfad-1_anxious": {
+  "id": 55,
+  "en": [
+   "anxious",
+   "restless",
+   "restlessness",
+   "anxiety"
+  ],
+  "ur": [
+   "بےچین",
+   "بے چین(سکون)",
+   "بےچینی",
+   "بے چینی(سکونی)",
+   "بےسکونی",
+   "بے سکونی",
+   "بےسکون",
+   "بے سکون"
+  ]
+ },
+ "pk-hfad-1_apna(zati)": {
+  "id": 56,
+  "en": [
+   "own(adjective-اپنا)"
+  ],
+  "ur": [
+   "اپنا(ذاتی)"
+  ]
+ },
+ "pk-hfad-1_apni": {
+  "id": 57,
+  "en": [
+   "own(adjective-اپنی)"
+  ],
+  "ur": [
+   "اپنی"
+  ]
+ },
+ "pk-hfad-1_apny": {
+  "id": 58,
+  "en": [
+   "own(adjective-اپنے)"
+  ],
+  "ur": [
+   "اپنے"
+  ]
+ },
+ "pk-hfad-1_apostle": {
+  "id": 59,
+  "en": [
+   "apostle"
+  ],
+  "ur": [
+   "رسول",
+   "رسالت"
+  ]
+ },
+ "pk-hfad-1_apple": {
+  "id": 60,
+  "en": [
+   "apple"
+  ],
+  "ur": [
+   "سیب"
+  ]
+ },
+ "pk-hfad-1_application(request)": {
+  "id": 61,
+  "en": [
+   "application(request)"
+  ],
+  "ur": [
+   "درخواست"
+  ]
+ },
+ "pk-hfad-1_approval": {
+  "id": 62,
+  "en": [
+   "approval",
+   "approve",
+   "consent",
+   "permission"
+  ],
+  "ur": [
+   "اجازت",
+   "اِجازت",
+   "رضامندی",
+   "منظوری",
+   "منظور"
+  ]
+ },
+ "pk-hfad-1_apricot": {
+  "id": 63,
+  "en": [
+   "apricot"
+  ],
+  "ur": [
+   "خوبانی"
+  ]
+ },
+ "pk-hfad-1_april(month)": {
+  "id": 64,
+  "en": [
+   "april(month)"
+  ],
+  "ur": [
+   "اپریل"
+  ]
+ },
+ "pk-hfad-1_are": {
+  "id": 65,
+  "en": [
+   "are"
+  ],
+  "ur": [
+   "ہیں"
+  ]
+ },
+ "pk-hfad-1_arrogance": {
+  "id": 66,
+  "en": [
+   "arrogance",
+   "arrogant"
+  ],
+  "ur": [
+   "غرور",
+   "مغرور",
+   "متکبر",
+   "تکبر"
+  ]
+ },
+ "pk-hfad-1_art": {
+  "id": 67,
+  "en": [
+   "art",
+   "arts"
+  ],
+  "ur": [
+   "فن",
+   "فنون",
+   "آرٹ",
+   "آرٹس"
+  ]
+ },
+ "pk-hfad-1_asr": {
+  "id": 68,
+  "en": [
+   "asr"
+  ],
+  "ur": [
+   "عصر(نماز)"
+  ]
+ },
+ "pk-hfad-1_assembly(congregation)": {
+  "id": 69,
+  "en": [
+   "assembly(congregation)"
+  ],
+  "ur": [
+   "(اسکول)اسمبلی"
+  ]
+ },
+ "pk-hfad-1_at": {
+  "id": 70,
+  "en": [
+   "on(at)",
+   "at"
+  ],
+  "ur": [
+   "پر(پہ)",
+   "پہ"
+  ]
+ },
+ "pk-hfad-1_august(month)": {
+  "id": 71,
+  "en": [
+   "august(month)"
+  ],
+  "ur": [
+   "اگست"
+  ]
+ },
+ "pk-hfad-1_australia": {
+  "id": 72,
+  "en": [
+   "australia",
+   "australian"
+  ],
+  "ur": [
+   "آسٹریلیا",
+   "اسٹریلیا",
+   "آسٹریلوی"
+  ]
+ },
+ "pk-hfad-1_autumn": {
+  "id": 73,
+  "en": [
+   "autumn"
+  ],
+  "ur": [
+   "خزاں",
+   "پت جھڑ"
+  ]
+ },
+ "pk-hfad-1_b(double-handed-letter)": {
+  "id": 74,
+  "en": [
+   "b(double-handed-letter)"
+  ],
+  "ur": [
+   "b(double-handed-letter)",
+   "بی(b-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_b(single-handed-letter)": {
+  "id": 75,
+  "en": [
+   "b(single-handed-letter)",
+   "ب"
+  ],
+  "ur": [
+   "b(single-handed-letter)",
+   "بی(b-single-handed-letter)",
+   "ب"
+  ]
+ },
+ "pk-hfad-1_backbiting": {
+  "id": 76,
+  "en": [
+   "backbiting"
+  ],
+  "ur": [
+   "چغلی",
+   "غیبت"
+  ]
+ },
+ "pk-hfad-1_badshahi-mosque": {
+  "id": 77,
+  "en": [
+   "badshahi mosque",
+   "badshahi masjid"
+  ],
+  "ur": [
+   "بادشاہی مسجد"
+  ]
+ },
+ "pk-hfad-1_bag(noun)": {
+  "id": 78,
+  "en": [
+   "bag(noun)"
+  ],
+  "ur": [
+   "بیگ",
+   "بستہ(بیگ)",
+   "بستے(بیگ)"
+  ]
+ },
+ "pk-hfad-1_ballpoint": {
+  "id": 79,
+  "en": [
+   "ball point",
+   "ballpoint",
+   "ball point pen",
+   "ballpoint pen"
+  ],
+  "ur": [
+   "بال پوائنٹ",
+   "بال پوائنٹ پین"
+  ]
+ },
+ "pk-hfad-1_balochistan": {
+  "id": 80,
+  "en": [
+   "balochistan"
+  ],
+  "ur": [
+   "بلوچستان"
+  ]
+ },
+ "pk-hfad-1_banana": {
+  "id": 81,
+  "en": [
+   "banana",
+   "bananas"
+  ],
+  "ur": [
+   "کیلا",
+   "کیلے"
+  ]
+ },
+ "pk-hfad-1_bangladesh": {
+  "id": 82,
+  "en": [
+   "bangladesh"
+  ],
+  "ur": [
+   "بنگلہ دیش",
+   "بنگلہ دیشی"
+  ]
+ },
+ "pk-hfad-1_bank(institution)": {
+  "id": 83,
+  "en": [
+   "bank(institution)"
+  ],
+  "ur": [
+   "بینک"
+  ]
+ },
+ "pk-hfad-1_beautiful": {
+  "id": 84,
+  "en": [
+   "beautiful",
+   "beauty",
+   "handsome",
+   "gorgeous"
+  ],
+  "ur": [
+   "خوبصورت",
+   "خوبصورتی"
+  ]
+ },
+ "pk-hfad-1_before": {
+  "id": 85,
+  "en": [
+   "before",
+   "prior",
+   "previous"
+  ],
+  "ur": [
+   "پہلے",
+   "قبل",
+   "گزشتہ"
+  ]
+ },
+ "pk-hfad-1_beg": {
+  "id": 86,
+  "en": [
+   "beg"
+  ],
+  "ur": [
+   "مانگ(مانگنا)",
+   "مانگا",
+   "مانگتا",
+   "مانگتی",
+   "مانگتے",
+   "مانگنا",
+   "مانگنے",
+   "مانگو",
+   "مانگوں",
+   "مانگی",
+   "مانگیں",
+   "مانگے"
+  ]
+ },
+ "pk-hfad-1_beggar": {
+  "id": 87,
+  "en": [
+   "beggar",
+   "mendicant"
+  ],
+  "ur": [
+   "فقیر",
+   "بھکاری",
+   "بھیک"
+  ]
+ },
+ "pk-hfad-1_bell": {
+  "id": 88,
+  "en": [
+   "bell"
+  ],
+  "ur": [
+   "گھنٹی"
+  ]
+ },
+ "pk-hfad-1_benefit": {
+  "id": 89,
+  "en": [
+   "beneficial",
+   "benefit",
+   "utility",
+   "helpful",
+   "advantage",
+   "advantageous",
+   "useful",
+   "usefulness",
+   "convenience",
+   "convenient"
+  ],
+  "ur": [
+   "فائدہ",
+   "فائدے",
+   "سہولت",
+   "افادیت",
+   "مفاد",
+   "مفید",
+   "فائدہ مند"
+  ]
+ },
+ "pk-hfad-1_beverage": {
+  "id": 90,
+  "en": [
+   "beverage"
+  ],
+  "ur": [
+   "شربت",
+   "مشروب"
+  ]
+ },
+ "pk-hfad-1_birthday": {
+  "id": 91,
+  "en": [
+   "birthday",
+   "anniversary"
+  ],
+  "ur": [
+   "سالگرہ"
+  ]
+ },
+ "pk-hfad-1_biscuit": {
+  "id": 92,
+  "en": [
+   "biscuit",
+   "cookie",
+   "biscuits",
+   "cookies"
+  ],
+  "ur": [
+   "بسکٹ"
+  ]
+ },
+ "pk-hfad-1_black": {
+  "id": 93,
+  "en": [
+   "black"
+  ],
+  "ur": [
+   "کالا",
+   "کالے",
+   "کالی",
+   "سیاہ"
+  ]
+ },
+ "pk-hfad-1_blessing": {
+  "id": 94,
+  "en": [
+   "blessing"
+  ],
+  "ur": [
+   "نعمت"
+  ]
+ },
+ "pk-hfad-1_blue": {
+  "id": 95,
+  "en": [
+   "blue"
+  ],
+  "ur": [
+   "نیلا",
+   "نیلی",
+   "نیلے"
+  ]
+ },
+ "pk-hfad-1_book": {
+  "id": 96,
+  "en": [
+   "book",
+   "textbook"
+  ],
+  "ur": [
+   "کتاب"
+  ]
+ },
+ "pk-hfad-1_bookshop": {
+  "id": 97,
+  "en": [
+   "bookstore",
+   "bookshop"
+  ],
+  "ur": [
+   "بک شاپ",
+   "کتاب کی دکان",
+   "کتابوں کی دکان",
+   "کتب شاپ"
+  ]
+ },
+ "pk-hfad-1_bottle(noun)": {
+  "id": 98,
+  "en": [
+   "bottle(noun)"
+  ],
+  "ur": [
+   "بوتل",
+   "بوٹل"
+  ]
+ },
+ "pk-hfad-1_boy": {
+  "id": 99,
+  "en": [
+   "boy"
+  ],
+  "ur": [
+   "لڑکا",
+   "لڑکے"
+  ]
+ },
+ "pk-hfad-1_bread": {
+  "id": 100,
+  "en": [
+   "bread"
+  ],
+  "ur": [
+   "ڈبل روٹی"
+  ]
+ },
+ "pk-hfad-1_break(pause)": {
+  "id": 101,
+  "en": [
+   "break(pause)"
+  ],
+  "ur": [
+   "بریک(وقفہ)",
+   "وقفہ",
+   "وقفے"
+  ]
+ },
+ "pk-hfad-1_bribery": {
+  "id": 102,
+  "en": [
+   "bribery",
+   "bribe"
+  ],
+  "ur": [
+   "رشوت"
+  ]
+ },
+ "pk-hfad-1_brother": {
+  "id": 103,
+  "en": [
+   "brother"
+  ],
+  "ur": [
+   "بھائی",
+   "برادر",
+   "بھئی"
+  ]
+ },
+ "pk-hfad-1_brothers-daughter": {
+  "id": 104,
+  "en": [
+   "brother's daughter",
+   "niece(brother's-daughter)"
+  ],
+  "ur": [
+   "بھتیجی"
+  ]
+ },
+ "pk-hfad-1_brothers-son": {
+  "id": 105,
+  "en": [
+   "brother's son",
+   "nephew(brother's-son)"
+  ],
+  "ur": [
+   "بھتیجا",
+   "بھتیجے"
+  ]
+ },
+ "pk-hfad-1_brothers-wife": {
+  "id": 106,
+  "en": [
+   "brother's wife",
+   "sister-in-law(brother's-wife)"
+  ],
+  "ur": [
+   "بھابھی"
+  ]
+ },
+ "pk-hfad-1_brown": {
+  "id": 107,
+  "en": [
+   "brown"
+  ],
+  "ur": [
+   "براؤن",
+   "بھورا"
+  ]
+ },
+ "pk-hfad-1_bunny": {
+  "id": 108,
+  "en": [
+   "bunny",
+   "rabbit",
+   "hare"
+  ],
+  "ur": [
+   "خرگوش"
+  ]
+ },
+ "pk-hfad-1_burger": {
+  "id": 109,
+  "en": [
+   "burger"
+  ],
+  "ur": [
+   "برگر"
+  ]
+ },
+ "pk-hfad-1_bus": {
+  "id": 110,
+  "en": [
+   "bus"
+  ],
+  "ur": [
+   "بس(گاڑی)"
+  ]
+ },
+ "pk-hfad-1_bus-stop": {
+  "id": 111,
+  "en": [
+   "bus stop",
+   "busstop",
+   "bus station",
+   "bus stand"
+  ],
+  "ur": [
+   "بس اسٹاپ",
+   "بس سٹاپ",
+   "لاری اڈا",
+   "لاری اڈے",
+   "بس سٹینڈ",
+   "بس اسٹینڈ",
+   "بس سٹیشن",
+   "بس اسٹیشن"
+  ]
+ },
+ "pk-hfad-1_busy": {
+  "id": 112,
+  "en": [
+   "busy",
+   "preoccupied"
+  ],
+  "ur": [
+   "مصروف",
+   "مصروفیت"
+  ]
+ },
+ "pk-hfad-1_butter": {
+  "id": 113,
+  "en": [
+   "butter"
+  ],
+  "ur": [
+   "مکھن",
+   "مکھنی"
+  ]
+ },
+ "pk-hfad-1_c(double-handed-letter)": {
+  "id": 114,
+  "en": [
+   "c(double-handed-letter)"
+  ],
+  "ur": [
+   "c(double-handed-letter)",
+   "سی(c-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_c(single-handed-letter)": {
+  "id": 115,
+  "en": [
+   "c(single-handed-letter)",
+   "ث"
+  ],
+  "ur": [
+   "c(single-handed-letter)",
+   "سی(c-single-handed-letter)",
+   "ث"
+  ]
+ },
+ "pk-hfad-1_cake": {
+  "id": 116,
+  "en": [
+   "cake"
+  ],
+  "ur": [
+   "کیک"
+  ]
+ },
+ "pk-hfad-1_calculator": {
+  "id": 117,
+  "en": [
+   "calculator"
+  ],
+  "ur": [
+   "کیلکولیٹر"
+  ]
+ },
+ "pk-hfad-1_calendar": {
+  "id": 118,
+  "en": [
+   "calendar"
+  ],
+  "ur": [
+   "کیلنڈر"
+  ]
+ },
+ "pk-hfad-1_calm": {
+  "id": 119,
+  "en": [
+   "calm",
+   "calmness",
+   "peace of mind",
+   "tranquility"
+  ],
+  "ur": [
+   "سکون",
+   "سکوں",
+   "پرسکون",
+   "پُرسکون",
+   "چین(سکون)"
+  ]
+ },
+ "pk-hfad-1_came-and-went": {
+  "id": 120,
+  "en": [
+   "come and go",
+   "transportation",
+   "came and went",
+   "coming and going"
+  ],
+  "ur": [
+   "آمدورفت",
+   "آمد و رفت",
+   "نقل و حمل",
+   "آیا گیا",
+   "آنا جانا",
+   "آنے جانے",
+   "آتا جاتا",
+   "آتے جاتے"
+  ]
+ },
+ "pk-hfad-1_camel": {
+  "id": 121,
+  "en": [
+   "camel"
+  ],
+  "ur": [
+   "اونٹ",
+   "اُونٹ",
+   "اونٹنی"
+  ]
+ },
+ "pk-hfad-1_camera": {
+  "id": 122,
+  "en": [
+   "camera"
+  ],
+  "ur": [
+   "کیمرا",
+   "کیمرہ",
+   "کیمرے"
+  ]
+ },
+ "pk-hfad-1_canal": {
+  "id": 123,
+  "en": [
+   "canal"
+  ],
+  "ur": [
+   "نہر"
+  ]
+ },
+ "pk-hfad-1_car": {
+  "id": 124,
+  "en": [
+   "car"
+  ],
+  "ur": [
+   "کار(گاڑی)"
+  ]
+ },
+ "pk-hfad-1_carrot": {
+  "id": 125,
+  "en": [
+   "carrot"
+  ],
+  "ur": [
+   "گاجر"
+  ]
+ },
+ "pk-hfad-1_cartoon": {
+  "id": 126,
+  "en": [
+   "cartoon",
+   "cartoonish"
+  ],
+  "ur": [
+   "کارٹون"
+  ]
+ },
+ "pk-hfad-1_castle": {
+  "id": 127,
+  "en": [
+   "castle",
+   "fort",
+   "fortress"
+  ],
+  "ur": [
+   "قلعہ",
+   "قلعے"
+  ]
+ },
+ "pk-hfad-1_cat": {
+  "id": 128,
+  "en": [
+   "cat"
+  ],
+  "ur": [
+   "بلی"
+  ]
+ },
+ "pk-hfad-1_cauliflower": {
+  "id": 129,
+  "en": [
+   "cauliflower"
+  ],
+  "ur": [
+   "گوبھی",
+   "پھول گوبھی"
+  ]
+ },
+ "pk-hfad-1_celebration": {
+  "id": 130,
+  "en": [
+   "celebration",
+   "celebrate"
+  ],
+  "ur": [
+   "جشن"
+  ]
+ },
+ "pk-hfad-1_cey": {
+  "id": 131,
+  "en": [
+   "ژ"
+  ],
+  "ur": [
+   "ژ"
+  ]
+ },
+ "pk-hfad-1_chair": {
+  "id": 132,
+  "en": [
+   "chair"
+  ],
+  "ur": [
+   "کرسی"
+  ]
+ },
+ "pk-hfad-1_chairman": {
+  "id": 133,
+  "en": [
+   "chairman",
+   "chairperson",
+   "chairwoman"
+  ],
+  "ur": [
+   "چیئرمین",
+   "چیئر مین",
+   "چیئرپرسن",
+   "چیئر پرسن",
+   "چیئر وومن",
+   "چیئروومن"
+  ]
+ },
+ "pk-hfad-1_chakwal": {
+  "id": 134,
+  "en": [
+   "chakwal"
+  ],
+  "ur": [
+   "چکوال"
+  ]
+ },
+ "pk-hfad-1_chana-chaat": {
+  "id": 135,
+  "en": [
+   "chana chaat"
+  ],
+  "ur": [
+   "چنا چاٹ(غذا)"
+  ]
+ },
+ "pk-hfad-1_chauburji": {
+  "id": 136,
+  "en": [
+   "chauburji"
+  ],
+  "ur": [
+   "چوبرجی"
+  ]
+ },
+ "pk-hfad-1_chaudhary": {
+  "id": 137,
+  "en": [
+   "chaudhary"
+  ],
+  "ur": [
+   "چوہدری",
+   "چودھری"
+  ]
+ },
+ "pk-hfad-1_chcha": {
+  "id": 138,
+  "en": [
+   "uncle(father's-younger-brother-چچا)"
+  ],
+  "ur": [
+   "چچا"
+  ]
+ },
+ "pk-hfad-1_chchi": {
+  "id": 139,
+  "en": [
+   "aunt(father's-younger-brother's-wife-چچی)",
+   "aunty(father's-younger-brother's-wife-چچی)"
+  ],
+  "ur": [
+   "چچی"
+  ]
+ },
+ "pk-hfad-1_cheif": {
+  "id": 140,
+  "en": [
+   "cheif"
+  ],
+  "ur": [
+   "سربراہ",
+   "سردار"
+  ]
+ },
+ "pk-hfad-1_chey": {
+  "id": 141,
+  "en": [
+   "چ"
+  ],
+  "ur": [
+   "چ"
+  ]
+ },
+ "pk-hfad-1_chicken": {
+  "id": 142,
+  "en": [
+   "chicken",
+   "hen",
+   "cock",
+   "rooster"
+  ],
+  "ur": [
+   "مرغی",
+   "مرغا",
+   "مرغ",
+   "مرغے"
+  ]
+ },
+ "pk-hfad-1_chicken-meat": {
+  "id": 143,
+  "en": [
+   "chicken meat"
+  ],
+  "ur": [
+   "مرغی کا گوشت",
+   "مرغی کے گوشت",
+   "چکن"
+  ]
+ },
+ "pk-hfad-1_china": {
+  "id": 144,
+  "en": [
+   "china"
+  ],
+  "ur": [
+   "چین(چائنا)",
+   "چینی(چائنیز)",
+   "چائنیز",
+   "چائنا",
+   "چائنہ"
+  ]
+ },
+ "pk-hfad-1_china-clay": {
+  "id": 145,
+  "en": [
+   "china clay"
+  ],
+  "ur": [
+   "چینی(چائنیز) مٹی",
+   "چائنا مٹی",
+   "چائنہ مٹی",
+   "چائنیز مٹی",
+   "چینی(چائنیز) کلے",
+   "چائنا کلے",
+   "چائنہ کلے"
+  ]
+ },
+ "pk-hfad-1_chips(fries)": {
+  "id": 146,
+  "en": [
+   "chips(fries)",
+   "fries(chips)"
+  ],
+  "ur": [
+   "چپس",
+   "فرائز",
+   "فرنچ فرائز"
+  ]
+ },
+ "pk-hfad-1_christian": {
+  "id": 147,
+  "en": [
+   "christian",
+   "christians",
+   "christianity"
+  ],
+  "ur": [
+   "عیسائی",
+   "عیسائیت"
+  ]
+ },
+ "pk-hfad-1_chuky(have)": {
+  "id": 148,
+  "en": [
+   "have(چکے)",
+   "had(چکے)"
+  ],
+  "ur": [
+   "چکے(چُکے)",
+   "چُکے"
+  ]
+ },
+ "pk-hfad-1_city": {
+  "id": 149,
+  "en": [
+   "city"
+  ],
+  "ur": [
+   "شہر"
+  ]
+ },
+ "pk-hfad-1_classroom": {
+  "id": 150,
+  "en": [
+   "classroom"
+  ],
+  "ur": [
+   "کلاس روم",
+   "کلاس",
+   "کمرہ جماعت"
+  ]
+ },
+ "pk-hfad-1_clay": {
+  "id": 151,
+  "en": [
+   "clay"
+  ],
+  "ur": [
+   "چکنی مٹی"
+  ]
+ },
+ "pk-hfad-1_closet": {
+  "id": 152,
+  "en": [
+   "closet",
+   "cupboard"
+  ],
+  "ur": [
+   "الماری"
+  ]
+ },
+ "pk-hfad-1_coal": {
+  "id": 153,
+  "en": [
+   "coal",
+   "charcoal"
+  ],
+  "ur": [
+   "کوئلہ",
+   "کوئلے"
+  ]
+ },
+ "pk-hfad-1_coconut": {
+  "id": 154,
+  "en": [
+   "coconut"
+  ],
+  "ur": [
+   "ناریل"
+  ]
+ },
+ "pk-hfad-1_coffee": {
+  "id": 155,
+  "en": [
+   "coffee"
+  ],
+  "ur": [
+   "کافی(قہوہ)"
+  ]
+ },
+ "pk-hfad-1_cold": {
+  "id": 156,
+  "en": [
+   "cold",
+   "cool",
+   "chill",
+   "chilled",
+   "chilly",
+   "winter"
+  ],
+  "ur": [
+   "سردی",
+   "سرد",
+   "سرما",
+   "ٹھنڈ",
+   "ٹھنڈا",
+   "ٹھنڈے",
+   "ٹھنڈی",
+   "ٹھنڈک"
+  ]
+ },
+ "pk-hfad-1_collection": {
+  "id": 157,
+  "en": [
+   "collection"
+  ],
+  "ur": [
+   "مجموعہ",
+   "مجموعے"
+  ]
+ },
+ "pk-hfad-1_college": {
+  "id": 158,
+  "en": [
+   "college"
+  ],
+  "ur": [
+   "کالج"
+  ]
+ },
+ "pk-hfad-1_color": {
+  "id": 159,
+  "en": [
+   "color",
+   "colour",
+   "complexion"
+  ],
+  "ur": [
+   "رنگ",
+   "رنگت"
+  ]
+ },
+ "pk-hfad-1_company(corporation)": {
+  "id": 160,
+  "en": [
+   "company(corporation)",
+   "corporation",
+   "corporate"
+  ],
+  "ur": [
+   "کمپنی",
+   "کارپوریشن",
+   "کارپوریٹ"
+  ]
+ },
+ "pk-hfad-1_competition": {
+  "id": 161,
+  "en": [
+   "competition",
+   "competitiveness",
+   "rivalry"
+  ],
+  "ur": [
+   "مقابلہ",
+   "مقابلے"
+  ]
+ },
+ "pk-hfad-1_complaint": {
+  "id": 162,
+  "en": [
+   "complaint",
+   "complain",
+   "complaining"
+  ],
+  "ur": [
+   "شکایت",
+   "شکوہ"
+  ]
+ },
+ "pk-hfad-1_complete": {
+  "id": 163,
+  "en": [
+   "complete",
+   "completed",
+   "full"
+  ],
+  "ur": [
+   "مکمل",
+   "پورا",
+   "پوری(مکمل)",
+   "پورے",
+   "بھر"
+  ]
+ },
+ "pk-hfad-1_continent": {
+  "id": 164,
+  "en": [
+   "continent",
+   "continental"
+  ],
+  "ur": [
+   "براعظم",
+   "براعظمی"
+  ]
+ },
+ "pk-hfad-1_conversation": {
+  "id": 165,
+  "en": [
+   "conversation",
+   "talk",
+   "chat",
+   "gossip"
+  ],
+  "ur": [
+   "بات",
+   "بات چیت",
+   "باتیں",
+   "گفتگو",
+   "گپ شپ",
+   "بول چال",
+   "کلام",
+   "کلامی"
+  ]
+ },
+ "pk-hfad-1_coriander": {
+  "id": 166,
+  "en": [
+   "coriander",
+   "parsley"
+  ],
+  "ur": [
+   "دھنیا",
+   "دھنیے"
+  ]
+ },
+ "pk-hfad-1_country(homeland)": {
+  "id": 167,
+  "en": [
+   "country(homeland)"
+  ],
+  "ur": [
+   "ملک(وطن)",
+   "مُلک",
+   "وطن"
+  ]
+ },
+ "pk-hfad-1_cow": {
+  "id": 168,
+  "en": [
+   "cow"
+  ],
+  "ur": [
+   "گائے(جانور)"
+  ]
+ },
+ "pk-hfad-1_cow-meat": {
+  "id": 169,
+  "en": [
+   "cow meat",
+   "beef"
+  ],
+  "ur": [
+   "بیف",
+   "گائے(جانور) کا گوشت",
+   "گائے(جانور) کے گوشت",
+   "بڑا گوشت",
+   "بڑے گوشت"
+  ]
+ },
+ "pk-hfad-1_crocodile": {
+  "id": 170,
+  "en": [
+   "crocodile",
+   "alligator"
+  ],
+  "ur": [
+   "مگرمچھ"
+  ]
+ },
+ "pk-hfad-1_crow": {
+  "id": 171,
+  "en": [
+   "crow",
+   "raven"
+  ],
+  "ur": [
+   "کوا",
+   "کوے"
+  ]
+ },
+ "pk-hfad-1_crowd": {
+  "id": 172,
+  "en": [
+   "crowd",
+   "crowded",
+   "horde",
+   "swarm"
+  ],
+  "ur": [
+   "رش",
+   "ہجوم"
+  ]
+ },
+ "pk-hfad-1_cruelty": {
+  "id": 173,
+  "en": [
+   "cruelty",
+   "brutal",
+   "cruel",
+   "coercion",
+   "brutality",
+   "merciless"
+  ],
+  "ur": [
+   "ظلم",
+   "ظالم",
+   "ظالمانہ",
+   "ظلم و ستم",
+   "ستم",
+   "جبر",
+   "بےرحمی",
+   "بے رحمی",
+   "بے رحم"
+  ]
+ },
+ "pk-hfad-1_cucumber": {
+  "id": 174,
+  "en": [
+   "cucumber"
+  ],
+  "ur": [
+   "کھیرا",
+   "کھیرے"
+  ]
+ },
+ "pk-hfad-1_cunning": {
+  "id": 175,
+  "en": [
+   "cunning",
+   "clever"
+  ],
+  "ur": [
+   "چالاک",
+   "چالاکی"
+  ]
+ },
+ "pk-hfad-1_d(double-handed-letter)": {
+  "id": 176,
+  "en": [
+   "d(double-handed-letter)"
+  ],
+  "ur": [
+   "d(double-handed-letter)",
+   "ڈی(d-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_d(single-handed-letter)": {
+  "id": 177,
+  "en": [
+   "d(single-handed-letter)",
+   "ڈ"
+  ],
+  "ur": [
+   "d(single-handed-letter)",
+   "ڈی(d-single-handed-letter)",
+   "ڈ"
+  ]
+ },
+ "pk-hfad-1_dacoit": {
+  "id": 178,
+  "en": [
+   "dacoit",
+   "robber",
+   "robbery",
+   "bandit"
+  ],
+  "ur": [
+   "ڈاکو",
+   "ڈکیت",
+   "ڈکیتی",
+   "ڈاکہ"
+  ]
+ },
+ "pk-hfad-1_dahi-bhally": {
+  "id": 179,
+  "en": [
+   "dahi bhally",
+   "dahi bhale"
+  ],
+  "ur": [
+   "دہی بھلے"
+  ]
+ },
+ "pk-hfad-1_damage": {
+  "id": 180,
+  "en": [
+   "damage",
+   "loss"
+  ],
+  "ur": [
+   "نقصان"
+  ]
+ },
+ "pk-hfad-1_date(calendar)": {
+  "id": 181,
+  "en": [
+   "date(calendar)"
+  ],
+  "ur": [
+   "تاریخ"
+  ]
+ },
+ "pk-hfad-1_daughter": {
+  "id": 182,
+  "en": [
+   "daughter"
+  ],
+  "ur": [
+   "بیٹی",
+   "دختر",
+   "بنت"
+  ]
+ },
+ "pk-hfad-1_day": {
+  "id": 183,
+  "en": [
+   "day"
+  ],
+  "ur": [
+   "دن",
+   "دِن",
+   "روز",
+   "یوم",
+   "یومِ"
+  ]
+ },
+ "pk-hfad-1_day-after-tomorrow": {
+  "id": 184,
+  "en": [
+   "day after tomorrow"
+  ],
+  "ur": [
+   "پرسوں(مستقبل)"
+  ]
+ },
+ "pk-hfad-1_december": {
+  "id": 185,
+  "en": [
+   "december"
+  ],
+  "ur": [
+   "دسمبر"
+  ]
+ },
+ "pk-hfad-1_decent": {
+  "id": 186,
+  "en": [
+   "decent",
+   "gentleman",
+   "honourable",
+   "well mannered"
+  ],
+  "ur": [
+   "شریف(مہذب)",
+   "شرافت",
+   "مہذب"
+  ]
+ },
+ "pk-hfad-1_decorated": {
+  "id": 187,
+  "en": [
+   "decorated",
+   "decoration",
+   "decorate"
+  ],
+  "ur": [
+   "سجاوٹ",
+   "سجا",
+   "سجایا",
+   "سجائے",
+   "ڈیکوریشن",
+   "آرائش",
+   "آراستہ"
+  ]
+ },
+ "pk-hfad-1_defamation": {
+  "id": 188,
+  "en": [
+   "defamation",
+   "dishonoured",
+   "humiliation",
+   "humiliated",
+   "insult",
+   "disgrace",
+   "insulted",
+   "defamed",
+   "disgraced"
+  ],
+  "ur": [
+   "ذلت",
+   "ذِلت",
+   "رسوائی",
+   "رُسوائی",
+   "بدنامی",
+   "توہین",
+   "تذلیل",
+   "بے حرمتی",
+   "ذلیل",
+   "رسوا",
+   "بدنام",
+   "زلالت"
+  ]
+ },
+ "pk-hfad-1_dekhein": {
+  "id": 189,
+  "en": [
+   "see(دیکھیں)",
+   "look(دیکھیں)",
+   "watch(look-دیکھیں)"
+  ],
+  "ur": [
+   "دیکھیں"
+  ]
+ },
+ "pk-hfad-1_dekhi": {
+  "id": 190,
+  "en": [
+   "seen(دیکھی)",
+   "saw(looked-دیکھی)",
+   "looked(دیکھی)",
+   "watch(look-دیکھی)",
+   "watched(دیکھی)"
+  ],
+  "ur": [
+   "دیکھی"
+  ]
+ },
+ "pk-hfad-1_dekho": {
+  "id": 191,
+  "en": [
+   "see(دیکھو)",
+   "look(دیکھو)",
+   "watch(look-دیکھو)"
+  ],
+  "ur": [
+   "دیکھو"
+  ]
+ },
+ "pk-hfad-1_dekhun": {
+  "id": 192,
+  "en": [
+   "see(دیکھوں)",
+   "look(دیکھوں)",
+   "watch(look-دیکھوں)"
+  ],
+  "ur": [
+   "دیکھوں"
+  ]
+ },
+ "pk-hfad-1_dekhy": {
+  "id": 193,
+  "en": [
+   "see(دیکھے)",
+   "saw(looked-دیکھے)",
+   "look(دیکھے)",
+   "looked(دیکھے)",
+   "watch(look-دیکھے)",
+   "watched(دیکھے)"
+  ],
+  "ur": [
+   "دیکھے",
+   "دیکھیے"
+  ]
+ },
+ "pk-hfad-1_deserted": {
+  "id": 194,
+  "en": [
+   "deserted",
+   "uninhabited",
+   "desolate",
+   "abandoned"
+  ],
+  "ur": [
+   "سنسان",
+   "ویران",
+   "غیر آباد"
+  ]
+ },
+ "pk-hfad-1_desire": {
+  "id": 195,
+  "en": [
+   "desire",
+   "wish"
+  ],
+  "ur": [
+   "خواہش",
+   "آرزو",
+   "چاہتا",
+   "چاہتی",
+   "چاہتے"
+  ]
+ },
+ "pk-hfad-1_desk": {
+  "id": 196,
+  "en": [
+   "table(furniture)",
+   "desk"
+  ],
+  "ur": [
+   "میز",
+   "ٹیبل",
+   "ڈیسک"
+  ]
+ },
+ "pk-hfad-1_diary": {
+  "id": 197,
+  "en": [
+   "diary"
+  ],
+  "ur": [
+   "ڈائری"
+  ]
+ },
+ "pk-hfad-1_difficult": {
+  "id": 198,
+  "en": [
+   "difficult",
+   "difficulty",
+   "hardship"
+  ],
+  "ur": [
+   "مشکل",
+   "دشواری",
+   "دشوار",
+   "کٹھن"
+  ]
+ },
+ "pk-hfad-1_dikha": {
+  "id": 199,
+  "en": [
+   "seen(دیکھا)",
+   "saw(looked-دیکھا)",
+   "looked(دیکھا)",
+   "watch(looked-دیکھا)",
+   "watched(دیکھا)"
+  ],
+  "ur": [
+   "دیکھا"
+  ]
+ },
+ "pk-hfad-1_discipline": {
+  "id": 200,
+  "en": [
+   "discipline"
+  ],
+  "ur": [
+   "نظم و ضبط"
+  ]
+ },
+ "pk-hfad-1_do-chashmi-heh": {
+  "id": 201,
+  "en": [
+   "ھ"
+  ],
+  "ur": [
+   "ھ"
+  ]
+ },
+ "pk-hfad-1_doctor(physician)": {
+  "id": 202,
+  "en": [
+   "doctor(physician)",
+   "physician",
+   "therapist"
+  ],
+  "ur": [
+   "طبیب",
+   "ڈاکٹر",
+   "معالج",
+   "تھراپسٹ",
+   "فزیشن"
+  ]
+ },
+ "pk-hfad-1_does(krta)": {
+  "id": 203,
+  "en": [
+   "does(masculine-کرتا)",
+   "do(masculine-کرتا)"
+  ],
+  "ur": [
+   "کرتا(فعل-مضارع)"
+  ]
+ },
+ "pk-hfad-1_does(krti)": {
+  "id": 204,
+  "en": [
+   "does(feminine-کرتی)",
+   "do(feminine-کرتی)"
+  ],
+  "ur": [
+   "کرتی(فعل-مضارع)"
+  ]
+ },
+ "pk-hfad-1_dog": {
+  "id": 205,
+  "en": [
+   "dog",
+   "doggy",
+   "bitch"
+  ],
+  "ur": [
+   "کتا",
+   "کُتّا",
+   "کتی",
+   "کتے",
+   "کتیا"
+  ]
+ },
+ "pk-hfad-1_donkey": {
+  "id": 206,
+  "en": [
+   "donkey"
+  ],
+  "ur": [
+   "گدھا",
+   "گدھی",
+   "گدھے"
+  ]
+ },
+ "pk-hfad-1_donkey-cart": {
+  "id": 207,
+  "en": [
+   "donkey cart",
+   "donkey carriage",
+   "donkey chariot"
+  ],
+  "ur": [
+   "گدھا گاڑی"
+  ]
+ },
+ "pk-hfad-1_drama": {
+  "id": 208,
+  "en": [
+   "drama",
+   "drama serial",
+   "drama series"
+  ],
+  "ur": [
+   "ڈرامہ",
+   "ڈرامے",
+   "ڈرامہ سیریل",
+   "ڈرامہ سیریز",
+   "ناٹک"
+  ]
+ },
+ "pk-hfad-1_dream": {
+  "id": 209,
+  "en": [
+   "dream"
+  ],
+  "ur": [
+   "خواب"
+  ]
+ },
+ "pk-hfad-1_dubai": {
+  "id": 210,
+  "en": [
+   "dubai"
+  ],
+  "ur": [
+   "دبئی",
+   "دوبئی"
+  ]
+ },
+ "pk-hfad-1_duck": {
+  "id": 211,
+  "en": [
+   "duck"
+  ],
+  "ur": [
+   "بطخ"
+  ]
+ },
+ "pk-hfad-1_duplicate": {
+  "id": 212,
+  "en": [
+   "duplicate",
+   "plagiarize",
+   "plagiarism",
+   "copy(clone)",
+   "copying"
+  ],
+  "ur": [
+   "نقل"
+  ]
+ },
+ "pk-hfad-1_duty": {
+  "id": 213,
+  "en": [
+   "job",
+   "duty"
+  ],
+  "ur": [
+   "ڈیوٹی",
+   "نوکری",
+   "ملازمت"
+  ]
+ },
+ "pk-hfad-1_e(double-handed-letter)": {
+  "id": 214,
+  "en": [
+   "e(double-handed-letter)"
+  ],
+  "ur": [
+   "e(double-handed-letter)",
+   "ای(e-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_e(single-handed-letter)": {
+  "id": 215,
+  "en": [
+   "e(single-handed-letter)",
+   "ی"
+  ],
+  "ur": [
+   "e(single-handed-letter)",
+   "ای(e-single-handed-letter)",
+   "ی"
+  ]
+ },
+ "pk-hfad-1_easy": {
+  "id": 216,
+  "en": [
+   "easy",
+   "ease",
+   "easiness",
+   "easily"
+  ],
+  "ur": [
+   "آسان",
+   "آساں",
+   "آسانی",
+   "سہل"
+  ]
+ },
+ "pk-hfad-1_egg": {
+  "id": 217,
+  "en": [
+   "egg"
+  ],
+  "ur": [
+   "انڈا",
+   "انڈے",
+   "انڈہ"
+  ]
+ },
+ "pk-hfad-1_eggplant": {
+  "id": 218,
+  "en": [
+   "eggplant",
+   "brinjal",
+   "aubergine"
+  ],
+  "ur": [
+   "بینگن"
+  ]
+ },
+ "pk-hfad-1_election": {
+  "id": 219,
+  "en": [
+   "election",
+   "elections",
+   "vote",
+   "voting"
+  ],
+  "ur": [
+   "انتخابات",
+   "الیکشن",
+   "ووٹنگ",
+   "ووٹ"
+  ]
+ },
+ "pk-hfad-1_elephant": {
+  "id": 220,
+  "en": [
+   "elephant"
+  ],
+  "ur": [
+   "ہاتھی",
+   "ہتھنی"
+  ]
+ },
+ "pk-hfad-1_embarrassed": {
+  "id": 221,
+  "en": [
+   "embarrassed",
+   "embarrassing",
+   "embarrassment",
+   "ashamed"
+  ],
+  "ur": [
+   "شرمندگی",
+   "شرمناک",
+   "شرمندہ"
+  ]
+ },
+ "pk-hfad-1_emergency": {
+  "id": 222,
+  "en": [
+   "emergency"
+  ],
+  "ur": [
+   "ایمرجنسی",
+   "ہنگامی حالت",
+   "ہنگامی صورتحال"
+  ]
+ },
+ "pk-hfad-1_enemy": {
+  "id": 223,
+  "en": [
+   "enemy",
+   "hostility",
+   "enmity",
+   "animosity"
+  ],
+  "ur": [
+   "دشمنی",
+   "دُشمنی",
+   "دشمن",
+   "دُشمن",
+   "عداوت"
+  ]
+ },
+ "pk-hfad-1_england": {
+  "id": 224,
+  "en": [
+   "england"
+  ],
+  "ur": [
+   "انگلینڈ",
+   "اِنگلینڈ",
+   "انگلستان",
+   "انگلستانی"
+  ]
+ },
+ "pk-hfad-1_english(language)": {
+  "id": 225,
+  "en": [
+   "english(language)"
+  ],
+  "ur": [
+   "انگریزی",
+   "انگلش"
+  ]
+ },
+ "pk-hfad-1_eraser": {
+  "id": 226,
+  "en": [
+   "eraser",
+   "rubber(eraser)"
+  ],
+  "ur": [
+   "ربڑ(مٹانے-والا)",
+   "ربر(مٹانے-والا)",
+   "رَبڑ(مٹانے-والا)"
+  ]
+ },
+ "pk-hfad-1_ethnicity": {
+  "id": 227,
+  "en": [
+   "ethnicity",
+   "ethnic"
+  ],
+  "ur": [
+   "نسل",
+   "نسلی"
+  ]
+ },
+ "pk-hfad-1_eve(first-woman)": {
+  "id": 228,
+  "en": [
+   "eve(first-woman)",
+   "hazrat hawa"
+  ],
+  "ur": [
+   "حضرت حوا",
+   "حوا(پیغمبر)"
+  ]
+ },
+ "pk-hfad-1_evening": {
+  "id": 229,
+  "en": [
+   "evening"
+  ],
+  "ur": [
+   "شام(وقت)"
+  ]
+ },
+ "pk-hfad-1_examination": {
+  "id": 230,
+  "en": [
+   "examination",
+   "exam",
+   "test"
+  ],
+  "ur": [
+   "امتحان",
+   "اِمتحان",
+   "آزمائش",
+   "ٹیسٹ"
+  ]
+ },
+ "pk-hfad-1_excuse(justification)": {
+  "id": 231,
+  "en": [
+   "excuse(justification)"
+  ],
+  "ur": [
+   "بہانہ",
+   "بہانے(بہانہ)"
+  ]
+ },
+ "pk-hfad-1_exhibition": {
+  "id": 232,
+  "en": [
+   "exhibition"
+  ],
+  "ur": [
+   "نمائش"
+  ]
+ },
+ "pk-hfad-1_extravagant": {
+  "id": 233,
+  "en": [
+   "extravagant",
+   "wasteful spending",
+   "waste of money",
+   "unnecessary expense"
+  ],
+  "ur": [
+   "فضول خرچ",
+   "فضول خرچی"
+  ]
+ },
+ "pk-hfad-1_f(double-handed-letter)": {
+  "id": 234,
+  "en": [
+   "f(double-handed-letter)"
+  ],
+  "ur": [
+   "f(double-handed-letter)",
+   "ایف(f-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_f(single-handed-letter)": {
+  "id": 235,
+  "en": [
+   "f(single-handed-letter)"
+  ],
+  "ur": [
+   "f(single-handed-letter)",
+   "ایف(f-single-handed-letter)",
+   "ف"
+  ]
+ },
+ "pk-hfad-1_factory": {
+  "id": 236,
+  "en": [
+   "factory"
+  ],
+  "ur": [
+   "فیکٹری",
+   "کارخانہ",
+   "کارخانے"
+  ]
+ },
+ "pk-hfad-1_fail": {
+  "id": 237,
+  "en": [
+   "fail",
+   "failed",
+   "failure"
+  ],
+  "ur": [
+   "فیل(ناکام)",
+   "ناکام",
+   "ناکامی"
+  ]
+ },
+ "pk-hfad-1_faisal-mosque": {
+  "id": 238,
+  "en": [
+   "faisal mosque",
+   "faisal masjid"
+  ],
+  "ur": [
+   "فیصل مسجد"
+  ]
+ },
+ "pk-hfad-1_faisalabad": {
+  "id": 239,
+  "en": [
+   "faisalabad"
+  ],
+  "ur": [
+   "فیصل آباد"
+  ]
+ },
+ "pk-hfad-1_faith": {
+  "id": 240,
+  "en": [
+   "faith",
+   "belief"
+  ],
+  "ur": [
+   "ایمان",
+   "اِیمان"
+  ]
+ },
+ "pk-hfad-1_fajr": {
+  "id": 241,
+  "en": [
+   "fajr",
+   "fajar"
+  ],
+  "ur": [
+   "فجر"
+  ]
+ },
+ "pk-hfad-1_family": {
+  "id": 242,
+  "en": [
+   "family"
+  ],
+  "ur": [
+   "خاندان",
+   "خاندانی",
+   "فیملی"
+  ]
+ },
+ "pk-hfad-1_famous": {
+  "id": 243,
+  "en": [
+   "famous",
+   "fame",
+   "popular"
+  ],
+  "ur": [
+   "مشہور",
+   "شہرت",
+   "نامور",
+   "مقبول"
+  ]
+ },
+ "pk-hfad-1_far": {
+  "id": 244,
+  "en": [
+   "far",
+   "distant",
+   "away",
+   "far away"
+  ],
+  "ur": [
+   "دور(دُور)",
+   "دور دراز",
+   "دُور",
+   "دُور دَراز",
+   "بعید"
+  ]
+ },
+ "pk-hfad-1_farmer": {
+  "id": 245,
+  "en": [
+   "farmer"
+  ],
+  "ur": [
+   "کسان",
+   "کاشتکار"
+  ]
+ },
+ "pk-hfad-1_fashion": {
+  "id": 246,
+  "en": [
+   "fashion"
+  ],
+  "ur": [
+   "فیشن"
+  ]
+ },
+ "pk-hfad-1_fashionable": {
+  "id": 247,
+  "en": [
+   "fashionable"
+  ],
+  "ur": [
+   "فیشن ایبل"
+  ]
+ },
+ "pk-hfad-1_fasting": {
+  "id": 248,
+  "en": [
+   "fasting"
+  ],
+  "ur": [
+   "روزہ(رمضان)",
+   "روزے(رمضان)"
+  ]
+ },
+ "pk-hfad-1_fate": {
+  "id": 249,
+  "en": [
+   "fate",
+   "luck"
+  ],
+  "ur": [
+   "قسمت",
+   "تقدیر",
+   "مقدر",
+   "نصیب"
+  ]
+ },
+ "pk-hfad-1_fearsome": {
+  "id": 250,
+  "en": [
+   "fearsome",
+   "scary",
+   "terrifying",
+   "frightening",
+   "horrifying"
+  ],
+  "ur": [
+   "بھیانک",
+   "ڈراؤنا",
+   "ڈراونا",
+   "ڈراونی",
+   "ڈراونے",
+   "ڈراؤنی",
+   "ڈراؤنے",
+   "خوفناک",
+   "خوف ناک",
+   "دہشتناک",
+   "دہشت ناک"
+  ]
+ },
+ "pk-hfad-1_feast": {
+  "id": 251,
+  "en": [
+   "feast"
+  ],
+  "ur": [
+   "دعوت"
+  ]
+ },
+ "pk-hfad-1_february": {
+  "id": 252,
+  "en": [
+   "february"
+  ],
+  "ur": [
+   "فروری"
+  ]
+ },
+ "pk-hfad-1_feminine": {
+  "id": 253,
+  "en": [
+   "feminine"
+  ],
+  "ur": [
+   "مونث"
+  ]
+ },
+ "pk-hfad-1_few": {
+  "id": 254,
+  "en": [
+   "few",
+   "some"
+  ],
+  "ur": [
+   "چند",
+   "کچھ"
+  ]
+ },
+ "pk-hfad-1_fighter-jet": {
+  "id": 255,
+  "en": [
+   "fighter jet",
+   "fighter plane(airplane)",
+   "military aircraft"
+  ],
+  "ur": [
+   "جنگی جہاز",
+   "جنگی طیارہ",
+   "جنگی طیارے",
+   "فائٹر جیٹ",
+   "فوجی طیارہ",
+   "فوجی طیارے"
+  ]
+ },
+ "pk-hfad-1_final": {
+  "id": 256,
+  "en": [
+   "last(final)",
+   "final"
+  ],
+  "ur": [
+   "آخری",
+   "آخر",
+   "حتمی",
+   "فائنل"
+  ]
+ },
+ "pk-hfad-1_find": {
+  "id": 257,
+  "en": [
+   "find",
+   "found(find)",
+   "finding(verb)"
+  ],
+  "ur": [
+   "ڈھونڈ",
+   "ڈھونڈا",
+   "ڈھونڈتا",
+   "ڈھونڈتی",
+   "ڈھونڈتے",
+   "ڈھونڈنا",
+   "ڈھونڈنے",
+   "ڈھونڈو",
+   "ڈھونڈوں",
+   "ڈھونڈی",
+   "ڈھونڈیں",
+   "ڈھونڈے"
+  ]
+ },
+ "pk-hfad-1_first": {
+  "id": 258,
+  "en": [
+   "first"
+  ],
+  "ur": [
+   "پہلا",
+   "پہلی",
+   "پہل",
+   "اول"
+  ]
+ },
+ "pk-hfad-1_fish": {
+  "id": 259,
+  "en": [
+   "fish"
+  ],
+  "ur": [
+   "مچھلی"
+  ]
+ },
+ "pk-hfad-1_fit": {
+  "id": 260,
+  "en": [
+   "fit",
+   "fitness",
+   "agility(physical)",
+   "agile(physically)"
+  ],
+  "ur": [
+   "چست",
+   "چستی",
+   "پھرتیلا",
+   "پھرتیلی"
+  ]
+ },
+ "pk-hfad-1_flour": {
+  "id": 261,
+  "en": [
+   "flour"
+  ],
+  "ur": [
+   "آٹا",
+   "آٹے"
+  ]
+ },
+ "pk-hfad-1_flower": {
+  "id": 262,
+  "en": [
+   "flower"
+  ],
+  "ur": [
+   "پھول(گُل)"
+  ]
+ },
+ "pk-hfad-1_focus": {
+  "id": 263,
+  "en": [
+   "concentrate(focus)",
+   "focus",
+   "consider",
+   "consideration",
+   "attention"
+  ],
+  "ur": [
+   "غور",
+   "توجہ",
+   "دھیان"
+  ]
+ },
+ "pk-hfad-1_fool": {
+  "id": 264,
+  "en": [
+   "fool",
+   "foolish",
+   "stupid",
+   "idiot",
+   "idiotic"
+  ],
+  "ur": [
+   "بےوقوف",
+   "بے وقوف",
+   "بیوقوف",
+   "احمق",
+   "پاگل",
+   "کم عقل",
+   "جاہل"
+  ]
+ },
+ "pk-hfad-1_forgive": {
+  "id": 265,
+  "en": [
+   "forgive",
+   "forgiveness",
+   "pardon",
+   "amnesty",
+   "apology",
+   "apologize"
+  ],
+  "ur": [
+   "معاف",
+   "معافی",
+   "معذرت"
+  ]
+ },
+ "pk-hfad-1_foundation": {
+  "id": 266,
+  "en": [
+   "foundation",
+   "basis"
+  ],
+  "ur": [
+   "بنیاد",
+   "بِنا",
+   "بنیادی"
+  ]
+ },
+ "pk-hfad-1_founder": {
+  "id": 267,
+  "en": [
+   "founder",
+   "creator"
+  ],
+  "ur": [
+   "بانی",
+   "خالق",
+   "موجد"
+  ]
+ },
+ "pk-hfad-1_fraud": {
+  "id": 268,
+  "en": [
+   "fraud"
+  ],
+  "ur": [
+   "فراڈ"
+  ]
+ },
+ "pk-hfad-1_free(at-liberty)": {
+  "id": 269,
+  "en": [
+   "free(at-liberty)",
+   "liberate",
+   "liberated",
+   "freed"
+  ],
+  "ur": [
+   "آزاد",
+   "رہا(آزاد)",
+   "رِہا"
+  ]
+ },
+ "pk-hfad-1_freedom": {
+  "id": 270,
+  "en": [
+   "freedom",
+   "independence",
+   "liberty(freedom)"
+  ],
+  "ur": [
+   "آزادی",
+   "رہائی",
+   "رِہائی"
+  ]
+ },
+ "pk-hfad-1_friday": {
+  "id": 271,
+  "en": [
+   "friday"
+  ],
+  "ur": [
+   "جمعہ",
+   "جمعے"
+  ]
+ },
+ "pk-hfad-1_friend": {
+  "id": 272,
+  "en": [
+   "friend"
+  ],
+  "ur": [
+   "دوست",
+   "دوستی",
+   "سہیلی",
+   "فرینڈ",
+   "یار"
+  ]
+ },
+ "pk-hfad-1_frock": {
+  "id": 273,
+  "en": [
+   "frock"
+  ],
+  "ur": [
+   "فراک"
+  ]
+ },
+ "pk-hfad-1_frog": {
+  "id": 274,
+  "en": [
+   "frog",
+   "toad"
+  ],
+  "ur": [
+   "مینڈک"
+  ]
+ },
+ "pk-hfad-1_from": {
+  "id": 275,
+  "en": [
+   "from"
+  ],
+  "ur": [
+   "سے"
+  ]
+ },
+ "pk-hfad-1_fruit": {
+  "id": 276,
+  "en": [
+   "fruit",
+   "fruits"
+  ],
+  "ur": [
+   "پھل",
+   "پھلوں"
+  ]
+ },
+ "pk-hfad-1_fun": {
+  "id": 277,
+  "en": [
+   "fun",
+   "entertaining",
+   "entertainment"
+  ],
+  "ur": [
+   "مزہ",
+   "مزے",
+   "مزے دار",
+   "مزیدار"
+  ]
+ },
+ "pk-hfad-1_g(double-handed-letter)": {
+  "id": 278,
+  "en": [
+   "g(double-handed-letter)"
+  ],
+  "ur": [
+   "g(double-handed-letter)",
+   "جی(g-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_g(single-handed-letter)": {
+  "id": 279,
+  "en": [
+   "g(single-handed-letter)",
+   "گ"
+  ],
+  "ur": [
+   "g(single-handed-letter)",
+   "جی(g-single-handed-letter)",
+   "گ"
+  ]
+ },
+ "pk-hfad-1_ga(will)": {
+  "id": 280,
+  "en": [
+   "will(masculine-گا)",
+   "shall(masculine-گا)"
+  ],
+  "ur": [
+   "گا(مستقبل)"
+  ]
+ },
+ "pk-hfad-1_gaein": {
+  "id": 281,
+  "en": [
+   "غ"
+  ],
+  "ur": [
+   "غ"
+  ]
+ },
+ "pk-hfad-1_gangster": {
+  "id": 282,
+  "en": [
+   "gangster",
+   "rascal",
+   "bully",
+   "scoundrel"
+  ],
+  "ur": [
+   "بدمعاش",
+   "بدمعاشی"
+  ]
+ },
+ "pk-hfad-1_garden": {
+  "id": 283,
+  "en": [
+   "garden"
+  ],
+  "ur": [
+   "باغ",
+   "گارڈن",
+   "باغیچہ",
+   "باغیچے",
+   "گلشن"
+  ]
+ },
+ "pk-hfad-1_garlic": {
+  "id": 284,
+  "en": [
+   "garlic"
+  ],
+  "ur": [
+   "لہسن"
+  ]
+ },
+ "pk-hfad-1_gate(noun)": {
+  "id": 285,
+  "en": [
+   "gate(noun)",
+   "door"
+  ],
+  "ur": [
+   "گیٹ",
+   "دروازہ",
+   "دروازے"
+  ]
+ },
+ "pk-hfad-1_gei": {
+  "id": 286,
+  "en": [
+   "went(feminine-گئی)",
+   "gone(feminine-گئی)"
+  ],
+  "ur": [
+   "گئی"
+  ]
+ },
+ "pk-hfad-1_gey": {
+  "id": 287,
+  "en": [
+   "went(گئے)",
+   "gone(گئے)"
+  ],
+  "ur": [
+   "گئے"
+  ]
+ },
+ "pk-hfad-1_gi": {
+  "id": 288,
+  "en": [
+   "will(feminine-گی)"
+  ],
+  "ur": [
+   "گی"
+  ]
+ },
+ "pk-hfad-1_gia": {
+  "id": 289,
+  "en": [
+   "went(masculine-گیا)",
+   "gone(masculine-گیا)"
+  ],
+  "ur": [
+   "گیا"
+  ]
+ },
+ "pk-hfad-1_ginger": {
+  "id": 290,
+  "en": [
+   "ginger"
+  ],
+  "ur": [
+   "ادرک",
+   "جنجر"
+  ]
+ },
+ "pk-hfad-1_giraffe": {
+  "id": 291,
+  "en": [
+   "giraffe"
+  ],
+  "ur": [
+   "زرافہ",
+   "زرافے"
+  ]
+ },
+ "pk-hfad-1_girl": {
+  "id": 292,
+  "en": [
+   "girl"
+  ],
+  "ur": [
+   "لڑکی"
+  ]
+ },
+ "pk-hfad-1_give": {
+  "id": 293,
+  "en": [
+   "give",
+   "given",
+   "gave"
+  ],
+  "ur": [
+   "دو(دینا)",
+   "دوں",
+   "دی",
+   "دیا(عطا)",
+   "دیتا",
+   "دیتی",
+   "دیتے",
+   "دینا",
+   "دینے",
+   "دیں",
+   "دیے(عطا)",
+   "دیئے(عطا)",
+   "دے",
+   "عطا"
+  ]
+ },
+ "pk-hfad-1_goat": {
+  "id": 294,
+  "en": [
+   "goat"
+  ],
+  "ur": [
+   "بکرا",
+   "بکری",
+   "بکرے"
+  ]
+ },
+ "pk-hfad-1_goat-meat": {
+  "id": 295,
+  "en": [
+   "goat meat",
+   "mutton"
+  ],
+  "ur": [
+   "بکری کا گوشت",
+   "بکری کے گوشت",
+   "بکرے کا گوشت",
+   "بکرے کے گوشت",
+   "چھوٹا گوشت",
+   "چھوٹے گوشت",
+   "مٹن"
+  ]
+ },
+ "pk-hfad-1_gol-heh": {
+  "id": 296,
+  "en": [
+   "ہ"
+  ],
+  "ur": [
+   "ہ"
+  ]
+ },
+ "pk-hfad-1_gold": {
+  "id": 297,
+  "en": [
+   "gold",
+   "golden"
+  ],
+  "ur": [
+   "سونا(دھات)",
+   "سونے(دھات)",
+   "گولڈ",
+   "سنہرا",
+   "سنہری",
+   "سنہرے"
+  ]
+ },
+ "pk-hfad-1_good": {
+  "id": 298,
+  "en": [
+   "good",
+   "great",
+   "👍"
+  ],
+  "ur": [
+   "اچھا",
+   "اچھی",
+   "اچھے",
+   "ٹھیک",
+   "شاندار",
+   "کمال",
+   "زبردست",
+   "عمدہ",
+   "👍"
+  ]
+ },
+ "pk-hfad-1_government": {
+  "id": 299,
+  "en": [
+   "government",
+   "govt",
+   "governmental"
+  ],
+  "ur": [
+   "گورنمنٹ",
+   "حکومت",
+   "حکومتِ",
+   "سرکاری",
+   "گورمنٹ",
+   "حکومتی"
+  ]
+ },
+ "pk-hfad-1_grape": {
+  "id": 300,
+  "en": [
+   "grape",
+   "grapes"
+  ],
+  "ur": [
+   "انگور"
+  ]
+ },
+ "pk-hfad-1_grave(burial)": {
+  "id": 301,
+  "en": [
+   "grave(burial)"
+  ],
+  "ur": [
+   "قبر"
+  ]
+ },
+ "pk-hfad-1_graveyard": {
+  "id": 302,
+  "en": [
+   "graveyard",
+   "cemetery"
+  ],
+  "ur": [
+   "قبرستان"
+  ]
+ },
+ "pk-hfad-1_greed": {
+  "id": 303,
+  "en": [
+   "greed",
+   "greedy"
+  ],
+  "ur": [
+   "لالچی",
+   "لالچ",
+   "حرص"
+  ]
+ },
+ "pk-hfad-1_green-chilli": {
+  "id": 304,
+  "en": [
+   "green chilli"
+  ],
+  "ur": [
+   "ہری مرچ",
+   "سبز مرچ"
+  ]
+ },
+ "pk-hfad-1_grey": {
+  "id": 305,
+  "en": [
+   "grey",
+   "gray"
+  ],
+  "ur": [
+   "گرے(رنگ)",
+   "سرمئی",
+   "سلیٹی"
+  ]
+ },
+ "pk-hfad-1_ground(land)": {
+  "id": 306,
+  "en": [
+   "ground(land)",
+   "land(ground)"
+  ],
+  "ur": [
+   "میدان",
+   "میدانی",
+   "زمیں",
+   "زمین(میدان)",
+   "زمینی"
+  ]
+ },
+ "pk-hfad-1_guardianship": {
+  "id": 307,
+  "en": [
+   "guardianship",
+   "entrust",
+   "entrusted"
+  ],
+  "ur": [
+   "امانت"
+  ]
+ },
+ "pk-hfad-1_guava": {
+  "id": 308,
+  "en": [
+   "guava"
+  ],
+  "ur": [
+   "امرود"
+  ]
+ },
+ "pk-hfad-1_gujarat": {
+  "id": 309,
+  "en": [
+   "gujarat"
+  ],
+  "ur": [
+   "گجرات"
+  ]
+ },
+ "pk-hfad-1_gujranwala": {
+  "id": 310,
+  "en": [
+   "gujranwala"
+  ],
+  "ur": [
+   "گوجرانوالہ"
+  ]
+ },
+ "pk-hfad-1_gy": {
+  "id": 311,
+  "en": [
+   "will(گے)"
+  ],
+  "ur": [
+   "گے"
+  ]
+ },
+ "pk-hfad-1_h(double-handed-letter)": {
+  "id": 312,
+  "en": [
+   "h(double-handed-letter)"
+  ],
+  "ur": [
+   "h(double-handed-letter)",
+   "ایچ(h-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_h(single-handed-letter)": {
+  "id": 313,
+  "en": [
+   "h(single-handed-letter)",
+   "ح"
+  ],
+  "ur": [
+   "h(single-handed-letter)",
+   "ایچ(h-single-handed-letter)",
+   "ح"
+  ]
+ },
+ "pk-hfad-1_habit": {
+  "id": 314,
+  "en": [
+   "habit",
+   "habitually"
+  ],
+  "ur": [
+   "عادت"
+  ]
+ },
+ "pk-hfad-1_hadith": {
+  "id": 315,
+  "en": [
+   "hadith"
+  ],
+  "ur": [
+   "حدیث"
+  ]
+ },
+ "pk-hfad-1_hailstorm": {
+  "id": 316,
+  "en": [
+   "hailstorm"
+  ],
+  "ur": [
+   "ژالہ باری",
+   "اولہ باری"
+  ]
+ },
+ "pk-hfad-1_hajj": {
+  "id": 317,
+  "en": [
+   "hajj",
+   "pilgrimage"
+  ],
+  "ur": [
+   "حج"
+  ]
+ },
+ "pk-hfad-1_half-an-hour": {
+  "id": 318,
+  "en": [
+   "half an hour",
+   "half hour"
+  ],
+  "ur": [
+   "آدھا گھنٹہ",
+   "آدھے گھنٹے"
+  ]
+ },
+ "pk-hfad-1_happiness": {
+  "id": 319,
+  "en": [
+   "happiness",
+   "happy",
+   "joy"
+  ],
+  "ur": [
+   "خوش",
+   "خوشی"
+  ]
+ },
+ "pk-hfad-1_happy-talk": {
+  "id": 320,
+  "en": [
+   "happy talk",
+   "happytalk",
+   "banter"
+  ],
+  "ur": [
+   "خوش کلامی"
+  ]
+ },
+ "pk-hfad-1_hard-work": {
+  "id": 321,
+  "en": [
+   "hard work",
+   "hard worker",
+   "hardwork",
+   "hardworking"
+  ],
+  "ur": [
+   "محنت",
+   "محنتی"
+  ]
+ },
+ "pk-hfad-1_has(chuka)": {
+  "id": 322,
+  "en": [
+   "has(masculine-چکا)",
+   "had(masculine-چکا)"
+  ],
+  "ur": [
+   "چکا(چُکا)",
+   "چُکا"
+  ]
+ },
+ "pk-hfad-1_has(chuki)": {
+  "id": 323,
+  "en": [
+   "has(feminine-چکی)",
+   "had(feminine-چکی)"
+  ],
+  "ur": [
+   "چکی(چُکی)",
+   "چُکی"
+  ]
+ },
+ "pk-hfad-1_hate": {
+  "id": 324,
+  "en": [
+   "hate",
+   "hatred",
+   "loathing",
+   "loathe"
+  ],
+  "ur": [
+   "نفرت"
+  ]
+ },
+ "pk-hfad-1_hazrat-abu-bakr": {
+  "id": 325,
+  "en": [
+   "hazrat abu bakr",
+   "hazrat abu bakr siddique",
+   "hazrat abubakr",
+   "abu bakr siddique"
+  ],
+  "ur": [
+   "حضرت ابوبکر",
+   "حضرت ابوبکر صدیق"
+  ]
+ },
+ "pk-hfad-1_hazrat-adam": {
+  "id": 326,
+  "en": [
+   "adam(first-man)",
+   "hazrat adam"
+  ],
+  "ur": [
+   "آدم(پیغمبر)",
+   "حضرت آدم"
+  ]
+ },
+ "pk-hfad-1_hazrat-ali": {
+  "id": 327,
+  "en": [
+   "hazrat ali",
+   "hazrat ali ibn abi talib",
+   "imam ali"
+  ],
+  "ur": [
+   "حضرت علی",
+   "حضرت علی ابن ابی طالب",
+   "علی ابن ابی طالب"
+  ]
+ },
+ "pk-hfad-1_hazrat-muhammad": {
+  "id": 328,
+  "en": [
+   "hazrat mohammad",
+   "hazrat muhammad"
+  ],
+  "ur": [
+   "حضرت محمد",
+   "حضرت محمّد",
+   "حضرت محمد صلی اللہ علیہ وآلہ وسلم",
+   "محمد صلی اللہ علیہ وآلہ وسلم",
+   "محمد مصطفی صلی اللہ علیہ وآلہ وسلم",
+   "رسول صلی اللہ علیہ وآلہ وسلم",
+   "نبی کریم صلی اللہ علیہ وآلہ وسلم",
+   "نبی اکرم صلی اللہ علیہ وآلہ وسلم",
+   "حضرت محمد صلی اللہ علیہ وسلم",
+   "محمد صلی اللہ علیہ وسلم",
+   "محمد مصطفی صلی اللہ علیہ وسلم",
+   "رسول صلی اللہ علیہ وسلم",
+   "نبی کریم صلی اللہ علیہ وسلم",
+   "نبی اکرم صلی اللہ علیہ وسلم"
+  ]
+ },
+ "pk-hfad-1_hazrat-omar": {
+  "id": 329,
+  "en": [
+   "hazrat omar",
+   "hazrat omar bin khattab",
+   "hazrat omer farooq",
+   "hazrat umer",
+   "hazrat umer bin khattab",
+   "hazrat umer farooq"
+  ],
+  "ur": [
+   "حضرت عمر",
+   "حضرت عمر بن خطاب",
+   "عمر بن خطاب",
+   "حضرت عمر فاروق"
+  ]
+ },
+ "pk-hfad-1_hazrat-osman": {
+  "id": 330,
+  "en": [
+   "hazrat osman",
+   "hazrat uthman",
+   "hazrat usman",
+   "hazrat usman ghani"
+  ],
+  "ur": [
+   "حضرت عثمان",
+   "حضرت عثمان غنی"
+  ]
+ },
+ "pk-hfad-1_heart-broken": {
+  "id": 331,
+  "en": [
+   "heart broken",
+   "broken heart",
+   "broken hearted",
+   "heartbroken",
+   "heartbreaking",
+   "heart breaking"
+  ],
+  "ur": [
+   "غمگین",
+   "دل شکستہ",
+   "شکستہ دل",
+   "غمزدہ",
+   "غم",
+   "دل ٹوٹ"
+  ]
+ },
+ "pk-hfad-1_heat(noun)": {
+  "id": 332,
+  "en": [
+   "heat(noun)",
+   "warmth",
+   "summer"
+  ],
+  "ur": [
+   "گرمی",
+   "تپش"
+  ]
+ },
+ "pk-hfad-1_heaven": {
+  "id": 333,
+  "en": [
+   "heaven",
+   "paradise"
+  ],
+  "ur": [
+   "جنت"
+  ]
+ },
+ "pk-hfad-1_hell": {
+  "id": 334,
+  "en": [
+   "hell"
+  ],
+  "ur": [
+   "جہنم",
+   "دوزخ"
+  ]
+ },
+ "pk-hfad-1_help": {
+  "id": 335,
+  "en": [
+   "help",
+   "aid",
+   "assistance"
+  ],
+  "ur": [
+   "مدد",
+   "امداد",
+   "امدادِ"
+  ]
+ },
+ "pk-hfad-1_here": {
+  "id": 336,
+  "en": [
+   "here"
+  ],
+  "ur": [
+   "یہاں",
+   "یہیں",
+   "ادھر(یہاں)",
+   "اِدھر"
+  ]
+ },
+ "pk-hfad-1_hindu": {
+  "id": 337,
+  "en": [
+   "hindu"
+  ],
+  "ur": [
+   "ہندو"
+  ]
+ },
+ "pk-hfad-1_hmara": {
+  "id": 338,
+  "en": [
+   "our(masculine-ہمارا)"
+  ],
+  "ur": [
+   "ہمارا"
+  ]
+ },
+ "pk-hfad-1_hmari": {
+  "id": 339,
+  "en": [
+   "our(feminine-ہماری)"
+  ],
+  "ur": [
+   "ہماری"
+  ]
+ },
+ "pk-hfad-1_hmary": {
+  "id": 340,
+  "en": [
+   "our(ہمارے)"
+  ],
+  "ur": [
+   "ہمارے"
+  ]
+ },
+ "pk-hfad-1_holiday": {
+  "id": 341,
+  "en": [
+   "holiday",
+   "off time",
+   "time off",
+   "day off"
+  ],
+  "ur": [
+   "چھٹی(تعطیل)"
+  ]
+ },
+ "pk-hfad-1_horse": {
+  "id": 342,
+  "en": [
+   "horse"
+  ],
+  "ur": [
+   "گھوڑا",
+   "گھوڑی",
+   "گھوڑے"
+  ]
+ },
+ "pk-hfad-1_hospital": {
+  "id": 343,
+  "en": [
+   "hospital"
+  ],
+  "ur": [
+   "ہسپتال",
+   "اسپتال",
+   "علاج گاہ",
+   "شفاخانہ",
+   "شفاخانے",
+   "ہاسپٹل"
+  ]
+ },
+ "pk-hfad-1_hostel": {
+  "id": 344,
+  "en": [
+   "hostel"
+  ],
+  "ur": [
+   "ہاسٹل"
+  ]
+ },
+ "pk-hfad-1_hot": {
+  "id": 345,
+  "en": [
+   "hot",
+   "warm"
+  ],
+  "ur": [
+   "گرم"
+  ]
+ },
+ "pk-hfad-1_hotel": {
+  "id": 346,
+  "en": [
+   "hotel"
+  ],
+  "ur": [
+   "ہوٹل"
+  ]
+ },
+ "pk-hfad-1_house": {
+  "id": 347,
+  "en": [
+   "house",
+   "home",
+   "residence"
+  ],
+  "ur": [
+   "گھر",
+   "رہائش گاہ",
+   "مکان"
+  ]
+ },
+ "pk-hfad-1_hurry": {
+  "id": 348,
+  "en": [
+   "hurry",
+   "early",
+   "haste",
+   "soon"
+  ],
+  "ur": [
+   "جلدی",
+   "فوری",
+   "فورا",
+   "فوراً"
+  ]
+ },
+ "pk-hfad-1_husband": {
+  "id": 349,
+  "en": [
+   "husband"
+  ],
+  "ur": [
+   "شوہر",
+   "میاں(شوہر)",
+   "خاوند"
+  ]
+ },
+ "pk-hfad-1_i(double-handed-letter)": {
+  "id": 350,
+  "en": [
+   "i(double-handed-letter)"
+  ],
+  "ur": [
+   "i(double-handed-letter)",
+   "آئی(i-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_i(me)": {
+  "id": 351,
+  "en": [
+   "i(me)"
+  ],
+  "ur": [
+   "میں(متکلم)"
+  ]
+ },
+ "pk-hfad-1_i(single-handed-letter)": {
+  "id": 352,
+  "en": [
+   "i(single-handed-letter)"
+  ],
+  "ur": [
+   "i(single-handed-letter)",
+   "آئی(i-single-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_icecream": {
+  "id": 353,
+  "en": [
+   "icecream",
+   "ice cream"
+  ],
+  "ur": [
+   "آئس کریم",
+   "آئسکریم"
+  ]
+ },
+ "pk-hfad-1_identity-card": {
+  "id": 354,
+  "en": [
+   "identity card",
+   "identification card",
+   "id card",
+   "cnic"
+  ],
+  "ur": [
+   "شناختی کارڈ"
+  ]
+ },
+ "pk-hfad-1_ignore": {
+  "id": 355,
+  "en": [
+   "ignore",
+   "ignored",
+   "disregard"
+  ],
+  "ur": [
+   "نظر انداز",
+   "نظرانداز"
+  ]
+ },
+ "pk-hfad-1_ill": {
+  "id": 356,
+  "en": [
+   "ill",
+   "sick"
+  ],
+  "ur": [
+   "بیمار",
+   "بیماری"
+  ]
+ },
+ "pk-hfad-1_illiterate": {
+  "id": 357,
+  "en": [
+   "illiteracy",
+   "illiterate",
+   "uneducated"
+  ],
+  "ur": [
+   "ان پڑھ",
+   "اَن پڑھ",
+   "ناخواندہ",
+   "ناخواندگی",
+   "انپڑھ",
+   "اَنپڑھ"
+  ]
+ },
+ "pk-hfad-1_imam": {
+  "id": 358,
+  "en": [
+   "imam"
+  ],
+  "ur": [
+   "امام"
+  ]
+ },
+ "pk-hfad-1_in": {
+  "id": 359,
+  "en": [
+   "in",
+   "inside"
+  ],
+  "ur": [
+   "میں(اندر)",
+   "اندر"
+  ]
+ },
+ "pk-hfad-1_include": {
+  "id": 360,
+  "en": [
+   "include",
+   "including",
+   "inclusive",
+   "included",
+   "contains",
+   "containing",
+   "contained",
+   "consist"
+  ],
+  "ur": [
+   "شامل",
+   "ملوث",
+   "شمولیت",
+   "شرکت",
+   "شریک",
+   "سمیت",
+   "مشتمل",
+   "بشمول"
+  ]
+ },
+ "pk-hfad-1_indeed": {
+  "id": 361,
+  "en": [
+   "indeed",
+   "surely",
+   "definitely"
+  ],
+  "ur": [
+   "یقینا",
+   "یقیناً",
+   "بے شک",
+   "بِلاشُبہ",
+   "بلاشُبہ",
+   "بلاشبہ"
+  ]
+ },
+ "pk-hfad-1_india": {
+  "id": 362,
+  "en": [
+   "india",
+   "indian",
+   "hindustan"
+  ],
+  "ur": [
+   "انڈیا",
+   "بھارت",
+   "ہندوستان",
+   "ہندوستاں",
+   "انڈین",
+   "بھارتی",
+   "ہندوستانی"
+  ]
+ },
+ "pk-hfad-1_infidel": {
+  "id": 363,
+  "en": [
+   "infidel"
+  ],
+  "ur": [
+   "کافر",
+   "کفر"
+  ]
+ },
+ "pk-hfad-1_inflation(economic)": {
+  "id": 364,
+  "en": [
+   "inflation(economic)"
+  ],
+  "ur": [
+   "مہنگائی"
+  ]
+ },
+ "pk-hfad-1_information": {
+  "id": 365,
+  "en": [
+   "information",
+   "knowledge"
+  ],
+  "ur": [
+   "معلومات"
+  ]
+ },
+ "pk-hfad-1_ink": {
+  "id": 366,
+  "en": [
+   "ink"
+  ],
+  "ur": [
+   "سیاہی(قلم)",
+   "روشنائی"
+  ]
+ },
+ "pk-hfad-1_interesting": {
+  "id": 367,
+  "en": [
+   "interesting",
+   "interested",
+   "interest(fondness)",
+   "fondness"
+  ],
+  "ur": [
+   "دلچسپی",
+   "دلچسپ",
+   "شوق"
+  ]
+ },
+ "pk-hfad-1_iran": {
+  "id": 368,
+  "en": [
+   "iran",
+   "iranian"
+  ],
+  "ur": [
+   "ایران",
+   "ایرانی"
+  ]
+ },
+ "pk-hfad-1_iraq": {
+  "id": 369,
+  "en": [
+   "iraq",
+   "iraqi"
+  ],
+  "ur": [
+   "عراق",
+   "عراقی"
+  ]
+ },
+ "pk-hfad-1_iron(metal)": {
+  "id": 370,
+  "en": [
+   "iron(metal)"
+  ],
+  "ur": [
+   "لوہا",
+   "لوہے",
+   "فولاد"
+  ]
+ },
+ "pk-hfad-1_irrigation": {
+  "id": 371,
+  "en": [
+   "irrigation",
+   "irrigate"
+  ],
+  "ur": [
+   "آب پاشی",
+   "آبپاشی",
+   "سیراب"
+  ]
+ },
+ "pk-hfad-1_is": {
+  "id": 372,
+  "en": [
+   "is"
+  ],
+  "ur": [
+   "ہے"
+  ]
+ },
+ "pk-hfad-1_isha": {
+  "id": 373,
+  "en": [
+   "isha"
+  ],
+  "ur": [
+   "عشاء"
+  ]
+ },
+ "pk-hfad-1_islamabad": {
+  "id": 374,
+  "en": [
+   "islamabad"
+  ],
+  "ur": [
+   "اسلام آباد"
+  ]
+ },
+ "pk-hfad-1_islamiat": {
+  "id": 375,
+  "en": [
+   "islamiat",
+   "islamiyat"
+  ],
+  "ur": [
+   "اسلامیات"
+  ]
+ },
+ "pk-hfad-1_it": {
+  "id": 376,
+  "en": [
+   "it",
+   "this"
+  ],
+  "ur": [
+   "یہ",
+   "یہی",
+   "اِس",
+   "اِسی",
+   "اِسے",
+   "اس(اِس)",
+   "اسی(اِسی)",
+   "اسے(اِسے)",
+   "اِن",
+   "ان(اِن)",
+   "اِنہی",
+   "اِنہیں",
+   "اِنہوں"
+  ]
+ },
+ "pk-hfad-1_j(double-handed-letter)": {
+  "id": 377,
+  "en": [
+   "j(double-handed-letter)"
+  ],
+  "ur": [
+   "j(double-handed-letter)",
+   "جے(j-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_j(single-handed-letter)": {
+  "id": 378,
+  "en": [
+   "j(single-handed-letter)"
+  ],
+  "ur": [
+   "j(single-handed-letter)",
+   "جے(j-single-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_jaein": {
+  "id": 379,
+  "en": [
+   "go(جائیں)"
+  ],
+  "ur": [
+   "جائیں"
+  ]
+ },
+ "pk-hfad-1_jaey": {
+  "id": 380,
+  "en": [
+   "go(جائے)"
+  ],
+  "ur": [
+   "جائے"
+  ]
+ },
+ "pk-hfad-1_jamun": {
+  "id": 381,
+  "en": [
+   "jamun",
+   "jambul",
+   "java plum"
+  ],
+  "ur": [
+   "جامن"
+  ]
+ },
+ "pk-hfad-1_january": {
+  "id": 382,
+  "en": [
+   "january"
+  ],
+  "ur": [
+   "جنوری"
+  ]
+ },
+ "pk-hfad-1_jao": {
+  "id": 383,
+  "en": [
+   "go(جاؤ)"
+  ],
+  "ur": [
+   "جاؤ"
+  ]
+ },
+ "pk-hfad-1_japan": {
+  "id": 384,
+  "en": [
+   "japan",
+   "japanese"
+  ],
+  "ur": [
+   "جاپان",
+   "جاپانی"
+  ]
+ },
+ "pk-hfad-1_jaun": {
+  "id": 385,
+  "en": [
+   "go(جاؤں)"
+  ],
+  "ur": [
+   "جاؤں"
+  ]
+ },
+ "pk-hfad-1_jeans-pants": {
+  "id": 386,
+  "en": [
+   "jeans pants",
+   "denim pants",
+   "jeans"
+  ],
+  "ur": [
+   "جینز کی پتلون",
+   "جینز کی پینٹ(پتلون)",
+   "جینز پینٹ(پتلون)",
+   "جینز پینٹس(پتلون)",
+   "ڈینم کی پتلون",
+   "ڈینم کی پینٹ(پتلون)",
+   "ڈینم پینٹ(پتلون)",
+   "ڈینم پینٹس(پتلون)"
+  ]
+ },
+ "pk-hfad-1_jeem": {
+  "id": 387,
+  "en": [
+   "ج"
+  ],
+  "ur": [
+   "ج"
+  ]
+ },
+ "pk-hfad-1_jhelum": {
+  "id": 388,
+  "en": [
+   "jhelum"
+  ],
+  "ur": [
+   "جہلم"
+  ]
+ },
+ "pk-hfad-1_jihad": {
+  "id": 389,
+  "en": [
+   "jihad"
+  ],
+  "ur": [
+   "جہاد"
+  ]
+ },
+ "pk-hfad-1_joke": {
+  "id": 390,
+  "en": [
+   "joke"
+  ],
+  "ur": [
+   "لطیفہ",
+   "لطیفے",
+   "مذاق"
+  ]
+ },
+ "pk-hfad-1_judge(noun)": {
+  "id": 391,
+  "en": [
+   "judge(noun)"
+  ],
+  "ur": [
+   "جج",
+   "قاضی",
+   "منصف"
+  ]
+ },
+ "pk-hfad-1_juice": {
+  "id": 392,
+  "en": [
+   "juice"
+  ],
+  "ur": [
+   "جوس",
+   "رس"
+  ]
+ },
+ "pk-hfad-1_july": {
+  "id": 393,
+  "en": [
+   "july"
+  ],
+  "ur": [
+   "جولائی"
+  ]
+ },
+ "pk-hfad-1_june": {
+  "id": 394,
+  "en": [
+   "june"
+  ],
+  "ur": [
+   "جون"
+  ]
+ },
+ "pk-hfad-1_jungle": {
+  "id": 395,
+  "en": [
+   "jungle",
+   "forest"
+  ],
+  "ur": [
+   "جنگل",
+   "جنگلی"
+  ]
+ },
+ "pk-hfad-1_k(double-handed-letter)": {
+  "id": 396,
+  "en": [
+   "k(double-handed-letter)",
+   "karachi"
+  ],
+  "ur": [
+   "k(double-handed-letter)",
+   "کے(k-double-handed-letter)",
+   "کراچی"
+  ]
+ },
+ "pk-hfad-1_k(single-handed-letter)": {
+  "id": 397,
+  "en": [
+   "k(single-handed-letter)",
+   "ک"
+  ],
+  "ur": [
+   "k(single-handed-letter)",
+   "کے(k-single-handed-letter)",
+   "ک"
+  ]
+ },
+ "pk-hfad-1_ka": {
+  "id": 398,
+  "en": [
+   "of(masculine-کا)"
+  ],
+  "ur": [
+   "کا"
+  ]
+ },
+ "pk-hfad-1_kalma-chowk": {
+  "id": 399,
+  "en": [
+   "kalma chowk"
+  ],
+  "ur": [
+   "کلمہ چوک"
+  ]
+ },
+ "pk-hfad-1_kalmah": {
+  "id": 400,
+  "en": [
+   "kalmah"
+  ],
+  "ur": [
+   "کلمہ",
+   "کلمۂ"
+  ]
+ },
+ "pk-hfad-1_kameez": {
+  "id": 401,
+  "en": [
+   "kameez"
+  ],
+  "ur": [
+   "قمیض"
+  ]
+ },
+ "pk-hfad-1_kebab": {
+  "id": 402,
+  "en": [
+   "kebab"
+  ],
+  "ur": [
+   "کباب"
+  ]
+ },
+ "pk-hfad-1_kesa": {
+  "id": 403,
+  "en": [
+   "how(masculine-کیسا)"
+  ],
+  "ur": [
+   "کیسا"
+  ]
+ },
+ "pk-hfad-1_kesi": {
+  "id": 404,
+  "en": [
+   "how(feminine-کیسی)"
+  ],
+  "ur": [
+   "کیسی"
+  ]
+ },
+ "pk-hfad-1_kesy": {
+  "id": 405,
+  "en": [
+   "how(کیسے)"
+  ],
+  "ur": [
+   "کیسے"
+  ]
+ },
+ "pk-hfad-1_khalh": {
+  "id": 406,
+  "en": [
+   "aunt(mother's-sister-خالہ)",
+   "aunty(mother's-sister-خالہ)"
+  ],
+  "ur": [
+   "خالہ"
+  ]
+ },
+ "pk-hfad-1_khalu": {
+  "id": 407,
+  "en": [
+   "uncle(mother's-sister's-husband-خالو)"
+  ],
+  "ur": [
+   "خالو"
+  ]
+ },
+ "pk-hfad-1_khhey": {
+  "id": 408,
+  "en": [
+   "خ"
+  ],
+  "ur": [
+   "خ"
+  ]
+ },
+ "pk-hfad-1_khyber-pakhtunkhwa": {
+  "id": 409,
+  "en": [
+   "khyber pakhtunkhwa"
+  ],
+  "ur": [
+   "خیبر پختونخوا",
+   "خیبرپختونخوا",
+   "خیبر پختونخواہ",
+   "خیبرپختونخواہ"
+  ]
+ },
+ "pk-hfad-1_krein": {
+  "id": 410,
+  "en": [
+   "do(کریں)"
+  ],
+  "ur": [
+   "کریں"
+  ]
+ },
+ "pk-hfad-1_kro": {
+  "id": 411,
+  "en": [
+   "do(کرو)"
+  ],
+  "ur": [
+   "کرو"
+  ]
+ },
+ "pk-hfad-1_krty(do)": {
+  "id": 412,
+  "en": [
+   "do(کرتے)"
+  ],
+  "ur": [
+   "کرتے(فعل-مضارع)"
+  ]
+ },
+ "pk-hfad-1_krun": {
+  "id": 413,
+  "en": [
+   "do(کروں)"
+  ],
+  "ur": [
+   "کروں"
+  ]
+ },
+ "pk-hfad-1_kry": {
+  "id": 414,
+  "en": [
+   "do(کرے)"
+  ],
+  "ur": [
+   "کرے",
+   "کریے",
+   "کیجیے"
+  ]
+ },
+ "pk-hfad-1_kuwait": {
+  "id": 415,
+  "en": [
+   "kuwait"
+  ],
+  "ur": [
+   "کویت",
+   "کویتی"
+  ]
+ },
+ "pk-hfad-1_l(single-handed-letter)": {
+  "id": 416,
+  "en": [
+   "l(single-handed-letter)",
+   "l(double-handed-letter)",
+   "ل"
+  ],
+  "ur": [
+   "l(single-handed-letter)",
+   "ایل(l-single-handed-letter)",
+   "l(double-handed-letter)",
+   "ایل(l-double-handed-letter)",
+   "ل"
+  ]
+ },
+ "pk-hfad-1_laborer": {
+  "id": 417,
+  "en": [
+   "laborer",
+   "labourer"
+  ],
+  "ur": [
+   "مزدور",
+   "مزدوری"
+  ]
+ },
+ "pk-hfad-1_lahore": {
+  "id": 418,
+  "en": [
+   "lahore"
+  ],
+  "ur": [
+   "لاہور"
+  ]
+ },
+ "pk-hfad-1_law": {
+  "id": 419,
+  "en": [
+   "law",
+   "legal"
+  ],
+  "ur": [
+   "قانون",
+   "قانونی"
+  ]
+ },
+ "pk-hfad-1_lawyer": {
+  "id": 420,
+  "en": [
+   "lawyer",
+   "attorney"
+  ],
+  "ur": [
+   "وکیل",
+   "وکالت",
+   "ایڈووکیٹ"
+  ]
+ },
+ "pk-hfad-1_lazy": {
+  "id": 421,
+  "en": [
+   "lazy",
+   "laziness",
+   "lazily"
+  ],
+  "ur": [
+   "سست",
+   "سُست",
+   "سستی(کاہلی)",
+   "سُستی",
+   "کاہل",
+   "کاہلی"
+  ]
+ },
+ "pk-hfad-1_lemon": {
+  "id": 422,
+  "en": [
+   "lemon"
+  ],
+  "ur": [
+   "لیموں",
+   "لیمن",
+   "نیبو"
+  ]
+ },
+ "pk-hfad-1_lentil": {
+  "id": 423,
+  "en": [
+   "lentil",
+   "lentils",
+   "pulses(lentils)"
+  ],
+  "ur": [
+   "دال"
+  ]
+ },
+ "pk-hfad-1_liberty(place)": {
+  "id": 424,
+  "en": [
+   "liberty(place)"
+  ],
+  "ur": [
+   "لیبرٹی(جگہ)",
+   "لبرٹی(جگہ)"
+  ]
+ },
+ "pk-hfad-1_library": {
+  "id": 425,
+  "en": [
+   "library"
+  ],
+  "ur": [
+   "لائبریری",
+   "کتب خانہ"
+  ]
+ },
+ "pk-hfad-1_limestone": {
+  "id": 426,
+  "en": [
+   "limestone"
+  ],
+  "ur": [
+   "چونا پتھر",
+   "چونے کا پتھر"
+  ]
+ },
+ "pk-hfad-1_lion": {
+  "id": 427,
+  "en": [
+   "lion",
+   "lioness"
+  ],
+  "ur": [
+   "شیر",
+   "شیرنی"
+  ]
+ },
+ "pk-hfad-1_liy(for)": {
+  "id": 428,
+  "en": [
+   "for(لئے)"
+  ],
+  "ur": [
+   "لیے(حرف-اضافت)",
+   "لئے(حرف-اضافت)"
+  ]
+ },
+ "pk-hfad-1_loan": {
+  "id": 429,
+  "en": [
+   "loan",
+   "debt",
+   "borrow"
+  ],
+  "ur": [
+   "ادھار",
+   "قرض",
+   "قرضہ",
+   "قرضے"
+  ]
+ },
+ "pk-hfad-1_m(double-handed-letter)": {
+  "id": 430,
+  "en": [
+   "m(double-handed-letter)",
+   "monday"
+  ],
+  "ur": [
+   "m(double-handed-letter)",
+   "ایم(m-double-handed-letter)",
+   "سوموار",
+   "پیر(سوموار)"
+  ]
+ },
+ "pk-hfad-1_m(single-handed-letter)": {
+  "id": 431,
+  "en": [
+   "m(single-handed-letter)",
+   "م"
+  ],
+  "ur": [
+   "m(single-handed-letter)",
+   "ایم(m-single-handed-letter)",
+   "م"
+  ]
+ },
+ "pk-hfad-1_maghrib": {
+  "id": 432,
+  "en": [
+   "maghrib"
+  ],
+  "ur": [
+   "مغرب(نماز)"
+  ]
+ },
+ "pk-hfad-1_make": {
+  "id": 433,
+  "en": [
+   "make",
+   "made",
+   "create",
+   "created",
+   "become",
+   "built",
+   "build",
+   "manufacture",
+   "manufactured",
+   "construct",
+   "constructed"
+  ],
+  "ur": [
+   "بن(بَن)",
+   "بَن",
+   "بنے(بَنے)",
+   "بَنے",
+   "بنا(بَنا)",
+   "بَنا",
+   "بننا(بَننا)",
+   "بَننا",
+   "بناؤ(بَناؤ)",
+   "بَناؤ",
+   "بناؤں(بَناؤں)",
+   "بَناؤں",
+   "بنائی(بَنائی)",
+   "بَنائی",
+   "بنائیں(بَنائیں)",
+   "بَنائیں",
+   "بنائے(بَنائے)",
+   "بَنائے",
+   "بناتا(بَناتا)",
+   "بَناتا",
+   "بنتا(بَنتا)",
+   "بَنتا",
+   "بناتی(بَناتی)",
+   "بَناتی",
+   "بنتی(بَنتی)",
+   "بَنتی",
+   "بناتے(بَناتے)",
+   "بَناتے",
+   "بنتے(بَنتے)",
+   "بَنتے",
+   "بنانا(تعمیر)",
+   "(تعمیر)بَنانا",
+   "بنانے(بَنانے)",
+   "بَنانے",
+   "بننے(بَننے)",
+   "بَننے",
+   "بنایا(بَنایا)",
+   "بَنایا",
+   "تعمیر",
+   "تخلیق"
+  ]
+ },
+ "pk-hfad-1_male": {
+  "id": 434,
+  "en": [
+   "man(noun)",
+   "male",
+   "manly"
+  ],
+  "ur": [
+   "مرد",
+   "مردانہ",
+   "آدمی",
+   "نر",
+   "بندہ"
+  ]
+ },
+ "pk-hfad-1_mamon": {
+  "id": 435,
+  "en": [
+   "uncle(mother's-brother-ماموں)"
+  ],
+  "ur": [
+   "ماموں"
+  ]
+ },
+ "pk-hfad-1_mango": {
+  "id": 436,
+  "en": [
+   "mango",
+   "mangos",
+   "mangoes"
+  ],
+  "ur": [
+   "آم",
+   "مینگو"
+  ]
+ },
+ "pk-hfad-1_march(month)": {
+  "id": 437,
+  "en": [
+   "march(month)"
+  ],
+  "ur": [
+   "مارچ(مہینہ)"
+  ]
+ },
+ "pk-hfad-1_market": {
+  "id": 438,
+  "en": [
+   "market"
+  ],
+  "ur": [
+   "بازار",
+   "مارکیٹ",
+   "منڈی",
+   "بازاری"
+  ]
+ },
+ "pk-hfad-1_masculine": {
+  "id": 439,
+  "en": [
+   "masculine"
+  ],
+  "ur": [
+   "مذکر"
+  ]
+ },
+ "pk-hfad-1_maternal-grandfather": {
+  "id": 440,
+  "en": [
+   "maternal grandfather",
+   "grandfather(maternal)"
+  ],
+  "ur": [
+   "نانا"
+  ]
+ },
+ "pk-hfad-1_maternal-grandmother": {
+  "id": 441,
+  "en": [
+   "maternal grandmother",
+   "grandmother(maternal)"
+  ],
+  "ur": [
+   "نانی"
+  ]
+ },
+ "pk-hfad-1_may(month)": {
+  "id": 442,
+  "en": [
+   "may(month)"
+  ],
+  "ur": [
+   "مئی"
+  ]
+ },
+ "pk-hfad-1_me": {
+  "id": 443,
+  "en": [
+   "me"
+  ],
+  "ur": [
+   "مجھے",
+   "مجھ"
+  ]
+ },
+ "pk-hfad-1_medication": {
+  "id": 444,
+  "en": [
+   "medicine(drug)",
+   "medication"
+  ],
+  "ur": [
+   "دوا",
+   "دوائی"
+  ]
+ },
+ "pk-hfad-1_meeting(noun)": {
+  "id": 445,
+  "en": [
+   "meeting(noun)"
+  ],
+  "ur": [
+   "میٹنگ",
+   "ملاقات"
+  ]
+ },
+ "pk-hfad-1_melon": {
+  "id": 446,
+  "en": [
+   "melon"
+  ],
+  "ur": [
+   "خربوزہ",
+   "خربوزے"
+  ]
+ },
+ "pk-hfad-1_mera": {
+  "id": 447,
+  "en": [
+   "mine(masculine-میرا)",
+   "my(masculine-میرا)"
+  ],
+  "ur": [
+   "میرا"
+  ]
+ },
+ "pk-hfad-1_mercy": {
+  "id": 448,
+  "en": [
+   "mercy"
+  ],
+  "ur": [
+   "رحم",
+   "رحمت"
+  ]
+ },
+ "pk-hfad-1_meri": {
+  "id": 449,
+  "en": [
+   "mine(feminine-میری)",
+   "my(feminine-میری)"
+  ],
+  "ur": [
+   "میری"
+  ]
+ },
+ "pk-hfad-1_mery": {
+  "id": 450,
+  "en": [
+   "mine(میرے)",
+   "my(میرے)"
+  ],
+  "ur": [
+   "میرے"
+  ]
+ },
+ "pk-hfad-1_meter-rod": {
+  "id": 451,
+  "en": [
+   "scale(ruler)",
+   "ruler(scale)",
+   "meter rod"
+  ],
+  "ur": [
+   "سکیل(فٹا)",
+   "اسکیل(فٹا)",
+   "پیمانہ(فٹا)",
+   "پیمانے(فٹا)",
+   "میٹر راڈ"
+  ]
+ },
+ "pk-hfad-1_middle": {
+  "id": 452,
+  "en": [
+   "middle",
+   "center",
+   "centre",
+   "between"
+  ],
+  "ur": [
+   "درمیان",
+   "درمیانی",
+   "درمیانہ",
+   "بیچ"
+  ]
+ },
+ "pk-hfad-1_milk": {
+  "id": 453,
+  "en": [
+   "milk"
+  ],
+  "ur": [
+   "دودھ",
+   "دُودھ"
+  ]
+ },
+ "pk-hfad-1_minar-e-pakistan": {
+  "id": 454,
+  "en": [
+   "minar e pakistan",
+   "minar-e-pakistan"
+  ],
+  "ur": [
+   "مینار پاکستان",
+   "مینارِ پاکستان"
+  ]
+ },
+ "pk-hfad-1_minute(unit-of-time)": {
+  "id": 455,
+  "en": [
+   "minute(unit-of-time)",
+   "minutes(unit-of-time)"
+  ],
+  "ur": [
+   "منٹ(وقت)",
+   "منٹوں"
+  ]
+ },
+ "pk-hfad-1_miser": {
+  "id": 456,
+  "en": [
+   "miser",
+   "pinchpenny",
+   "stingy"
+  ],
+  "ur": [
+   "کنجوس",
+   "کنجوسی"
+  ]
+ },
+ "pk-hfad-1_mmani": {
+  "id": 457,
+  "en": [
+   "aunt(mother's-brother's-wife-ممانی)",
+   "aunty(mother's-brother's-wife-ممانی)"
+  ],
+  "ur": [
+   "ممانی"
+  ]
+ },
+ "pk-hfad-1_monitor(prefect)": {
+  "id": 458,
+  "en": [
+   "monitor(prefect)"
+  ],
+  "ur": [
+   "مانیٹر"
+  ]
+ },
+ "pk-hfad-1_monkey": {
+  "id": 459,
+  "en": [
+   "monkey"
+  ],
+  "ur": [
+   "بندر",
+   "بندریا"
+  ]
+ },
+ "pk-hfad-1_monotheism": {
+  "id": 460,
+  "en": [
+   "monotheism",
+   "monotheistic"
+  ],
+  "ur": [
+   "توحید"
+  ]
+ },
+ "pk-hfad-1_month": {
+  "id": 461,
+  "en": [
+   "month",
+   "monthly"
+  ],
+  "ur": [
+   "مہینہ",
+   "مہینے",
+   "ماہانہ",
+   "ماہ"
+  ]
+ },
+ "pk-hfad-1_moon": {
+  "id": 462,
+  "en": [
+   "moon",
+   "lunar"
+  ],
+  "ur": [
+   "چاند",
+   "قمری"
+  ]
+ },
+ "pk-hfad-1_morning": {
+  "id": 463,
+  "en": [
+   "morning"
+  ],
+  "ur": [
+   "صبح",
+   "صبح سویرے",
+   "سویرے"
+  ]
+ },
+ "pk-hfad-1_mosque": {
+  "id": 464,
+  "en": [
+   "mosque",
+   "masjid"
+  ],
+  "ur": [
+   "مسجد"
+  ]
+ },
+ "pk-hfad-1_mother": {
+  "id": 465,
+  "en": [
+   "mother",
+   "mom",
+   "mama",
+   "mommy"
+  ],
+  "ur": [
+   "ماں",
+   "امی",
+   "ماما",
+   "والدہ",
+   "اماں"
+  ]
+ },
+ "pk-hfad-1_motorcycle": {
+  "id": 466,
+  "en": [
+   "motorcycle",
+   "motorbike"
+  ],
+  "ur": [
+   "موٹرسائیکل",
+   "موٹر سائیکل",
+   "موٹربائیک",
+   "موٹر بائیک"
+  ]
+ },
+ "pk-hfad-1_mountain": {
+  "id": 467,
+  "en": [
+   "mountain",
+   "mountains",
+   "hills",
+   "hilly",
+   "mountainous"
+  ],
+  "ur": [
+   "پہاڑ",
+   "پہاڑی",
+   "پہاڑوں",
+   "کوہ",
+   "کوہِ"
+  ]
+ },
+ "pk-hfad-1_movie": {
+  "id": 468,
+  "en": [
+   "movie",
+   "film(movie)"
+  ],
+  "ur": [
+   "فلم",
+   "فلمی",
+   "مووی"
+  ]
+ },
+ "pk-hfad-1_multan": {
+  "id": 469,
+  "en": [
+   "multan"
+  ],
+  "ur": [
+   "ملتان",
+   "ملتانی"
+  ]
+ },
+ "pk-hfad-1_murree": {
+  "id": 470,
+  "en": [
+   "murree"
+  ],
+  "ur": [
+   "مری(جگہ)"
+  ]
+ },
+ "pk-hfad-1_museum": {
+  "id": 471,
+  "en": [
+   "museum",
+   "historic sites",
+   "historic places"
+  ],
+  "ur": [
+   "عجائب گھر",
+   "میوزیم",
+   "تاریخی مقامات"
+  ]
+ },
+ "pk-hfad-1_muslim": {
+  "id": 472,
+  "en": [
+   "muslim",
+   "muslims"
+  ],
+  "ur": [
+   "مسلمان",
+   "مسلم",
+   "مسلمانو",
+   "مسلمانوں"
+  ]
+ },
+ "pk-hfad-1_n(double-handed-letter)": {
+  "id": 473,
+  "en": [
+   "n(double-handed-letter)",
+   "november"
+  ],
+  "ur": [
+   "n(double-handed-letter)",
+   "این(n-double-handed-letter)",
+   "نومبر"
+  ]
+ },
+ "pk-hfad-1_n(single-handed-letter)": {
+  "id": 474,
+  "en": [
+   "n(single-handed-letter)",
+   "ن"
+  ],
+  "ur": [
+   "n(single-handed-letter)",
+   "این(n-single-handed-letter)",
+   "ن"
+  ]
+ },
+ "pk-hfad-1_naan": {
+  "id": 475,
+  "en": [
+   "naan",
+   "flatbread(naan)"
+  ],
+  "ur": [
+   "نان"
+  ]
+ },
+ "pk-hfad-1_name": {
+  "id": 476,
+  "en": [
+   "name",
+   "named"
+  ],
+  "ur": [
+   "نام"
+  ]
+ },
+ "pk-hfad-1_nawab": {
+  "id": 477,
+  "en": [
+   "nawab"
+  ],
+  "ur": [
+   "نواب"
+  ]
+ },
+ "pk-hfad-1_near": {
+  "id": 478,
+  "en": [
+   "near",
+   "nearby",
+   "close(near)"
+  ],
+  "ur": [
+   "نزدیک",
+   "نزدیکی",
+   "قریب",
+   "قریبی",
+   "پاس(نزدیک)"
+  ]
+ },
+ "pk-hfad-1_necessary": {
+  "id": 479,
+  "en": [
+   "necessary",
+   "essential",
+   "important"
+  ],
+  "ur": [
+   "ضروری",
+   "ضرور",
+   "ضرورت",
+   "لازم",
+   "لازمی",
+   "اہم",
+   "اہمیت"
+  ]
+ },
+ "pk-hfad-1_neighbors": {
+  "id": 480,
+  "en": [
+   "neighbors",
+   "neighbor",
+   "neighborhood",
+   "neighbours",
+   "neighbour",
+   "neighbourhood"
+  ],
+  "ur": [
+   "ہمسایہ",
+   "ہمسائے",
+   "ہمسائی",
+   "پڑوس",
+   "پڑوسی",
+   "پڑوسن"
+  ]
+ },
+ "pk-hfad-1_new": {
+  "id": 481,
+  "en": [
+   "new",
+   "latest"
+  ],
+  "ur": [
+   "نیا",
+   "نئی",
+   "نئے"
+  ]
+ },
+ "pk-hfad-1_newspaper": {
+  "id": 482,
+  "en": [
+   "newspaper"
+  ],
+  "ur": [
+   "اخبار"
+  ]
+ },
+ "pk-hfad-1_next": {
+  "id": 483,
+  "en": [
+   "next",
+   "front",
+   "forward",
+   "ahead"
+  ],
+  "ur": [
+   "اگلا",
+   "اگلی",
+   "اگلے",
+   "آگے",
+   "سامنے"
+  ]
+ },
+ "pk-hfad-1_night": {
+  "id": 484,
+  "en": [
+   "night"
+  ],
+  "ur": [
+   "رات",
+   "شب"
+  ]
+ },
+ "pk-hfad-1_noise": {
+  "id": 485,
+  "en": [
+   "noise",
+   "noisy"
+  ],
+  "ur": [
+   "شور",
+   "شور شرابہ",
+   "شورشرابہ"
+  ]
+ },
+ "pk-hfad-1_nonsense": {
+  "id": 486,
+  "en": [
+   "nonsense",
+   "senseless",
+   "absurd"
+  ],
+  "ur": [
+   "بکواس"
+  ]
+ },
+ "pk-hfad-1_noodles": {
+  "id": 487,
+  "en": [
+   "noodles"
+  ],
+  "ur": [
+   "نوڈلز"
+  ]
+ },
+ "pk-hfad-1_noon": {
+  "id": 488,
+  "en": [
+   "noon",
+   "afternoon"
+  ],
+  "ur": [
+   "دوپہر"
+  ]
+ },
+ "pk-hfad-1_noon-guna": {
+  "id": 489,
+  "en": [
+   "ں"
+  ],
+  "ur": [
+   "ں"
+  ]
+ },
+ "pk-hfad-1_not": {
+  "id": 490,
+  "en": [
+   "no",
+   "not",
+   "green",
+   "greenish",
+   "leaf"
+  ],
+  "ur": [
+   "نہیں",
+   "نہ",
+   "پتا(پودا)",
+   "پتے(پودا)",
+   "پتی(پودا)",
+   "سبز",
+   "ہرا(سبز)",
+   "ہری",
+   "ہرے"
+  ]
+ },
+ "pk-hfad-1_notebook": {
+  "id": 491,
+  "en": [
+   "notebook"
+  ],
+  "ur": [
+   "کاپی",
+   "نوٹ بک"
+  ]
+ },
+ "pk-hfad-1_ny": {
+  "id": 492,
+  "en": [
+   "by(active-voice-نے)"
+  ],
+  "ur": [
+   "نے"
+  ]
+ },
+ "pk-hfad-1_o(single-handed-letter)": {
+  "id": 493,
+  "en": [
+   "o(single-handed-letter)",
+   "o(double-handed-letter)",
+   "october",
+   "و"
+  ],
+  "ur": [
+   "o(single-handed-letter)",
+   "او(o-single-handed-letter)",
+   "o(double-handed-letter)",
+   "او(o-double-handed-letter)",
+   "و(حرف)",
+   "اکتوبر"
+  ]
+ },
+ "pk-hfad-1_obedience": {
+  "id": 494,
+  "en": [
+   "obedience",
+   "obedient",
+   "comply",
+   "obey"
+  ],
+  "ur": [
+   "اطاعت",
+   "فرمانبرداری"
+  ]
+ },
+ "pk-hfad-1_of(ki)": {
+  "id": 495,
+  "en": [
+   "of(feminine-کی)"
+  ],
+  "ur": [
+   "کی(حرف-اضافت)"
+  ]
+ },
+ "pk-hfad-1_of(ky)": {
+  "id": 496,
+  "en": [
+   "of(کے)"
+  ],
+  "ur": [
+   "کے(حرف-اضافت)"
+  ]
+ },
+ "pk-hfad-1_office": {
+  "id": 497,
+  "en": [
+   "office",
+   "workplace"
+  ],
+  "ur": [
+   "آفس",
+   "دفتر"
+  ]
+ },
+ "pk-hfad-1_okra": {
+  "id": 498,
+  "en": [
+   "okra",
+   "lady finger"
+  ],
+  "ur": [
+   "بھنڈی"
+  ]
+ },
+ "pk-hfad-1_old-man": {
+  "id": 499,
+  "en": [
+   "old man",
+   "elderly man"
+  ],
+  "ur": [
+   "بوڑھا",
+   "بوڑھا آدمی",
+   "بوڑھے آدمی",
+   "بوڑھا مرد",
+   "بزرگ آدمی",
+   "بزرگ مرد"
+  ]
+ },
+ "pk-hfad-1_old-woman": {
+  "id": 500,
+  "en": [
+   "old woman",
+   "elderly woman"
+  ],
+  "ur": [
+   "بوڑھی",
+   "بوڑھی عورت",
+   "بزرگ عورت"
+  ]
+ },
+ "pk-hfad-1_onion": {
+  "id": 501,
+  "en": [
+   "onion"
+  ],
+  "ur": [
+   "پیاز"
+  ]
+ },
+ "pk-hfad-1_orange(color)": {
+  "id": 502,
+  "en": [
+   "orange(color)"
+  ],
+  "ur": [
+   "نارنجی(رنگ)",
+   "اورینج(رنگ)"
+  ]
+ },
+ "pk-hfad-1_orange(fruit)": {
+  "id": 503,
+  "en": [
+   "orange(fruit)"
+  ],
+  "ur": [
+   "مالٹا",
+   "مالٹے",
+   "کینو"
+  ]
+ },
+ "pk-hfad-1_owl": {
+  "id": 504,
+  "en": [
+   "owl"
+  ],
+  "ur": [
+   "الو",
+   "الّو",
+   "اُلّو",
+   "اُلو"
+  ]
+ },
+ "pk-hfad-1_owner": {
+  "id": 505,
+  "en": [
+   "owner",
+   "boss"
+  ],
+  "ur": [
+   "مالک",
+   "مالکن"
+  ]
+ },
+ "pk-hfad-1_p(double-handed-letter)": {
+  "id": 506,
+  "en": [
+   "p(double-handed-letter)",
+   "pakistan",
+   "pakistani"
+  ],
+  "ur": [
+   "p(double-handed-letter)",
+   "پی(p-double-handed-letter)",
+   "پاکستان",
+   "پاکستانی"
+  ]
+ },
+ "pk-hfad-1_p(single-handed-letter)": {
+  "id": 507,
+  "en": [
+   "p(single-handed-letter)",
+   "پ"
+  ],
+  "ur": [
+   "p(single-handed-letter)",
+   "پی(p-single-handed-letter)",
+   "پ"
+  ]
+ },
+ "pk-hfad-1_pakistan-studies": {
+  "id": 508,
+  "en": [
+   "pak study",
+   "pak studies",
+   "pakistan studies"
+  ],
+  "ur": [
+   "مطالعہ پاکستان",
+   "پاکستان اسٹڈیز"
+  ]
+ },
+ "pk-hfad-1_papa": {
+  "id": 509,
+  "en": [
+   "papa",
+   "father",
+   "dad",
+   "daddy"
+  ],
+  "ur": [
+   "باپ",
+   "والد",
+   "ابا",
+   "ابو",
+   "پاپا"
+  ]
+ },
+ "pk-hfad-1_parrot": {
+  "id": 510,
+  "en": [
+   "parrot"
+  ],
+  "ur": [
+   "طوطا",
+   "طوطی",
+   "طوطے"
+  ]
+ },
+ "pk-hfad-1_pass(succeed)": {
+  "id": 511,
+  "en": [
+   "pass(succeed)"
+  ],
+  "ur": [
+   "پاس(کامیاب)"
+  ]
+ },
+ "pk-hfad-1_paternal-grandfather": {
+  "id": 512,
+  "en": [
+   "grandfather(paternal)",
+   "paternal grandfather"
+  ],
+  "ur": [
+   "دادا"
+  ]
+ },
+ "pk-hfad-1_paternal-grandmother": {
+  "id": 513,
+  "en": [
+   "grandmother(paternal)",
+   "paternal grandmother"
+  ],
+  "ur": [
+   "دادی"
+  ]
+ },
+ "pk-hfad-1_patient(sick)": {
+  "id": 514,
+  "en": [
+   "patient(sick)"
+  ],
+  "ur": [
+   "مریض"
+  ]
+ },
+ "pk-hfad-1_peacock": {
+  "id": 515,
+  "en": [
+   "peacock"
+  ],
+  "ur": [
+   "مور",
+   "مورنی"
+  ]
+ },
+ "pk-hfad-1_pen": {
+  "id": 516,
+  "en": [
+   "pen"
+  ],
+  "ur": [
+   "قلم(لکھنے-کا-آلہ)",
+   "پین(قلم)"
+  ]
+ },
+ "pk-hfad-1_penalty": {
+  "id": 517,
+  "en": [
+   "penalty",
+   "fine(penalty)",
+   "fined(penalty)"
+  ],
+  "ur": [
+   "جرمانہ",
+   "جُرمانہ",
+   "جرمانے"
+  ]
+ },
+ "pk-hfad-1_pencil": {
+  "id": 518,
+  "en": [
+   "pencil"
+  ],
+  "ur": [
+   "پینسل",
+   "پنسل"
+  ]
+ },
+ "pk-hfad-1_people": {
+  "id": 519,
+  "en": [
+   "people"
+  ],
+  "ur": [
+   "لوگ",
+   "لوگوں",
+   "افراد",
+   "عوام",
+   "عوامی",
+   "شہریوں",
+   "اشخاص"
+  ]
+ },
+ "pk-hfad-1_perhaps": {
+  "id": 520,
+  "en": [
+   "perhaps",
+   "maybe"
+  ],
+  "ur": [
+   "شاید"
+  ]
+ },
+ "pk-hfad-1_peshawar": {
+  "id": 521,
+  "en": [
+   "peshawar"
+  ],
+  "ur": [
+   "پشاور",
+   "پشاوری"
+  ]
+ },
+ "pk-hfad-1_photo": {
+  "id": 522,
+  "en": [
+   "photo",
+   "photograph",
+   "picture",
+   "image"
+  ],
+  "ur": [
+   "تصویر",
+   "فوٹو",
+   "فوٹوگراف",
+   "امیج"
+  ]
+ },
+ "pk-hfad-1_phupha": {
+  "id": 523,
+  "en": [
+   "uncle(father's-sister's-husband-پھوپھا)"
+  ],
+  "ur": [
+   "پھوپھا"
+  ]
+ },
+ "pk-hfad-1_phuphi": {
+  "id": 524,
+  "en": [
+   "aunt(father's-sister-پھوپھی)",
+   "aunty(father's-sister-پھوپھی)"
+  ],
+  "ur": [
+   "پھوپھی",
+   "پھوپھو"
+  ]
+ },
+ "pk-hfad-1_pigeon": {
+  "id": 525,
+  "en": [
+   "pigeon"
+  ],
+  "ur": [
+   "کبوتر",
+   "کبوتری"
+  ]
+ },
+ "pk-hfad-1_pineapple": {
+  "id": 526,
+  "en": [
+   "pineapple"
+  ],
+  "ur": [
+   "انناس",
+   "پائن ایپل"
+  ]
+ },
+ "pk-hfad-1_pink": {
+  "id": 527,
+  "en": [
+   "pink"
+  ],
+  "ur": [
+   "گلابی"
+  ]
+ },
+ "pk-hfad-1_place": {
+  "id": 528,
+  "en": [
+   "place",
+   "location",
+   "position",
+   "area",
+   "locality"
+  ],
+  "ur": [
+   "جگہ",
+   "مقام",
+   "علاقہ",
+   "علاقے",
+   "گاہ"
+  ]
+ },
+ "pk-hfad-1_plants": {
+  "id": 529,
+  "en": [
+   "plants"
+  ],
+  "ur": [
+   "پودے",
+   "پودوں"
+  ]
+ },
+ "pk-hfad-1_play(sports)": {
+  "id": 530,
+  "en": [
+   "play(sports)",
+   "plays(sports)",
+   "played(sports)",
+   "playing(sports)"
+  ],
+  "ur": [
+   "کھیل"
+  ]
+ },
+ "pk-hfad-1_pleasant": {
+  "id": 531,
+  "en": [
+   "pleasant",
+   "pleasing",
+   "delightful"
+  ],
+  "ur": [
+   "خوشگوار"
+  ]
+ },
+ "pk-hfad-1_plural": {
+  "id": 532,
+  "en": [
+   "plural"
+  ],
+  "ur": [
+   "جمع"
+  ]
+ },
+ "pk-hfad-1_poet": {
+  "id": 533,
+  "en": [
+   "poet",
+   "poetess",
+   "poetry"
+  ],
+  "ur": [
+   "شاعر",
+   "شاعرہ",
+   "شاعری",
+   "شعر"
+  ]
+ },
+ "pk-hfad-1_police-officer": {
+  "id": 534,
+  "en": [
+   "police man",
+   "police woman",
+   "police officer",
+   "policeman",
+   "sepoy"
+  ],
+  "ur": [
+   "سپاہی",
+   "پولیس اہلکار",
+   "پولیس افسر"
+  ]
+ },
+ "pk-hfad-1_pomegranate": {
+  "id": 535,
+  "en": [
+   "pomegranate"
+  ],
+  "ur": [
+   "انار"
+  ]
+ },
+ "pk-hfad-1_population": {
+  "id": 536,
+  "en": [
+   "population"
+  ],
+  "ur": [
+   "آبادی"
+  ]
+ },
+ "pk-hfad-1_post-office": {
+  "id": 537,
+  "en": [
+   "post office"
+  ],
+  "ur": [
+   "پوسٹ آفس",
+   "ڈاکخانہ",
+   "ڈاکخانے",
+   "ڈاک خانہ",
+   "ڈاک خانے",
+   "ڈاک گھر"
+  ]
+ },
+ "pk-hfad-1_potato": {
+  "id": 538,
+  "en": [
+   "potato"
+  ],
+  "ur": [
+   "آلو"
+  ]
+ },
+ "pk-hfad-1_poverty": {
+  "id": 539,
+  "en": [
+   "poverty",
+   "poor(penniless)",
+   "penniless",
+   "impoverished"
+  ],
+  "ur": [
+   "غریب",
+   "غربت",
+   "غربا",
+   "غریب غربا"
+  ]
+ },
+ "pk-hfad-1_preach": {
+  "id": 540,
+  "en": [
+   "preach",
+   "preaching",
+   "preachment"
+  ],
+  "ur": [
+   "تبلیغ",
+   "تبلیغی"
+  ]
+ },
+ "pk-hfad-1_prime-minister": {
+  "id": 541,
+  "en": [
+   "prime minister"
+  ],
+  "ur": [
+   "وزیراعظم",
+   "وزیرِاعظم",
+   "وزیر اعظم"
+  ]
+ },
+ "pk-hfad-1_principal": {
+  "id": 542,
+  "en": [
+   "principal"
+  ],
+  "ur": [
+   "پرنسپل"
+  ]
+ },
+ "pk-hfad-1_principle": {
+  "id": 543,
+  "en": [
+   "principle",
+   "rule(principle)"
+  ],
+  "ur": [
+   "اصول",
+   "اُصول"
+  ]
+ },
+ "pk-hfad-1_procession": {
+  "id": 544,
+  "en": [
+   "procession",
+   "parade"
+  ],
+  "ur": [
+   "جلوس",
+   "پریڈ"
+  ]
+ },
+ "pk-hfad-1_program": {
+  "id": 545,
+  "en": [
+   "programme",
+   "program",
+   "programed"
+  ],
+  "ur": [
+   "پروگرام"
+  ]
+ },
+ "pk-hfad-1_promise": {
+  "id": 546,
+  "en": [
+   "promise",
+   "promised",
+   "pledge",
+   "pledged"
+  ],
+  "ur": [
+   "وعدہ",
+   "وعدے",
+   "عہد"
+  ]
+ },
+ "pk-hfad-1_prophet": {
+  "id": 547,
+  "en": [
+   "prophet"
+  ],
+  "ur": [
+   "پیغمبر"
+  ]
+ },
+ "pk-hfad-1_proud": {
+  "id": 548,
+  "en": [
+   "pride",
+   "proud"
+  ],
+  "ur": [
+   "فخر"
+  ]
+ },
+ "pk-hfad-1_province": {
+  "id": 549,
+  "en": [
+   "province",
+   "provincial"
+  ],
+  "ur": [
+   "صوبہ",
+   "صوبے",
+   "صوبائی"
+  ]
+ },
+ "pk-hfad-1_punctuality": {
+  "id": 550,
+  "en": [
+   "punctuality",
+   "punctual"
+  ],
+  "ur": [
+   "وقت کی پابندی",
+   "وقت کی پابند",
+   "وقت کا پابند",
+   "وقت کے پابند"
+  ]
+ },
+ "pk-hfad-1_punish": {
+  "id": 551,
+  "en": [
+   "punish",
+   "punishment"
+  ],
+  "ur": [
+   "سزا",
+   "سزائے"
+  ]
+ },
+ "pk-hfad-1_punjab": {
+  "id": 552,
+  "en": [
+   "punjab"
+  ],
+  "ur": [
+   "پنجاب"
+  ]
+ },
+ "pk-hfad-1_purple": {
+  "id": 553,
+  "en": [
+   "purple"
+  ],
+  "ur": [
+   "جامنی"
+  ]
+ },
+ "pk-hfad-1_purpose": {
+  "id": 554,
+  "en": [
+   "purpose",
+   "intention"
+  ],
+  "ur": [
+   "مقصد",
+   "نیت",
+   "ارادہ",
+   "اِرادہ",
+   "غرض"
+  ]
+ },
+ "pk-hfad-1_q(double-handed-letter)": {
+  "id": 555,
+  "en": [
+   "q(double-handed-letter)",
+   "quetta",
+   "question"
+  ],
+  "ur": [
+   "q(double-handed-letter)",
+   "کیو(q-double-handed-letter)",
+   "کوئٹہ",
+   "سوال"
+  ]
+ },
+ "pk-hfad-1_q(single-handed-letter)": {
+  "id": 556,
+  "en": [
+   "q(single-handed-letter)",
+   "ق"
+  ],
+  "ur": [
+   "q(single-handed-letter)",
+   "کیو(q-single-handed-letter)",
+   "ق"
+  ]
+ },
+ "pk-hfad-1_quaid-e-azam": {
+  "id": 557,
+  "en": [
+   "quaid-e-azam",
+   "quaid e azam",
+   "muhammad ali jinnah",
+   "quaid e azam muhammad ali jinnah",
+   "quaid-e-azam muhammad ali jinnah"
+  ],
+  "ur": [
+   "قائد اعظم",
+   "قائداعظم",
+   "محمد علی جناح",
+   "قائد اعظم محمد علی جناح",
+   "قائداعظم محمد علی جناح"
+  ]
+ },
+ "pk-hfad-1_quick": {
+  "id": 558,
+  "en": [
+   "quick",
+   "fast(quick)",
+   "quickly",
+   "rapid(quick)",
+   "speedy",
+   "rapidly",
+   "swiftly"
+  ],
+  "ur": [
+   "تیز",
+   "تیزی"
+  ]
+ },
+ "pk-hfad-1_quran": {
+  "id": 559,
+  "en": [
+   "quran",
+   "koran",
+   "holy quran",
+   "qur'an",
+   "holy qur'an",
+   "quranic"
+  ],
+  "ur": [
+   "قرآن",
+   "القرآن",
+   "قرآن مجید",
+   "قرآن پاک",
+   "قرآن کریم",
+   "قرآنی"
+  ]
+ },
+ "pk-hfad-1_r(double-handed-letter)": {
+  "id": 560,
+  "en": [
+   "r(double-handed-letter)"
+  ],
+  "ur": [
+   "r(double-handed-letter)",
+   "آر(r-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_r(single-handed-letter)": {
+  "id": 561,
+  "en": [
+   "r(single-handed-letter)",
+   "ر"
+  ],
+  "ur": [
+   "r(single-handed-letter)",
+   "آر(r-single-handed-letter)",
+   "ر"
+  ]
+ },
+ "pk-hfad-1_radish": {
+  "id": 562,
+  "en": [
+   "radish"
+  ],
+  "ur": [
+   "مولی"
+  ]
+ },
+ "pk-hfad-1_railway-station": {
+  "id": 563,
+  "en": [
+   "railway station",
+   "train station"
+  ],
+  "ur": [
+   "ریلوے اسٹیشن",
+   "ریلوے سٹیشن",
+   "ریلوےاسٹیشن",
+   "ریلوےسٹیشن",
+   "ٹرین اسٹیشن",
+   "ٹرین سٹیشن"
+  ]
+ },
+ "pk-hfad-1_rain": {
+  "id": 564,
+  "en": [
+   "rain",
+   "rained",
+   "rainy",
+   "raining",
+   "rainfall"
+  ],
+  "ur": [
+   "بارش",
+   "برسات",
+   "برساتی"
+  ]
+ },
+ "pk-hfad-1_rainbow": {
+  "id": 565,
+  "en": [
+   "rainbow"
+  ],
+  "ur": [
+   "قوس قزح",
+   "دھنک"
+  ]
+ },
+ "pk-hfad-1_rat": {
+  "id": 566,
+  "en": [
+   "rat",
+   "mouse"
+  ],
+  "ur": [
+   "چوہا",
+   "چوہیا",
+   "چوہے"
+  ]
+ },
+ "pk-hfad-1_rawalpindi": {
+  "id": 567,
+  "en": [
+   "rawalpindi"
+  ],
+  "ur": [
+   "راولپنڈی"
+  ]
+ },
+ "pk-hfad-1_rebellion": {
+  "id": 568,
+  "en": [
+   "rebellion",
+   "rebelliousness",
+   "rebel",
+   "revolt",
+   "mutiny"
+  ],
+  "ur": [
+   "بغاوت",
+   "سرکشی",
+   "باغی"
+  ]
+ },
+ "pk-hfad-1_reconcile": {
+  "id": 569,
+  "en": [
+   "reconcile",
+   "reconciled",
+   "reconciliation"
+  ],
+  "ur": [
+   "صلح"
+  ]
+ },
+ "pk-hfad-1_red": {
+  "id": 570,
+  "en": [
+   "red"
+  ],
+  "ur": [
+   "لال",
+   "سرخ",
+   "سُرخ"
+  ]
+ },
+ "pk-hfad-1_red-chilli": {
+  "id": 571,
+  "en": [
+   "red chilli"
+  ],
+  "ur": [
+   "لال مرچ",
+   "سرخ مرچ"
+  ]
+ },
+ "pk-hfad-1_relative(family)": {
+  "id": 572,
+  "en": [
+   "relative(family)"
+  ],
+  "ur": [
+   "رشتہ دار",
+   "ناتے دار",
+   "رشتے دار",
+   "رشتےدار"
+  ]
+ },
+ "pk-hfad-1_relax": {
+  "id": 573,
+  "en": [
+   "relax",
+   "relaxed",
+   "relaxing",
+   "rest(relax)",
+   "rested",
+   "resting"
+  ],
+  "ur": [
+   "آرام",
+   "آرام دہ"
+  ]
+ },
+ "pk-hfad-1_respect": {
+  "id": 574,
+  "en": [
+   "respect",
+   "respectful"
+  ],
+  "ur": [
+   "عزت",
+   "ادب(عزت)",
+   "احترام"
+  ]
+ },
+ "pk-hfad-1_responsible": {
+  "id": 575,
+  "en": [
+   "responsible",
+   "responsibility",
+   "responsibly"
+  ],
+  "ur": [
+   "ذمہ دار",
+   "ذمہ داری"
+  ]
+ },
+ "pk-hfad-1_restaurant": {
+  "id": 576,
+  "en": [
+   "restaurant"
+  ],
+  "ur": [
+   "ریسٹورینٹ",
+   "ریسٹورانٹ"
+  ]
+ },
+ "pk-hfad-1_result": {
+  "id": 577,
+  "en": [
+   "result"
+  ],
+  "ur": [
+   "رزلٹ",
+   "نتیجہ",
+   "نتیجے"
+  ]
+ },
+ "pk-hfad-1_reward(spiritual)": {
+  "id": 578,
+  "en": [
+   "reward(spiritual)"
+  ],
+  "ur": [
+   "ثواب"
+  ]
+ },
+ "pk-hfad-1_rha(-ing-auxiliary-verb)": {
+  "id": 579,
+  "en": [
+   "ing(رہا)"
+  ],
+  "ur": [
+   "رہا(امدادی-فعل)"
+  ]
+ },
+ "pk-hfad-1_rhi(-ing-auxiliary-verb)": {
+  "id": 580,
+  "en": [
+   "ing(رہی)"
+  ],
+  "ur": [
+   "رہی(امدادی-فعل)"
+  ]
+ },
+ "pk-hfad-1_rhin(-ing-auxiliary-verb)": {
+  "id": 581,
+  "en": [
+   "ing(رہیں)"
+  ],
+  "ur": [
+   "رہیں(امدادی-فعل)"
+  ]
+ },
+ "pk-hfad-1_rho(-ing-auxiliary-verb)": {
+  "id": 582,
+  "en": [
+   "ing(رہو)"
+  ],
+  "ur": [
+   "رہو(امدادی-فعل)"
+  ]
+ },
+ "pk-hfad-1_rhy(-ing-auxiliary-verb)": {
+  "id": 583,
+  "en": [
+   "ing(رہے)"
+  ],
+  "ur": [
+   "رہے(امدادی-فعل)"
+  ]
+ },
+ "pk-hfad-1_rice": {
+  "id": 584,
+  "en": [
+   "rice"
+  ],
+  "ur": [
+   "چاول",
+   "چاولوں"
+  ]
+ },
+ "pk-hfad-1_rickshaw": {
+  "id": 585,
+  "en": [
+   "rickshaw",
+   "chingchi"
+  ],
+  "ur": [
+   "رکشہ",
+   "رکشا",
+   "رکشے",
+   "چنگ چی",
+   "چنگچی"
+  ]
+ },
+ "pk-hfad-1_right(entitlement)": {
+  "id": 586,
+  "en": [
+   "right(entitlement)"
+  ],
+  "ur": [
+   "حق"
+  ]
+ },
+ "pk-hfad-1_right-now": {
+  "id": 587,
+  "en": [
+   "right now(ابھی)"
+  ],
+  "ur": [
+   "ابھی"
+  ]
+ },
+ "pk-hfad-1_river": {
+  "id": 588,
+  "en": [
+   "river"
+  ],
+  "ur": [
+   "دریا",
+   "دریائے",
+   "دریائی"
+  ]
+ },
+ "pk-hfad-1_road": {
+  "id": 589,
+  "en": [
+   "road"
+  ],
+  "ur": [
+   "سڑک",
+   "روڈ"
+  ]
+ },
+ "pk-hfad-1_roti": {
+  "id": 590,
+  "en": [
+   "roti",
+   "chapati",
+   "flatbread(roti)"
+  ],
+  "ur": [
+   "روٹی",
+   "چپاتی"
+  ]
+ },
+ "pk-hfad-1_rrey": {
+  "id": 591,
+  "en": [
+   "ڑ"
+  ],
+  "ur": [
+   "ڑ"
+  ]
+ },
+ "pk-hfad-1_rumor": {
+  "id": 592,
+  "en": [
+   "rumor",
+   "rumour"
+  ],
+  "ur": [
+   "افواہ"
+  ]
+ },
+ "pk-hfad-1_s(double-handed-letter)": {
+  "id": 593,
+  "en": [
+   "s(double-handed-letter)",
+   "september"
+  ],
+  "ur": [
+   "s(double-handed-letter)",
+   "ایس(s-double-handed-letter)",
+   "ستمبر"
+  ]
+ },
+ "pk-hfad-1_s(single-handed-letter)": {
+  "id": 594,
+  "en": [
+   "s(single-handed-letter)",
+   "س"
+  ],
+  "ur": [
+   "s(single-handed-letter)",
+   "ایس(s-single-handed-letter)",
+   "س"
+  ]
+ },
+ "pk-hfad-1_safe": {
+  "id": 595,
+  "en": [
+   "safe",
+   "safety",
+   "protected",
+   "protection",
+   "secure",
+   "security"
+  ],
+  "ur": [
+   "سلامت",
+   "سلامتی",
+   "محفوظ",
+   "حفاظت"
+  ]
+ },
+ "pk-hfad-1_sahiwal": {
+  "id": 596,
+  "en": [
+   "sahiwal"
+  ],
+  "ur": [
+   "ساہیوال"
+  ]
+ },
+ "pk-hfad-1_salat": {
+  "id": 597,
+  "en": [
+   "salat",
+   "namaz",
+   "prayer(namaz)"
+  ],
+  "ur": [
+   "نماز"
+  ]
+ },
+ "pk-hfad-1_salt": {
+  "id": 598,
+  "en": [
+   "salt",
+   "salty",
+   "salted"
+  ],
+  "ur": [
+   "نمک",
+   "نمکین"
+  ]
+ },
+ "pk-hfad-1_samosa": {
+  "id": 599,
+  "en": [
+   "samosa"
+  ],
+  "ur": [
+   "سموسہ",
+   "سموسے"
+  ]
+ },
+ "pk-hfad-1_sargodha": {
+  "id": 600,
+  "en": [
+   "sargodha"
+  ],
+  "ur": [
+   "سرگودھا"
+  ]
+ },
+ "pk-hfad-1_satan": {
+  "id": 601,
+  "en": [
+   "satan",
+   "devil",
+   "iblis"
+  ],
+  "ur": [
+   "شیطان",
+   "ابلیس",
+   "اِبلیس"
+  ]
+ },
+ "pk-hfad-1_saturday": {
+  "id": 602,
+  "en": [
+   "saturday"
+  ],
+  "ur": [
+   "ہفتہ(دن)",
+   "ہفتے(دن)"
+  ]
+ },
+ "pk-hfad-1_saudi-arabia": {
+  "id": 603,
+  "en": [
+   "saudi arabia",
+   "saudi arabian",
+   "saudi"
+  ],
+  "ur": [
+   "سعودی عرب",
+   "سعودی"
+  ]
+ },
+ "pk-hfad-1_scarf": {
+  "id": 604,
+  "en": [
+   "scarf",
+   "dupatta"
+  ],
+  "ur": [
+   "دوپٹہ",
+   "اسکارف",
+   "سکارف"
+  ]
+ },
+ "pk-hfad-1_school": {
+  "id": 605,
+  "en": [
+   "school"
+  ],
+  "ur": [
+   "اسکول",
+   "سکول"
+  ]
+ },
+ "pk-hfad-1_school-canteen": {
+  "id": 606,
+  "en": [
+   "school canteen",
+   "school cafe",
+   "school cafeteria"
+  ],
+  "ur": [
+   "اسکول کینٹین",
+   "سکول کینٹین",
+   "اسکول کیفےٹیریا",
+   "سکول کیفےٹیریا"
+  ]
+ },
+ "pk-hfad-1_science": {
+  "id": 607,
+  "en": [
+   "science",
+   "scientific"
+  ],
+  "ur": [
+   "سائنس",
+   "سائنسی"
+  ]
+ },
+ "pk-hfad-1_sea": {
+  "id": 608,
+  "en": [
+   "sea",
+   "ocean",
+   "marine"
+  ],
+  "ur": [
+   "سمندر",
+   "سمندری",
+   "بحری",
+   "بحر(سمندر)",
+   "بحرِ"
+  ]
+ },
+ "pk-hfad-1_search": {
+  "id": 609,
+  "en": [
+   "search",
+   "searched",
+   "searching",
+   "investigate",
+   "scout"
+  ],
+  "ur": [
+   "تلاش",
+   "تلاشی",
+   "کھوج",
+   "چھان بین",
+   "چھان بینی"
+  ]
+ },
+ "pk-hfad-1_second(unit-of-time)": {
+  "id": 610,
+  "en": [
+   "second(unit-of-time)",
+   "seconds(unit-of-time)"
+  ],
+  "ur": [
+   "سیکنڈ",
+   "سیکنڈوں",
+   "لمحہ",
+   "لمحے"
+  ]
+ },
+ "pk-hfad-1_security-guard": {
+  "id": 611,
+  "en": [
+   "security guard",
+   "watchman"
+  ],
+  "ur": [
+   "چوکیدار",
+   "سیکورٹی گارڈ"
+  ]
+ },
+ "pk-hfad-1_selfishness": {
+  "id": 612,
+  "en": [
+   "selfishness",
+   "selfish"
+  ],
+  "ur": [
+   "خودغرض",
+   "خود غرض",
+   "خودغرضی",
+   "خود غرضی"
+  ]
+ },
+ "pk-hfad-1_servant": {
+  "id": 613,
+  "en": [
+   "servant",
+   "maid"
+  ],
+  "ur": [
+   "نوکر",
+   "نوکرانی",
+   "خادم",
+   "خادمہ"
+  ]
+ },
+ "pk-hfad-1_shadow": {
+  "id": 614,
+  "en": [
+   "shadow",
+   "shade(shadow)"
+  ],
+  "ur": [
+   "سایہ",
+   "سائے",
+   "چھاؤں"
+  ]
+ },
+ "pk-hfad-1_shame": {
+  "id": 615,
+  "en": [
+   "shame",
+   "shy",
+   "shyness"
+  ],
+  "ur": [
+   "شرم",
+   "شرمیلا",
+   "شرمیلی",
+   "شرمیلے"
+  ]
+ },
+ "pk-hfad-1_sharpener": {
+  "id": 616,
+  "en": [
+   "sharpener"
+  ],
+  "ur": [
+   "شارپنر",
+   "شاپنر"
+  ]
+ },
+ "pk-hfad-1_sheen": {
+  "id": 617,
+  "en": [
+   "ش"
+  ],
+  "ur": [
+   "ش"
+  ]
+ },
+ "pk-hfad-1_sheikhupura": {
+  "id": 618,
+  "en": [
+   "sheikhupura"
+  ],
+  "ur": [
+   "شیخوپورہ"
+  ]
+ },
+ "pk-hfad-1_ship(boat)": {
+  "id": 619,
+  "en": [
+   "ship(boat)"
+  ],
+  "ur": [
+   "بحری جہاز",
+   "سمندری جہاز"
+  ]
+ },
+ "pk-hfad-1_shirt": {
+  "id": 620,
+  "en": [
+   "shirt"
+  ],
+  "ur": [
+   "شرٹ"
+  ]
+ },
+ "pk-hfad-1_shop": {
+  "id": 621,
+  "en": [
+   "shop"
+  ],
+  "ur": [
+   "دکان",
+   "دُکان",
+   "دوکان",
+   "شاپ"
+  ]
+ },
+ "pk-hfad-1_shut": {
+  "id": 622,
+  "en": [
+   "close(shut)",
+   "closed",
+   "shut"
+  ],
+  "ur": [
+   "بند(منقطع)"
+  ]
+ },
+ "pk-hfad-1_sialkot": {
+  "id": 623,
+  "en": [
+   "sialkot"
+  ],
+  "ur": [
+   "سیالکوٹ",
+   "سیالکوٹی"
+  ]
+ },
+ "pk-hfad-1_silver": {
+  "id": 624,
+  "en": [
+   "silver"
+  ],
+  "ur": [
+   "چاندی"
+  ]
+ },
+ "pk-hfad-1_sin": {
+  "id": 625,
+  "en": [
+   "sin"
+  ],
+  "ur": [
+   "گناہ",
+   "گُناہ"
+  ]
+ },
+ "pk-hfad-1_sindh": {
+  "id": 626,
+  "en": [
+   "sindh"
+  ],
+  "ur": [
+   "سندھ"
+  ]
+ },
+ "pk-hfad-1_singular": {
+  "id": 627,
+  "en": [
+   "singular"
+  ],
+  "ur": [
+   "واحد"
+  ]
+ },
+ "pk-hfad-1_sister": {
+  "id": 628,
+  "en": [
+   "sister"
+  ],
+  "ur": [
+   "بہن",
+   "ہمشیرہ",
+   "آپا"
+  ]
+ },
+ "pk-hfad-1_sisters-daughter": {
+  "id": 629,
+  "en": [
+   "sister's daughter",
+   "niece(sister's-daughter)"
+  ],
+  "ur": [
+   "بھانجی"
+  ]
+ },
+ "pk-hfad-1_sisters-son": {
+  "id": 630,
+  "en": [
+   "sister's son",
+   "nephew(sister's-son)"
+  ],
+  "ur": [
+   "بھانجا",
+   "بھانجے"
+  ]
+ },
+ "pk-hfad-1_sky": {
+  "id": 631,
+  "en": [
+   "sky"
+  ],
+  "ur": [
+   "آسمان",
+   "آسماں",
+   "آسمانی"
+  ]
+ },
+ "pk-hfad-1_slippers": {
+  "id": 632,
+  "en": [
+   "slippers",
+   "sandals",
+   "shoes",
+   "shoe",
+   "boots"
+  ],
+  "ur": [
+   "جوتا",
+   "جوتی",
+   "جوتے",
+   "چپل",
+   "سینڈل"
+  ]
+ },
+ "pk-hfad-1_snatch": {
+  "id": 633,
+  "en": [
+   "snatch",
+   "snatched"
+  ],
+  "ur": [
+   "چھین",
+   "چھینا",
+   "چھینتا",
+   "چھینتی",
+   "چھینتے",
+   "چھیننا",
+   "چھیننے",
+   "چھینو",
+   "چھینوں",
+   "چھینی",
+   "چھینیں",
+   "چھینے"
+  ]
+ },
+ "pk-hfad-1_society": {
+  "id": 634,
+  "en": [
+   "society",
+   "social"
+  ],
+  "ur": [
+   "معاشرہ",
+   "سماج",
+   "سماجی",
+   "معاشرے",
+   "معاشرتی"
+  ]
+ },
+ "pk-hfad-1_solider": {
+  "id": 635,
+  "en": [
+   "solider"
+  ],
+  "ur": [
+   "فوجی"
+  ]
+ },
+ "pk-hfad-1_son": {
+  "id": 636,
+  "en": [
+   "son"
+  ],
+  "ur": [
+   "بیٹا",
+   "بیٹے",
+   "فرزند"
+  ]
+ },
+ "pk-hfad-1_soup": {
+  "id": 637,
+  "en": [
+   "soup"
+  ],
+  "ur": [
+   "سوپ"
+  ]
+ },
+ "pk-hfad-1_sparrow": {
+  "id": 638,
+  "en": [
+   "sparrow"
+  ],
+  "ur": [
+   "چڑیا"
+  ]
+ },
+ "pk-hfad-1_spectacle": {
+  "id": 639,
+  "en": [
+   "spectacle"
+  ],
+  "ur": [
+   "تماشا",
+   "تماشہ",
+   "تماشے"
+  ]
+ },
+ "pk-hfad-1_spinach": {
+  "id": 640,
+  "en": [
+   "spinach"
+  ],
+  "ur": [
+   "پالک"
+  ]
+ },
+ "pk-hfad-1_spoiled": {
+  "id": 641,
+  "en": [
+   "spoiled",
+   "ruined",
+   "defective",
+   "defect"
+  ],
+  "ur": [
+   "خراب",
+   "خرابی",
+   "برباد",
+   "بربادی",
+   "تباہ",
+   "تباہی",
+   "تباہ شدہ"
+  ]
+ },
+ "pk-hfad-1_sports": {
+  "id": 642,
+  "en": [
+   "sports"
+  ],
+  "ur": [
+   "اسپورٹس",
+   "سپورٹس"
+  ]
+ },
+ "pk-hfad-1_spring(season)": {
+  "id": 643,
+  "en": [
+   "spring(season)"
+  ],
+  "ur": [
+   "بہار"
+  ]
+ },
+ "pk-hfad-1_spring(water-basin)": {
+  "id": 644,
+  "en": [
+   "spring(water-basin)"
+  ],
+  "ur": [
+   "چشمہ(فوارہ)",
+   "چشمے(فوارہ)"
+  ]
+ },
+ "pk-hfad-1_spy": {
+  "id": 645,
+  "en": [
+   "spy",
+   "spying"
+  ],
+  "ur": [
+   "جاسوس",
+   "جاسوسی"
+  ]
+ },
+ "pk-hfad-1_stadium": {
+  "id": 646,
+  "en": [
+   "stadium"
+  ],
+  "ur": [
+   "اسٹیڈیم",
+   "سٹیڈیم"
+  ]
+ },
+ "pk-hfad-1_staffroom": {
+  "id": 647,
+  "en": [
+   "staffroom",
+   "staff room"
+  ],
+  "ur": [
+   "سٹاف روم",
+   "اسٹاف روم"
+  ]
+ },
+ "pk-hfad-1_stapler": {
+  "id": 648,
+  "en": [
+   "stapler"
+  ],
+  "ur": [
+   "اسٹیپلر",
+   "سٹیپلر",
+   "سٹپلر"
+  ]
+ },
+ "pk-hfad-1_stars": {
+  "id": 649,
+  "en": [
+   "stars"
+  ],
+  "ur": [
+   "ستارے",
+   "تارے"
+  ]
+ },
+ "pk-hfad-1_start": {
+  "id": 650,
+  "en": [
+   "start",
+   "started",
+   "starting",
+   "beginning",
+   "begin",
+   "begins",
+   "begun",
+   "began",
+   "initiate"
+  ],
+  "ur": [
+   "شروع",
+   "شروعات",
+   "آغاز",
+   "ابتدا",
+   "اِبتدا",
+   "افتتاح"
+  ]
+ },
+ "pk-hfad-1_storm": {
+  "id": 651,
+  "en": [
+   "storm",
+   "stormy",
+   "wind storm"
+  ],
+  "ur": [
+   "آندھی",
+   "طوفان",
+   "طوفانی"
+  ]
+ },
+ "pk-hfad-1_story": {
+  "id": 652,
+  "en": [
+   "story",
+   "tale"
+  ],
+  "ur": [
+   "کہانی",
+   "داستان"
+  ]
+ },
+ "pk-hfad-1_strawberry": {
+  "id": 653,
+  "en": [
+   "strawberry"
+  ],
+  "ur": [
+   "اسٹرابیری",
+   "سٹرابیری",
+   "اسٹرابری",
+   "سٹرابری",
+   "اسٹابری",
+   "سٹابری"
+  ]
+ },
+ "pk-hfad-1_streets": {
+  "id": 654,
+  "en": [
+   "streets",
+   "street"
+  ],
+  "ur": [
+   "گلیاں",
+   "گلی",
+   "گلیوں"
+  ]
+ },
+ "pk-hfad-1_stroll": {
+  "id": 655,
+  "en": [
+   "stroll",
+   "outing"
+  ],
+  "ur": [
+   "سیر(چہل-قدمی)",
+   "چہل قدمی",
+   "ٹہلنے"
+  ]
+ },
+ "pk-hfad-1_stubbornness": {
+  "id": 656,
+  "en": [
+   "stubbornness",
+   "stubborn",
+   "obstinacy"
+  ],
+  "ur": [
+   "ضد",
+   "ضِد",
+   "ضدی"
+  ]
+ },
+ "pk-hfad-1_student": {
+  "id": 657,
+  "en": [
+   "student",
+   "apprentice"
+  ],
+  "ur": [
+   "طالب علم",
+   "طالبعلم",
+   "طالبِعلم",
+   "طالبہ",
+   "طلباء",
+   "طالبات",
+   "طالب علموں",
+   "طالبعلموں",
+   "طالبِعلموں",
+   "شاگرد",
+   "شاگردہ",
+   "اسٹوڈنٹ",
+   "سٹوڈنٹ",
+   "سٹوڈنٹس"
+  ]
+ },
+ "pk-hfad-1_suaad": {
+  "id": 658,
+  "en": [
+   "ص"
+  ],
+  "ur": [
+   "ص"
+  ]
+ },
+ "pk-hfad-1_sudden": {
+  "id": 659,
+  "en": [
+   "sudden",
+   "suddenly"
+  ],
+  "ur": [
+   "اچانک"
+  ]
+ },
+ "pk-hfad-1_sugar": {
+  "id": 660,
+  "en": [
+   "sugar"
+  ],
+  "ur": [
+   "چینی(میٹھا)"
+  ]
+ },
+ "pk-hfad-1_sugarcane": {
+  "id": 661,
+  "en": [
+   "sugarcane",
+   "sugar cane"
+  ],
+  "ur": [
+   "گنا(پودا)",
+   "گنے(پودا)"
+  ]
+ },
+ "pk-hfad-1_suggestion": {
+  "id": 662,
+  "en": [
+   "suggestion",
+   "advice"
+  ],
+  "ur": [
+   "مشورہ",
+   "مشورے",
+   "تجویز",
+   "نصیحت"
+  ]
+ },
+ "pk-hfad-1_sun": {
+  "id": 663,
+  "en": [
+   "sun",
+   "solar",
+   "sunny"
+  ],
+  "ur": [
+   "سورج",
+   "شمسی"
+  ]
+ },
+ "pk-hfad-1_sunday": {
+  "id": 664,
+  "en": [
+   "sunday"
+  ],
+  "ur": [
+   "اتوار",
+   "اِتوار"
+  ]
+ },
+ "pk-hfad-1_sweets": {
+  "id": 665,
+  "en": [
+   "sweets"
+  ],
+  "ur": [
+   "مٹھائی"
+  ]
+ },
+ "pk-hfad-1_system": {
+  "id": 666,
+  "en": [
+   "system"
+  ],
+  "ur": [
+   "نظام",
+   "نظامِ"
+  ]
+ },
+ "pk-hfad-1_t(double-handed-letter)": {
+  "id": 667,
+  "en": [
+   "t(double-handed-letter)",
+   "tuesday"
+  ],
+  "ur": [
+   "t(double-handed-letter)",
+   "ٹی(t-double-handed-letter)",
+   "منگل"
+  ]
+ },
+ "pk-hfad-1_t(single-handed-letter)": {
+  "id": 668,
+  "en": [
+   "t(single-handed-letter)",
+   "ٹ"
+  ],
+  "ur": [
+   "t(single-handed-letter)",
+   "ٹی(t-single-handed-letter)",
+   "ٹ"
+  ]
+ },
+ "pk-hfad-1_tax": {
+  "id": 669,
+  "en": [
+   "tax",
+   "taxes",
+   "taxation"
+  ],
+  "ur": [
+   "ٹیکس"
+  ]
+ },
+ "pk-hfad-1_tea": {
+  "id": 670,
+  "en": [
+   "tea"
+  ],
+  "ur": [
+   "چائے"
+  ]
+ },
+ "pk-hfad-1_teacher": {
+  "id": 671,
+  "en": [
+   "teacher",
+   "instructor",
+   "professor",
+   "tutor"
+  ],
+  "ur": [
+   "استاد",
+   "اُستاد",
+   "استانی",
+   "اُستانی",
+   "ٹیچر",
+   "پروفیسر",
+   "انسٹرکٹر",
+   "معلم",
+   "مُعلم",
+   "معلمہ"
+  ]
+ },
+ "pk-hfad-1_tey": {
+  "id": 672,
+  "en": [
+   "ت"
+  ],
+  "ur": [
+   "ت"
+  ]
+ },
+ "pk-hfad-1_tha": {
+  "id": 673,
+  "en": [
+   "was(masculine-تھا)"
+  ],
+  "ur": [
+   "تھا"
+  ]
+ },
+ "pk-hfad-1_that": {
+  "id": 674,
+  "en": [
+   "that",
+   "he",
+   "she",
+   "they"
+  ],
+  "ur": [
+   "وہ",
+   "وہی",
+   "اُس",
+   "اُسے",
+   "اُسی",
+   "اس(اُس)",
+   "اسی(اُسی)",
+   "اسے(اُسے)",
+   "اُن",
+   "ان(اُن)"
+  ]
+ },
+ "pk-hfad-1_there": {
+  "id": 675,
+  "en": [
+   "there"
+  ],
+  "ur": [
+   "وہاں",
+   "وہیں",
+   "ادھر(وہاں)",
+   "اُدھر"
+  ]
+ },
+ "pk-hfad-1_thi": {
+  "id": 676,
+  "en": [
+   "was(feminine-تھی)"
+  ],
+  "ur": [
+   "تھی"
+  ]
+ },
+ "pk-hfad-1_thief": {
+  "id": 677,
+  "en": [
+   "thief",
+   "theft"
+  ],
+  "ur": [
+   "چور",
+   "چوری"
+  ]
+ },
+ "pk-hfad-1_thirst": {
+  "id": 678,
+  "en": [
+   "thirst",
+   "thirsty"
+  ],
+  "ur": [
+   "پیاس",
+   "پیاسا",
+   "پیاسی",
+   "پیاسے"
+  ]
+ },
+ "pk-hfad-1_thursday": {
+  "id": 679,
+  "en": [
+   "thursday"
+  ],
+  "ur": [
+   "جمعرات"
+  ]
+ },
+ "pk-hfad-1_thy": {
+  "id": 680,
+  "en": [
+   "were(تھے)"
+  ],
+  "ur": [
+   "تھے"
+  ]
+ },
+ "pk-hfad-1_time": {
+  "id": 681,
+  "en": [
+   "time"
+  ],
+  "ur": [
+   "وقت"
+  ]
+ },
+ "pk-hfad-1_timetable": {
+  "id": 682,
+  "en": [
+   "timetable",
+   "schedule"
+  ],
+  "ur": [
+   "شیڈول",
+   "ٹائم ٹیبل"
+  ]
+ },
+ "pk-hfad-1_tm": {
+  "id": 683,
+  "en": [
+   "you(تم)"
+  ],
+  "ur": [
+   "تم",
+   "تجھ",
+   "تُم",
+   "تو(تم)",
+   "تُو"
+  ]
+ },
+ "pk-hfad-1_tmhara": {
+  "id": 684,
+  "en": [
+   "your(تمہارا)",
+   "yours(تمہارا)"
+  ],
+  "ur": [
+   "تمہارا",
+   "تیرا"
+  ]
+ },
+ "pk-hfad-1_tmhari": {
+  "id": 685,
+  "en": [
+   "your(تمہاری)",
+   "yours(تمہاری)"
+  ],
+  "ur": [
+   "تمہاری",
+   "تیری"
+  ]
+ },
+ "pk-hfad-1_tmhary": {
+  "id": 686,
+  "en": [
+   "your(تمہارے)",
+   "yours(تمہارے)"
+  ],
+  "ur": [
+   "تمہارے",
+   "تیرے"
+  ]
+ },
+ "pk-hfad-1_tmhein": {
+  "id": 687,
+  "en": [
+   "you(تمہیں)"
+  ],
+  "ur": [
+   "تمہیں"
+  ]
+ },
+ "pk-hfad-1_to": {
+  "id": 688,
+  "en": [
+   "to"
+  ],
+  "ur": [
+   "کو"
+  ]
+ },
+ "pk-hfad-1_today": {
+  "id": 689,
+  "en": [
+   "today"
+  ],
+  "ur": [
+   "آج"
+  ]
+ },
+ "pk-hfad-1_toey": {
+  "id": 690,
+  "en": [
+   "ط"
+  ],
+  "ur": [
+   "ط"
+  ]
+ },
+ "pk-hfad-1_toffee": {
+  "id": 691,
+  "en": [
+   "toffee",
+   "candy",
+   "confectionery"
+  ],
+  "ur": [
+   "ٹافی"
+  ]
+ },
+ "pk-hfad-1_tomato": {
+  "id": 692,
+  "en": [
+   "tomato"
+  ],
+  "ur": [
+   "ٹماٹر"
+  ]
+ },
+ "pk-hfad-1_tomb": {
+  "id": 693,
+  "en": [
+   "tomb",
+   "shrine"
+  ],
+  "ur": [
+   "مزار",
+   "مقبرہ",
+   "مقبرے"
+  ]
+ },
+ "pk-hfad-1_tomorrow": {
+  "id": 694,
+  "en": [
+   "tomorrow"
+  ],
+  "ur": [
+   "کل(آئندہ-دن)"
+  ]
+ },
+ "pk-hfad-1_tools": {
+  "id": 695,
+  "en": [
+   "tools",
+   "instruments"
+  ],
+  "ur": [
+   "آلات",
+   "اوزار",
+   "اوزاروں"
+  ]
+ },
+ "pk-hfad-1_tortoise": {
+  "id": 696,
+  "en": [
+   "tortoise",
+   "turtle"
+  ],
+  "ur": [
+   "کچھوا",
+   "کچھوے"
+  ]
+ },
+ "pk-hfad-1_tractor": {
+  "id": 697,
+  "en": [
+   "tractor"
+  ],
+  "ur": [
+   "ٹریکٹر"
+  ]
+ },
+ "pk-hfad-1_train(vehicle)": {
+  "id": 698,
+  "en": [
+   "train(vehicle)"
+  ],
+  "ur": [
+   "ٹرین",
+   "ریل گاری"
+  ]
+ },
+ "pk-hfad-1_transform": {
+  "id": 699,
+  "en": [
+   "transform",
+   "transformed",
+   "transforming",
+   "change",
+   "convert",
+   "converting",
+   "converted",
+   "replace",
+   "replaceing",
+   "changing",
+   "changed",
+   "conversion",
+   "replacement"
+  ],
+  "ur": [
+   "تبدیل",
+   "تبدیلی",
+   "بدل",
+   "بدلا",
+   "بدلتا",
+   "بدلتی",
+   "بدلتے",
+   "بدلنا",
+   "بدلنے",
+   "بدلو",
+   "بدلوں",
+   "بدلی",
+   "بدلیں",
+   "بدلے"
+  ]
+ },
+ "pk-hfad-1_tree": {
+  "id": 700,
+  "en": [
+   "tree"
+  ],
+  "ur": [
+   "درخت",
+   "پیڑ",
+   "شجر"
+  ]
+ },
+ "pk-hfad-1_trouble": {
+  "id": 701,
+  "en": [
+   "trouble",
+   "problem"
+  ],
+  "ur": [
+   "مصیبت",
+   "مسئلہ",
+   "مسئلے"
+  ]
+ },
+ "pk-hfad-1_trousers": {
+  "id": 702,
+  "en": [
+   "pants(trousers)",
+   "pajamas"
+  ],
+  "ur": [
+   "پتلون",
+   "پاجامہ"
+  ]
+ },
+ "pk-hfad-1_true": {
+  "id": 703,
+  "en": [
+   "true",
+   "truth",
+   "honest",
+   "honestly",
+   "honesty",
+   "truthful",
+   "truthfully"
+  ],
+  "ur": [
+   "سچ",
+   "سچا",
+   "سچی",
+   "سچے",
+   "سچائی",
+   "صداقت"
+  ]
+ },
+ "pk-hfad-1_try": {
+  "id": 704,
+  "en": [
+   "try",
+   "effort",
+   "endeavor",
+   "trying"
+  ],
+  "ur": [
+   "کوشش",
+   "جدوجہد"
+  ]
+ },
+ "pk-hfad-1_turkey(country)": {
+  "id": 705,
+  "en": [
+   "turkey(country)"
+  ],
+  "ur": [
+   "ترکی",
+   "تُرکی"
+  ]
+ },
+ "pk-hfad-1_tv": {
+  "id": 706,
+  "en": [
+   "television",
+   "tv"
+  ],
+  "ur": [
+   "ٹی وی",
+   "ٹیلی ویژن",
+   "ٹیلیویژن"
+  ]
+ },
+ "pk-hfad-1_u(double-handed-letter)": {
+  "id": 707,
+  "en": [
+   "u(double-handed-letter)"
+  ],
+  "ur": [
+   "u(double-handed-letter)",
+   "یو(u-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_u(single-handed-letter)": {
+  "id": 708,
+  "en": [
+   "u(single-handed-letter)"
+  ],
+  "ur": [
+   "u(single-handed-letter)",
+   "یو(u-single-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_unhappy": {
+  "id": 709,
+  "en": [
+   "unhappy",
+   "sad",
+   "saddened",
+   "saddening",
+   "depression",
+   "depressed",
+   "depressing",
+   "sadness",
+   "sorrow",
+   "sorrowful"
+  ],
+  "ur": [
+   "اداس",
+   "اُداس",
+   "اداسی",
+   "اُداسی",
+   "ناخوش",
+   "ناخوشی",
+   "افسوس",
+   "افسردہ",
+   "افسوسناک",
+   "دکھ",
+   "دُکھ",
+   "دکھی",
+   "دُکھی"
+  ]
+ },
+ "pk-hfad-1_uniform(costume)": {
+  "id": 710,
+  "en": [
+   "uniform(costume)"
+  ],
+  "ur": [
+   "یونیفارم",
+   "وردی"
+  ]
+ },
+ "pk-hfad-1_university": {
+  "id": 711,
+  "en": [
+   "university"
+  ],
+  "ur": [
+   "یونیورسٹی",
+   "جامع درس گاہ"
+  ]
+ },
+ "pk-hfad-1_unnecessary": {
+  "id": 712,
+  "en": [
+   "unnecessary",
+   "wasteful",
+   "futile",
+   "pointless",
+   "useless"
+  ],
+  "ur": [
+   "فضول",
+   "فالتو",
+   "بیکار"
+  ]
+ },
+ "pk-hfad-1_unoccupied": {
+  "id": 713,
+  "en": [
+   "unoccupied",
+   "discharged",
+   "idle"
+  ],
+  "ur": [
+   "فارغ"
+  ]
+ },
+ "pk-hfad-1_until": {
+  "id": 714,
+  "en": [
+   "till(limit)",
+   "up to",
+   "until"
+  ],
+  "ur": [
+   "تک"
+  ]
+ },
+ "pk-hfad-1_untruth": {
+  "id": 715,
+  "en": [
+   "lie(untruth)",
+   "lying(untruth)",
+   "liar",
+   "untruth",
+   "falsehood"
+  ],
+  "ur": [
+   "جھوٹ",
+   "جھوٹا",
+   "جھوٹی",
+   "جھوٹے"
+  ]
+ },
+ "pk-hfad-1_unwell": {
+  "id": 716,
+  "en": [
+   "unwell"
+  ],
+  "ur": [
+   "بے حال",
+   "بےحال",
+   "بدحال",
+   "خستہ حال"
+  ]
+ },
+ "pk-hfad-1_upset": {
+  "id": 717,
+  "en": [
+   "upset",
+   "confused"
+  ],
+  "ur": [
+   "پریشان",
+   "پریشانی"
+  ]
+ },
+ "pk-hfad-1_urdu": {
+  "id": 718,
+  "en": [
+   "urdu"
+  ],
+  "ur": [
+   "اردو",
+   "اُردو"
+  ]
+ },
+ "pk-hfad-1_us(we)": {
+  "id": 719,
+  "en": [
+   "us(we)"
+  ],
+  "ur": [
+   "ہمیں"
+  ]
+ },
+ "pk-hfad-1_use": {
+  "id": 720,
+  "en": [
+   "use",
+   "usage",
+   "utilize"
+  ],
+  "ur": [
+   "استعمال",
+   "اِستعمال"
+  ]
+ },
+ "pk-hfad-1_v(double-handed-letter)": {
+  "id": 721,
+  "en": [
+   "v(double-handed-letter)"
+  ],
+  "ur": [
+   "v(double-handed-letter)",
+   "وی(v-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_v(single-handed-letter)": {
+  "id": 722,
+  "en": [
+   "v(single-handed-letter)",
+   "2",
+   "two"
+  ],
+  "ur": [
+   "v(single-handed-letter)",
+   "وی(v-single-handed-letter)",
+   "2",
+   "۲",
+   "دو(2)"
+  ]
+ },
+ "pk-hfad-1_van": {
+  "id": 723,
+  "en": [
+   "van"
+  ],
+  "ur": [
+   "وین"
+  ]
+ },
+ "pk-hfad-1_various": {
+  "id": 724,
+  "en": [
+   "various"
+  ],
+  "ur": [
+   "مختلف",
+   "مختلف اقسام",
+   "مختلف قسم"
+  ]
+ },
+ "pk-hfad-1_vegetables": {
+  "id": 725,
+  "en": [
+   "vegetables"
+  ],
+  "ur": [
+   "سبزی",
+   "سبزیاں",
+   "سبزیوں"
+  ]
+ },
+ "pk-hfad-1_verse(quran)": {
+  "id": 726,
+  "en": [
+   "verse(quran)"
+  ],
+  "ur": [
+   "آیت"
+  ]
+ },
+ "pk-hfad-1_very": {
+  "id": 727,
+  "en": [
+   "very",
+   "many",
+   "a lot",
+   "lots"
+  ],
+  "ur": [
+   "بہت",
+   "نہایت",
+   "انتہائی",
+   "شدید"
+  ]
+ },
+ "pk-hfad-1_village": {
+  "id": 728,
+  "en": [
+   "village",
+   "rural"
+  ],
+  "ur": [
+   "گاؤں",
+   "دیہات",
+   "دیہاتی",
+   "دیہی"
+  ]
+ },
+ "pk-hfad-1_volcano": {
+  "id": 729,
+  "en": [
+   "volcano",
+   "volcanic"
+  ],
+  "ur": [
+   "آتش فشاں"
+  ]
+ },
+ "pk-hfad-1_w(double-handed-letter)": {
+  "id": 730,
+  "en": [
+   "w(double-handed-letter)",
+   "wednesday"
+  ],
+  "ur": [
+   "w(double-handed-letter)",
+   "ڈبلیو(w-double-handed-letter)",
+   "بدھ(دن)"
+  ]
+ },
+ "pk-hfad-1_w(single-handed-letter)": {
+  "id": 731,
+  "en": [
+   "w(single-handed-letter)",
+   "3",
+   "three"
+  ],
+  "ur": [
+   "w(single-handed-letter)",
+   "ڈبلیو(w-single-handed-letter)",
+   "3",
+   "۳",
+   "تین"
+  ]
+ },
+ "pk-hfad-1_wait": {
+  "id": 732,
+  "en": [
+   "wait",
+   "waiting",
+   "anticipate",
+   "anticipation"
+  ],
+  "ur": [
+   "انتظار",
+   "اِنتظار",
+   "منتظر"
+  ]
+ },
+ "pk-hfad-1_wake": {
+  "id": 733,
+  "en": [
+   "wake",
+   "wake up",
+   "waking up",
+   "awake",
+   "awaken",
+   "awakened"
+  ],
+  "ur": [
+   "جاگنا",
+   "جاگ(جاگنا)",
+   "جاگا",
+   "جاگتا",
+   "جاگتی",
+   "جاگتے",
+   "جاگنے",
+   "جاگو",
+   "جاگوں",
+   "جاگی",
+   "جاگیں",
+   "جاگے"
+  ]
+ },
+ "pk-hfad-1_walk": {
+  "id": 734,
+  "en": [
+   "walk",
+   "walking"
+  ],
+  "ur": [
+   "چل(پیدل)",
+   "چلا(پیدل)",
+   "چلتا(پیدل)",
+   "چلتی(پیدل)",
+   "چلتے(پیدل)",
+   "چلنا(پیدل)",
+   "چلنے(پیدل)",
+   "چلو(پیدل)",
+   "چلوں(پیدل)",
+   "چلی(پیدل)",
+   "چلیں(پیدل)",
+   "چلے(پیدل)",
+   "پیدل"
+  ]
+ },
+ "pk-hfad-1_washroom": {
+  "id": 735,
+  "en": [
+   "washroom",
+   "bathroom",
+   "toilet"
+  ],
+  "ur": [
+   "واش روم",
+   "غسل خانہ",
+   "باتھ روم",
+   "بیت الخلاء",
+   "ٹوائلٹ"
+  ]
+ },
+ "pk-hfad-1_watermelon": {
+  "id": 736,
+  "en": [
+   "watermelon"
+  ],
+  "ur": [
+   "تربوز"
+  ]
+ },
+ "pk-hfad-1_we": {
+  "id": 737,
+  "en": [
+   "we"
+  ],
+  "ur": [
+   "ہم"
+  ]
+ },
+ "pk-hfad-1_weak": {
+  "id": 738,
+  "en": [
+   "weak",
+   "weaker",
+   "weakness"
+  ],
+  "ur": [
+   "کمزور",
+   "کمزوری"
+  ]
+ },
+ "pk-hfad-1_wealth": {
+  "id": 739,
+  "en": [
+   "wealth",
+   "wealthy",
+   "rich"
+  ],
+  "ur": [
+   "دولت",
+   "امیر(مالدار)",
+   "مالدار",
+   "مال دار",
+   "دولت مند",
+   "دولتمند"
+  ]
+ },
+ "pk-hfad-1_weather": {
+  "id": 740,
+  "en": [
+   "weather",
+   "season(weather)"
+  ],
+  "ur": [
+   "موسم",
+   "موسمی"
+  ]
+ },
+ "pk-hfad-1_wedding": {
+  "id": 741,
+  "en": [
+   "wedding",
+   "marriage"
+  ],
+  "ur": [
+   "شادی",
+   "بیاہ"
+  ]
+ },
+ "pk-hfad-1_week": {
+  "id": 742,
+  "en": [
+   "week"
+  ],
+  "ur": [
+   "ہفتہ(سات-دن)",
+   "ہفتے(سات-دن)"
+  ]
+ },
+ "pk-hfad-1_welcome(reception)": {
+  "id": 743,
+  "en": [
+   "welcome(reception)"
+  ],
+  "ur": [
+   "استقبال",
+   "اِستقبال",
+   "استقبالیہ"
+  ]
+ },
+ "pk-hfad-1_what": {
+  "id": 744,
+  "en": [
+   "what"
+  ],
+  "ur": [
+   "کیا(سوال)"
+  ]
+ },
+ "pk-hfad-1_when": {
+  "id": 745,
+  "en": [
+   "when"
+  ],
+  "ur": [
+   "کب"
+  ]
+ },
+ "pk-hfad-1_white": {
+  "id": 746,
+  "en": [
+   "white",
+   "pale"
+  ],
+  "ur": [
+   "سفید",
+   "گورا",
+   "گوری",
+   "گورے"
+  ]
+ },
+ "pk-hfad-1_who": {
+  "id": 747,
+  "en": [
+   "who"
+  ],
+  "ur": [
+   "کون"
+  ]
+ },
+ "pk-hfad-1_whom": {
+  "id": 748,
+  "en": [
+   "whom",
+   "whose"
+  ],
+  "ur": [
+   "کس(سوال)",
+   "کسی(سوال)",
+   "کسے(سوال)",
+   "کِس",
+   "کِسی",
+   "کِسے"
+  ]
+ },
+ "pk-hfad-1_wife": {
+  "id": 749,
+  "en": [
+   "wife"
+  ],
+  "ur": [
+   "بیوی",
+   "زوجہ",
+   "اہلیہ"
+  ]
+ },
+ "pk-hfad-1_wise": {
+  "id": 750,
+  "en": [
+   "wise",
+   "intelligent",
+   "knowledgeable"
+  ],
+  "ur": [
+   "عقلمند",
+   "عقل مند",
+   "سمجھدار",
+   "ذہین",
+   "دانشمند",
+   "دانش مند"
+  ]
+ },
+ "pk-hfad-1_with": {
+  "id": 751,
+  "en": [
+   "with",
+   "together",
+   "along"
+  ],
+  "ur": [
+   "ساتھ",
+   "اکٹھا",
+   "اِکٹھا",
+   "اکٹھے",
+   "اِکٹھے",
+   "اکٹھی",
+   "اِکٹھی"
+  ]
+ },
+ "pk-hfad-1_woman": {
+  "id": 752,
+  "en": [
+   "woman",
+   "female",
+   "lady"
+  ],
+  "ur": [
+   "عورت",
+   "خاتون",
+   "مادہ(عورت)"
+  ]
+ },
+ "pk-hfad-1_word": {
+  "id": 753,
+  "en": [
+   "word",
+   "words"
+  ],
+  "ur": [
+   "لفظ",
+   "الفاظ"
+  ]
+ },
+ "pk-hfad-1_work": {
+  "id": 754,
+  "en": [
+   "work",
+   "task"
+  ],
+  "ur": [
+   "کام"
+  ]
+ },
+ "pk-hfad-1_workout": {
+  "id": 755,
+  "en": [
+   "exercise",
+   "workout"
+  ],
+  "ur": [
+   "ورزش"
+  ]
+ },
+ "pk-hfad-1_workshy": {
+  "id": 756,
+  "en": [
+   "workshy",
+   "work-shy",
+   "work dodger"
+  ],
+  "ur": [
+   "کام چور",
+   "کام چوری"
+  ]
+ },
+ "pk-hfad-1_world": {
+  "id": 757,
+  "en": [
+   "world",
+   "earth"
+  ],
+  "ur": [
+   "دنیا",
+   "دُنیا",
+   "جہان",
+   "عالمی",
+   "کرہ ارض"
+  ]
+ },
+ "pk-hfad-1_worry": {
+  "id": 758,
+  "en": [
+   "worry",
+   "worried"
+  ],
+  "ur": [
+   "فکر",
+   "فکر مند",
+   "فکرمند"
+  ]
+ },
+ "pk-hfad-1_wrong": {
+  "id": 759,
+  "en": [
+   "wrong",
+   "incorrect",
+   "erroneous",
+   "false",
+   "error",
+   "mistake",
+   "mistaken",
+   "inaccurate"
+  ],
+  "ur": [
+   "غلط",
+   "غلطی"
+  ]
+ },
+ "pk-hfad-1_x(double-handed-letter)": {
+  "id": 760,
+  "en": [
+   "x(double-handed-letter)"
+  ],
+  "ur": [
+   "x(double-handed-letter)",
+   "ایکس(x-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_x(single-handed-letter)": {
+  "id": 761,
+  "en": [
+   "x(single-handed-letter)",
+   "د"
+  ],
+  "ur": [
+   "x(single-handed-letter)",
+   "ایکس(x-single-handed-letter)",
+   "د"
+  ]
+ },
+ "pk-hfad-1_y(double-handed-letter)": {
+  "id": 762,
+  "en": [
+   "y(double-handed-letter)"
+  ],
+  "ur": [
+   "y(double-handed-letter)",
+   "وائی(y-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_y(single-handed-letter)": {
+  "id": 763,
+  "en": [
+   "y(single-handed-letter)",
+   "ے"
+  ],
+  "ur": [
+   "y(single-handed-letter)",
+   "وائی(y-single-handed-letter)",
+   "ے"
+  ]
+ },
+ "pk-hfad-1_year": {
+  "id": 764,
+  "en": [
+   "year",
+   "yearly",
+   "annual",
+   "annually",
+   "annum"
+  ],
+  "ur": [
+   "سال",
+   "سالانہ",
+   "برس(سال)",
+   "سن(سال)"
+  ]
+ },
+ "pk-hfad-1_yellow": {
+  "id": 765,
+  "en": [
+   "yellow",
+   "yellowish"
+  ],
+  "ur": [
+   "پیلا",
+   "پیلی",
+   "پیلے",
+   "زرد"
+  ]
+ },
+ "pk-hfad-1_yogurt": {
+  "id": 766,
+  "en": [
+   "yogurt"
+  ],
+  "ur": [
+   "دہی"
+  ]
+ },
+ "pk-hfad-1_z(double-handed-letter)": {
+  "id": 767,
+  "en": [
+   "z(double-handed-letter)"
+  ],
+  "ur": [
+   "z(double-handed-letter)",
+   "زیڈ(z-double-handed-letter)"
+  ]
+ },
+ "pk-hfad-1_z(single-handed-letter)": {
+  "id": 768,
+  "en": [
+   "z(single-handed-letter)",
+   "ز"
+  ],
+  "ur": [
+   "z(single-handed-letter)",
+   "زیڈ(z-single-handed-letter)",
+   "ز"
+  ]
+ },
+ "pk-hfad-1_zaal": {
+  "id": 769,
+  "en": [
+   "ذ"
+  ],
+  "ur": [
+   "ذ"
+  ]
+ },
+ "pk-hfad-1_zakat": {
+  "id": 770,
+  "en": [
+   "zakat"
+  ],
+  "ur": [
+   "زکوۃ",
+   "زکوٰۃ"
+  ]
+ },
+ "pk-hfad-1_zoein": {
+  "id": 771,
+  "en": [
+   "ظ"
+  ],
+  "ur": [
+   "ظ"
+  ]
+ },
+ "pk-hfad-1_zoo": {
+  "id": 772,
+  "en": [
+   "zoo"
+  ],
+  "ur": [
+   "چڑیا گھر"
+  ]
+ },
+ "pk-hfad-1_zuaad": {
+  "id": 773,
+  "en": [
+   "ض"
+  ],
+  "ur": [
+   "ض"
+  ]
+ },
+ "pk-hfad-1_zuhr": {
+  "id": 774,
+  "en": [
+   "zuhr",
+   "zohr(prayer)"
+  ],
+  "ur": [
+   "ظہر"
+  ]
+ }
+}
