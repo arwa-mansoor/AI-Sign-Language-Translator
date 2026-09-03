@@ -16,6 +16,9 @@ tensorflow
 # Metrics, label encoding, train/test splits
 scikit-learn
 
+# Text-to-speech output (offline, works on Windows via SAPI5)
+pyttsx3
+
 # Plots and notebooks
 matplotlib
 jupyter
