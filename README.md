@@ -43,15 +43,34 @@ dictionary mapping → English + Urdu text
 ```
 AI-Sign-Language-Translator/
 │
+├── configs/
+│   ├── bilstm.json                  # BiLSTM hyperparameters
+│   └── transformer.json             # Transformer hyperparameters
+│
 ├── data/
 │   ├── landmarks/
 │   │   └── pk-hfad-1.landmarks-mediapipe-world-csv/   # 788 landmark CSVs (~110 MB, gitignored)
-│   └── mappings/
-│       └── pk-dictionary-mapping.json                 # label → English/Urdu word mapping
+│   ├── mappings/
+│   │   └── pk-dictionary-mapping.json                 # label → English/Urdu word mapping
+│   └── splits/
+│       ├── train.csv, val.csv, test.csv               # split index files
+│       ├── label_map.json                             # label → class ID + tokens
+│       └── excluded.txt                               # labels excluded from all splits
 │
-├── notebooks/      # exploration & training notebooks
-├── src/            # preprocessing, model, webcam app
-├── models/         # saved trained models (weights gitignored)
+├── models/         # saved checkpoints (.weights.h5, .config.json, .history.csv)
+├── notebooks/      # exploration & visualization notebooks
+│
+├── src/
+│   ├── data/
+│   │   ├── dataset.py        # landmark parsing, normalization, augmentation, sequence loading
+│   │   └── split.py          # train/val/test split generation
+│   ├── model.py              # BiLSTM and Transformer architectures
+│   ├── train.py              # training loop with early stopping and checkpointing
+│   ├── evaluate.py           # test-set evaluation with confidence sweep
+│   ├── sanity_check.py       # landmark CSV validation
+│   ├── visualize_samples.py  # skeleton and trajectory plots
+│   └── app.py                # real-time webcam recognition app (Phase 5)
+│
 ├── requirements.txt
 └── README.md
 ```
@@ -169,18 +188,108 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Next steps
+## Usage
 
-1. **Explore** — notebook: load a few CSVs, check shapes, plot landmarks over frames,
-   join labels with the dictionary mapping.
-2. **Preprocess** — normalize landmarks (center/scale), pad or trim sequences to a fixed
-   length, integer-encode the labels.
-3. **Train** — LSTM (or Transformer) classifier: `(frames, 375)` → sign label, with a
-   train/val/test split.
-4. **Export** — save the trained model into `models/`.
-5. **Webcam app** — OpenCV capture + MediaPipe extraction in the same
-   pose → left hand → right hand order, sliding-window prediction over frames, and
-   label → English/Urdu text output.
+### Phase 0 — data exploration
+
+```powershell
+# Sanity-check the landmark CSVs
+python src/sanity_check.py
+
+# Visualize sample trajectories and skeleton plots
+python src/visualize_samples.py
+```
+
+### Phase 1 — data preparation
+
+```powershell
+# Generate train/val/test splits and label_map.json
+python src/data/split.py
+```
+
+### Phase 2 — model definition
+
+```powershell
+# Smoke-test the model architectures
+python src/model.py --model bilstm
+python src/model.py --model transformer
+```
+
+### Phase 3 — training
+
+```powershell
+# Quick smoke test (24 classes, 2 epochs)
+python src/train.py --dry-run
+
+# Full 775-class BiLSTM training
+python src/train.py
+
+# Transformer architecture with custom config
+python src/train.py --config configs/transformer.json --epochs 80
+
+# Train on a subset (e.g. 100 classes)
+python src/train.py --classes-file models/vocab-100.txt --run-name bilstm-vocab100
+```
+
+### Phase 4 — evaluation
+
+```powershell
+# Evaluate the newest checkpoint on the test split
+python src/evaluate.py
+
+# Evaluate a specific run
+python src/evaluate.py --run bilstm --split test
+```
+
+### Phase 5 — real-time webcam app
+
+```powershell
+# Run with default settings (newest checkpoint, both languages, TTS on)
+python src/app.py
+
+# Choose a specific checkpoint
+python src/app.py --run bilstm
+
+# Output language
+python src/app.py --lang en       # English only
+python src/app.py --lang ur       # Urdu only (TTS auto-disabled)
+python src/app.py --lang both     # English + Urdu (default)
+
+# Toggle speech and camera
+python src/app.py --no-tts        # disable text-to-speech
+python src/app.py --camera 1      # use second webcam
+
+# Fine-tune inference
+python src/app.py --threshold 0.7   # higher confidence gate (default 0.6)
+python src/app.py --interval 5      # inference every N frames (default 8)
+```
+
+Press **q** or **ESC** in the webcam window to quit.
+
+### Demo
+
+<!-- TODO: Replace with an actual screen recording GIF -->
+![Demo placeholder](notebooks/figures/skeleton_book.png)
+*A short GIF showing the live webcam overlay with landmark skeleton,
+predicted English/Urdu text, and confidence score will be added here
+once a trained checkpoint is available.*
+
+## Known limitations
+
+This project is **isolated-sign recognition**, not continuous sign language
+translation. Understanding these boundaries helps set realistic expectations
+for a live demo:
+
+| Limitation | Detail |
+|---|---|
+| **Vocabulary size** | 775 distinct signs from the pk-hfad-1 dataset. Any sign outside this vocabulary will be misclassified into the closest known class. |
+| **Lighting and camera sensitivity** | MediaPipe landmark detection degrades in low light, strong backlight, or cluttered backgrounds. A well-lit, plain background works best. |
+| **One-hand vs two-hand signs** | Both are supported (MediaPipe Holistic tracks two hands), but signs that rely on subtle finger-shape differences between one-hand and two-hand variants may confuse the classifier. |
+| **No sentence-level grammar** | The model predicts one isolated sign at a time from an 80-frame sliding window. It does not model sign-to-sign transitions, grammar, or syntax — signing a sequence of words will produce a sequence of independent predictions, not a coherent sentence. |
+| **Person-generalization** | Training data comes from a single signer (Hamza Foundation Academy instructor). Accuracy on a different signer, body proportions, or signing speed will be noticeably lower than the test-set metrics. |
+| **Latency** | Inference runs every 8 frames on a ~2M parameter model. On CPU-only machines there is a perceptible lag; a GPU or a smaller model improves this. |
+| **Urdu text rendering** | OpenCV's `putText` does not support Arabic/Urdu script natively (no RTL, no ligatures). Urdu tokens are overlaid as-is and may render as boxes or reversed characters. A Pillow + font-based renderer would fix this. |
+| **Confidence calibration** | Softmax probabilities are not perfectly calibrated — a 60% confidence threshold is a reasonable default but the optimal value depends on the specific checkpoint. |
 
 ## License & attribution
 

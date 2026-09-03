@@ -8,11 +8,15 @@ on the live video feed.  A pyttsx3 text-to-speech callout speaks the English
 translation when a new stable prediction is confirmed.
 
 Run:
-    python src/app.py                       # newest checkpoint
+    python src/app.py                       # newest checkpoint, both languages, TTS on
     python src/app.py --run bilstm          # specific run
+    python src/app.py --lang en             # English-only output
+    python src/app.py --lang ur             # Urdu-only output (TTS auto-disabled)
+    python src/app.py --lang both           # English + Urdu (default)
+    python src/app.py --no-tts              # disable text-to-speech
     python src/app.py --threshold 0.7       # higher confidence gate
     python src/app.py --camera 1            # second webcam
-    python src/app.py --no-tts              # disable text-to-speech
+    python src/app.py --interval 5          # inference every 5 frames
 
 Press 'q' or ESC to quit.
 """
@@ -216,7 +220,11 @@ def parse_args(argv=None):
     parser.add_argument("--camera", type=int, default=0, help="webcam index (default 0)")
     parser.add_argument("--interval", type=int, default=INFERENCE_INTERVAL,
                         help=f"inference every N frames (default {INFERENCE_INTERVAL})")
-    parser.add_argument("--no-tts", action="store_true", help="disable text-to-speech")
+    parser.add_argument("--lang", choices=["en", "ur", "both"], default="both",
+                        help="output language: en (English only), ur (Urdu only), "
+                             "or both (default: both)")
+    parser.add_argument("--no-tts", action="store_true",
+                        help="disable text-to-speech (auto-disabled in --lang ur mode)")
     return parser.parse_args(argv)
 
 
@@ -264,8 +272,16 @@ def main() -> int:
         min_tracking_confidence=0.5,
     )
 
-    # ---- init TTS ----
-    tts = TTSEngine(enabled=not args.no_tts)
+    # ---- language mode ----
+    show_en = args.lang in ("en", "both")
+    show_ur = args.lang in ("ur", "both")
+
+    # ---- init TTS (English only; auto-disabled in Urdu-only mode) ----
+    tts_enabled = not args.no_tts and show_en
+    tts = TTSEngine(enabled=tts_enabled)
+    if args.lang == "ur" and not args.no_tts:
+        print("note: TTS auto-disabled in --lang ur mode (English speech not applicable)")
+    print(f"language: {args.lang} | TTS: {'on' if tts.enabled else 'off'}")
 
     # ---- state ----
     buffer: deque[np.ndarray] = deque(maxlen=WINDOW_MAX_FRAMES)
@@ -377,24 +393,27 @@ def main() -> int:
 
             # ---- overlay text ----
             h, w = frame.shape[:2]
+            y_offset = h - 50
             if current_prediction:
-                # English text
-                en_display = f"Sign: {current_prediction}"
-                conf_display = f"({current_confidence:.0%})"
-                cv2.putText(frame, en_display, (20, h - 80),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
-                cv2.putText(frame, conf_display, (20, h - 50),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 200, 0), 1)
-                # Urdu text (right-aligned)
-                if current_urdu:
-                    cv2.putText(frame, current_urdu, (w - 300, h - 80),
+                # English text (left side)
+                if show_en:
+                    en_display = f"Sign: {current_prediction}"
+                    conf_display = f"({current_confidence:.0%})"
+                    cv2.putText(frame, en_display, (20, y_offset - 30),
+                                cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+                    cv2.putText(frame, conf_display, (20, y_offset),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 200, 0), 1)
+                # Urdu text (right side)
+                if show_ur and current_urdu:
+                    cv2.putText(frame, current_urdu, (w - 300, y_offset - 30),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 0), 2)
             else:
-                cv2.putText(frame, "...", (20, h - 80),
+                cv2.putText(frame, "...", (20, y_offset - 30),
                             cv2.FONT_HERSHEY_SIMPLEX, 1.0, (150, 150, 150), 1)
 
-            # Frame counter and buffer info
-            cv2.putText(frame, f"frames: {len(buffer)}/{WINDOW_MAX_FRAMES}",
+            # Frame counter and mode indicator
+            mode_label = f"[{args.lang.upper()}] frames: {len(buffer)}/{WINDOW_MAX_FRAMES}"
+            cv2.putText(frame, mode_label,
                         (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
 
             cv2.imshow("PSL Sign Language Translator", frame)
