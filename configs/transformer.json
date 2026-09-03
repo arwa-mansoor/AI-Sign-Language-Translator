@@ -1,0 +1,9 @@
+{
+  "model": "transformer",
+  "feature_dim": 225,
+  "hidden_size": 128,
+  "num_layers": 2,
+  "dropout": 0.3,
+  "num_heads": 4,
+  "ff_dim": 256
+}
