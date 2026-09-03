@@ -1,0 +1,21 @@
+# AI Sign Language Translator (PSL) dependencies
+# Python 3.9 - 3.12 recommended (MediaPipe wheel availability)
+
+# Data handling
+numpy
+pandas
+
+# Webcam capture + landmark extraction (same format as the dataset)
+opencv-python
+mediapipe
+
+# Sequence model training (LSTM / Transformer)
+# Swap for `torch` if you prefer PyTorch instead of TensorFlow.
+tensorflow
+
+# Metrics, label encoding, train/test splits
+scikit-learn
+
+# Plots and notebooks
+matplotlib
+jupyter

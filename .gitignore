@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Dataset files (large, re-downloadable — see README.md)
+data/landmarks/*
+!data/landmarks/.gitkeep
+
+# Trained model weights
+models/*.h5
+models/*.keras
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.pkl
+models/*.tflite
+
+# OS files
+Thumbs.db
+.DS_Store
