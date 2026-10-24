@@ -1,33 +1,38 @@
 """Phase 5 — real-time webcam sign-language recognition app.
 
 Captures webcam frames with OpenCV, extracts pose + hand landmarks via
-MediaPipe in the exact same order and normalization as the training pipeline
-(src/data/dataset.py), buffers a sliding window of MAX_FRAMES frames, runs
-model inference periodically, and overlays the predicted English + Urdu text
-on the live video feed.  A pyttsx3 text-to-speech callout speaks the English
-translation when a new stable prediction is confirmed.
+MediaPipe in the same layout as the training CSVs, and keeps the last few
+seconds of timestamped frames.  Periodically it resamples them to the
+dataset's 25 fps (so signing speed in frames matches training whatever the
+camera / landmarker throughput), cuts out the most recent sign (the last
+hand-active span), runs it through the exact training feature pipeline
+(data.dataset.preprocess) and the model, and overlays the predicted English +
+Urdu text on the live video feed.  When a sign is confirmed it is spoken in
+English (system voice) and Urdu (clips from src/make_urdu_audio.py).
 
 Uses the MediaPipe Tasks HolisticLandmarker (mediapipe >= 1.0; the older
 mp.solutions.holistic API no longer exists).  The task bundle is downloaded
 once from Google's model CDN into models/mediapipe/ on first run.
 
 Run:
-    python src/app.py                       # newest checkpoint, both languages, TTS on
+    python src/app.py                       # newest checkpoint, both languages + speech
     python src/app.py --run bilstm          # specific run
     python src/app.py --lang en             # English-only output
-    python src/app.py --lang ur             # Urdu-only output (TTS auto-disabled)
+    python src/app.py --lang ur             # Urdu-only text and speech
     python src/app.py --lang both           # English + Urdu (default)
-    python src/app.py --no-tts              # disable text-to-speech
+    python src/app.py --speak en            # show both, speak English only
+    python src/app.py --no-tts              # disable speech
     python src/app.py --threshold 0.7       # higher confidence gate
     python src/app.py --camera 1            # second webcam
-    python src/app.py --interval 5          # inference every 5 frames
+    python src/app.py --interval 3          # inference every 3 frames
     python src/app.py --self-test           # no camera: verify model + landmarker load
 
-Press 'q' or ESC to quit.
+Keys: d panel, s skeleton, f full screen, c clear, q / ESC quit.
 """
 
 import argparse
 import json
+import queue
 import sys
 import threading
 import time
@@ -43,25 +48,36 @@ from mediapipe.tasks.python import vision
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from data.dataset import (  # noqa: E402
-    MAX_FRAMES,
+    FPS,
+    HANDS_SLICE,
+    IDLE_MARGIN,
+    LEFT_HAND_SLICE,
     N_LANDMARKS,
-    LEFT_SHOULDER,
-    RIGHT_SHOULDER,
+    POSE_SLICE,
+    RIGHT_HAND_SLICE,
     SPLITS_DIR,
+    URDU_AUDIO_DIR,
+    detected,
+    display_text,
+    preprocess,
 )
 from evaluate import available_runs  # noqa: E402
 from train import MODELS_DIR, load_trained_model  # noqa: E402
+from ui import Overlay, Word  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LABEL_MAP_FILE = SPLITS_DIR / "label_map.json"
 
 # --------------------------------------------------------- constants ----
 
-INFERENCE_INTERVAL = 8          # run inference every N frames
+INFERENCE_INTERVAL = 4          # run inference every N camera frames
 CONFIDENCE_THRESHOLD = 0.6      # minimum softmax confidence to surface
 STABLE_CONFIRM_FRAMES = 3       # same prediction N times in a row → confirmed
-TTS_COOLDOWN_SEC = 2.0          # minimum seconds between spoken words
-WINDOW_MAX_FRAMES = MAX_FRAMES  # 80 — must match training
+WINDOW_SECONDS = 4.0            # history kept; 99% of training signs are shorter
+SIGN_GAP_FRAMES = 10            # no-hand frames (at 25 fps, 0.4 s) that end a sign;
+                                # 99.5% of training signs have no longer internal gap
+HOLD_SECONDS = 1.5              # keep classifying a finished sign this long
+MIN_SIGN_FRAMES = 12            # shortest span worth classifying (training minimum: 21)
 
 BUNDLE_DIR = MODELS_DIR / "mediapipe"
 BUNDLE_FILE = BUNDLE_DIR / "holistic_landmarker.task"
@@ -152,116 +168,174 @@ def draw_landmarks(frame, result, mirrored: bool = False):
     drawing_utils, so connections are stroked manually).  Set mirrored=True when
     the frame was flipped for display but detection ran on the original."""
     h, w = frame.shape[:2]
+    thickness = max(1, round(h / 300))
 
     def to_px(landmarks):
         return [(int((1.0 - lm.x) * w) if mirrored else int(lm.x * w),
                  int(lm.y * h)) for lm in landmarks]
 
-    for landmarks, connections, point_bgr, line_bgr in (
-        (result.pose_landmarks, POSE_CONNECTIONS, (0, 255, 0), (0, 200, 0)),
-        (result.left_hand_landmarks, HAND_CONNECTIONS, (255, 100, 0), (255, 150, 0)),
-        (result.right_hand_landmarks, HAND_CONNECTIONS, (0, 100, 255), (0, 150, 255)),
+    for landmarks, connections, point_bgr, line_bgr, keep in (
+        # upper body only: hips and legs are off screen and not used by the model
+        (result.pose_landmarks, POSE_CONNECTIONS, (230, 230, 230), (190, 190, 190), 23),
+        (result.left_hand_landmarks, HAND_CONNECTIONS, (255, 190, 90), (240, 160, 60), 21),
+        (result.right_hand_landmarks, HAND_CONNECTIONS, (90, 190, 255), (60, 160, 240), 21),
     ):
         if not landmarks:
             continue
-        pts = to_px(landmarks)
+        pts = to_px(landmarks)[:keep]
         for a, b in connections:
             if a < len(pts) and b < len(pts):
-                cv2.line(frame, pts[a], pts[b], line_bgr, 1)
+                cv2.line(frame, pts[a], pts[b], line_bgr, thickness, cv2.LINE_AA)
         for p in pts:
-            cv2.circle(frame, p, 2, point_bgr, -1)
+            cv2.circle(frame, p, thickness + 1, point_bgr, -1, cv2.LINE_AA)
 
 
-# --------------------------------------- normalization (matches dataset.py) ----
+# -------------------------------------------- sliding window (live only) ----
 
-def normalize_frame(seq: np.ndarray) -> np.ndarray:
-    """Normalize a (T, 75, 5) sequence the same way as dataset.normalize().
-
-    Center pose on shoulder midpoint, scale everything by mean shoulder width.
-    Hand landmarks are already hand-centered by MediaPipe, only scaled.
-    """
-    seq = seq.copy()
-    pose = seq[:, :33]
-    left = seq[:, 33:54]
-    right = seq[:, 54:75]
-
-    pose_valid = np.abs(pose[:, :, :3]).sum(axis=(1, 2)) > 0  # (T,)
-    shoulders = pose[:, [LEFT_SHOULDER, RIGHT_SHOULDER], :3]   # (T, 2, 3)
-    center = shoulders.mean(axis=1)                              # (T, 3)
-    dist = np.linalg.norm(shoulders[:, 0] - shoulders[:, 1], axis=1)  # (T,)
-    scale = float(dist[pose_valid].mean()) if pose_valid.any() else 1.0
-    if scale < 1e-6:
-        scale = 1.0
-
-    pose[pose_valid, :, :3] = (pose[pose_valid, :, :3] - center[pose_valid, None, :]) / scale
-    for hand in (left, right):
-        hand_valid = np.abs(hand[:, :, :3]).sum(axis=(1, 2)) > 0
-        hand[hand_valid, :, :3] /= scale
-    return seq
+def resample_window(times_ms, frames, fps: float = FPS) -> np.ndarray:
+    """Frames captured at the webcam's variable rate -> the same span at the
+    dataset's fps, ending at the newest frame.  Landmarks are interpolated
+    linearly between neighbouring frames; a landmark group missing on either
+    side takes the nearer frame's value instead (no blending with zero-fills)."""
+    times = np.asarray(times_ms, dtype=np.float64)
+    frames = np.asarray(frames, dtype=np.float32)  # (N, 75, 5)
+    n_out = int((times[-1] - times[0]) * fps / 1000.0) + 1
+    grid = times[-1] - np.arange(n_out)[::-1] * (1000.0 / fps)
+    right = np.clip(np.searchsorted(times, grid), 1, len(times) - 1)
+    left = right - 1
+    w = np.clip((grid - times[left]) / np.maximum(times[right] - times[left], 1e-6), 0.0, 1.0)
+    out = frames[left] * (1 - w)[:, None, None] + frames[right] * w[:, None, None]
+    nearest = frames[np.where(w < 0.5, left, right)]
+    for group in (POSE_SLICE, LEFT_HAND_SLICE, RIGHT_HAND_SLICE):
+        both = detected(frames[left][:, group, :3]) & detected(frames[right][:, group, :3])
+        out[~both, group] = nearest[~both, group]
+    return out
 
 
-def fit_length(seq: np.ndarray, max_frames: int = MAX_FRAMES) -> np.ndarray:
-    """Uniformly resample longer sequences, zero-pad shorter ones."""
-    n = len(seq)
-    if n > max_frames:
-        idx = np.linspace(0, n - 1, max_frames).round().astype(int)
-        return seq[idx]
-    if n < max_frames:
-        pad = np.zeros((max_frames - n, *seq.shape[1:]), dtype=seq.dtype)
-        return np.concatenate([seq, pad], axis=0)
-    return seq
-
-
-def to_features(seq: np.ndarray) -> np.ndarray:
-    """(T, 75, 5) → (T, 225) xyz-only features."""
-    return seq[:, :, :3].reshape(len(seq), -1)
+def last_sign(seq: np.ndarray, max_gap: int = SIGN_GAP_FRAMES):
+    """The most recent sign in a 25 fps window: the last hand-active span
+    (no-hand gaps up to max_gap frames bridged) with IDLE_MARGIN frames of lead-in,
+    plus how many frames ago the hands were last seen.  None if no hands at all."""
+    hands = np.flatnonzero(detected(seq[:, HANDS_SLICE, :3]))
+    if len(hands) == 0:
+        return None, None
+    breaks = np.flatnonzero(np.diff(hands) - 1 > max_gap)
+    start = hands[breaks[-1] + 1] if len(breaks) else hands[0]
+    return seq[max(start - IDLE_MARGIN, 0):], len(seq) - 1 - hands[-1]
 
 
 # -------------------------------------------------------- TTS engine ----
 
 class TTSEngine:
-    """Background text-to-speech with cooldown to avoid repeating the same word."""
+    """Speaks confirmed signs on one background thread, never blocking the video.
 
-    def __init__(self, enabled: bool = True):
-        self.enabled = enabled
-        self._last_spoken = ""
-        self._last_time = 0.0
-        self._engine = None
-        self._lock = threading.Lock()
-        if enabled:
-            self._init_engine()
+    English: the Windows system voice (SAPI) driven directly through comtypes
+    (a reused pyttsx3 engine cuts off or skips every word after the first, and
+    a new pyttsx3 engine per word hangs); elsewhere one pyttsx3 engine.
+    Urdu: Windows has no Urdu voice, so clips pre-generated by
+    src/make_urdu_audio.py (data/audio/ur/<label>.mp3) are played offline.
+    A sign confirmed while another is still being spoken replaces any sign
+    still waiting, so the voice never lags behind the screen.
+    """
 
-    def _init_engine(self):
-        try:
-            import pyttsx3
-            self._engine = pyttsx3.init()
-            self._engine.setProperty("rate", 160)
-        except Exception as e:
-            print(f"TTS unavailable: {e}")
+    def __init__(self, languages=("en",)):
+        self.languages = tuple(languages)
+        self.enabled = bool(self.languages)
+        self._pending: queue.Queue = queue.Queue(maxsize=1)
+        self._missing_urdu: set = set()
+        if not self.enabled:
+            return
+        ready, error = threading.Event(), []
+        threading.Thread(target=self._run, args=(ready, error), daemon=True).start()
+        if not ready.wait(15) or error:
+            print(f"TTS unavailable: {error[0] if error else 'voice did not start'}")
             self.enabled = False
 
-    def speak(self, text: str):
-        if not self.enabled or not text or text == self._last_spoken:
+    def speak(self, english: str, label: str):
+        """Queue one confirmed sign: its English word and/or its Urdu clip."""
+        if not self.enabled:
             return
-        now = time.time()
-        if now - self._last_time < TTS_COOLDOWN_SEC:
+        items = []
+        if "en" in self.languages and english:
+            items.append(("en", english))
+        if "ur" in self.languages:
+            clip = URDU_AUDIO_DIR / f"{label}.mp3"
+            if clip.is_file():
+                items.append(("ur", clip))
+            elif label not in self._missing_urdu:
+                self._missing_urdu.add(label)
+                print(f"no Urdu audio for {label} — run python src/make_urdu_audio.py")
+        if not items:
             return
-        with self._lock:
-            self._last_spoken = text
-            self._last_time = now
-            # Run in a thread so we don't block the video loop
-            threading.Thread(target=self._do_speak, args=(text,), daemon=True).start()
-
-    def _do_speak(self, text: str):
         try:
-            import pyttsx3
-            engine = pyttsx3.init()
-            engine.setProperty("rate", 160)
+            self._pending.get_nowait()  # drop a sign that is still waiting
+        except queue.Empty:
+            pass
+        try:
+            self._pending.put_nowait(items)
+        except queue.Full:
+            pass
+
+    def _run(self, ready: threading.Event, error: list):
+        try:
+            players = {}
+            if "en" in self.languages:
+                players["en"] = self._make_voice()
+            if "ur" in self.languages:
+                players["ur"] = self._make_clip_player()
+        except Exception as e:  # missing package, no audio device, not Windows, ...
+            error.append(e)
+            ready.set()
+            return
+        ready.set()
+        while True:
+            for kind, payload in self._pending.get():
+                try:
+                    players[kind](payload)
+                except Exception as e:
+                    print(f"TTS error: {e}")
+
+    @staticmethod
+    def _make_voice():
+        """Returns a blocking say(text); must run on the thread that will speak."""
+        if sys.platform == "win32":
+            import comtypes
+            import comtypes.client
+            comtypes.CoInitialize()  # COM objects belong to the thread that creates them
+            voice = comtypes.client.CreateObject("SAPI.SpVoice")
+            voice.Rate = 1  # -10..10; slightly faster than the default
+            return lambda text: voice.Speak(text, 0)
+        import pyttsx3
+        engine = pyttsx3.init()
+        engine.setProperty("rate", 160)
+
+        def say(text):
             engine.say(text)
             engine.runAndWait()
-            engine.stop()
-        except Exception:
-            pass
+        return say
+
+    @staticmethod
+    def _make_clip_player():
+        """Returns a blocking play(mp3_path) using Windows MCI (no extra packages)."""
+        if sys.platform != "win32":
+            raise RuntimeError("Urdu playback uses Windows MCI; use --speak en elsewhere")
+        import ctypes
+        winmm = ctypes.windll.winmm
+
+        def mci(command: str):
+            err = winmm.mciSendStringW(command, None, 0, 0)
+            if err:
+                message = ctypes.create_unicode_buffer(256)
+                winmm.mciGetErrorStringW(err, message, 256)
+                raise RuntimeError(f"{message.value} ({command})")
+
+        def play(path):
+            mci(f'open "{path}" type mpegvideo alias psl_urdu')
+            try:
+                mci("play psl_urdu wait")
+            finally:
+                winmm.mciSendStringW("close psl_urdu", None, 0, 0)
+        return play
 
 
 # --------------------------------------------------------- main app ----
@@ -269,17 +343,26 @@ class TTSEngine:
 def self_test(model, cfg, class_lookup, holistic) -> int:
     """Camera-free check: push synthetic frames through landmarker + model."""
     print("\nself-test (no camera):")
-    frames = []
-    for i in range(WINDOW_MAX_FRAMES):
+    frames, times = [], []
+    n_frames = int(WINDOW_SECONDS * 30)
+    for i in range(n_frames):  # a 30 fps camera
         rgb = np.zeros((480, 640, 3), dtype=np.uint8)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
         result = holistic.detect_for_video(mp_image, i * 33 + 1)
         frames.append(extract_landmarks_holistic(result))
-    seq = fit_length(normalize_frame(np.array(frames)))
-    features = seq.reshape(len(seq), -1) if cfg.feature_dim == 375 else to_features(seq)
-    print(f"  landmarker + pipeline: {WINDOW_MAX_FRAMES} frames -> {features.shape}")
+        times.append(i * 33 + 1)
+    window = resample_window(times, frames)
+    features = preprocess(window, cfg.max_frames, cfg.velocity, cfg.include_confidence)
+    print(f"  landmarker + pipeline: {n_frames} frames @30 fps -> {len(window)} @{FPS} fps "
+          f"-> {features.shape}")
 
-    probs = softmax(model(features[np.newaxis], training=False).numpy())[0]
+    t0 = time.perf_counter()
+    model.predict_on_batch(features[np.newaxis])  # first call compiles
+    compile_ms = (time.perf_counter() - t0) * 1000
+    t0 = time.perf_counter()
+    probs = softmax(model.predict_on_batch(features[np.newaxis]))[0]
+    print(f"  inference latency:     {(time.perf_counter() - t0) * 1000:.0f} ms "
+          f"(first call incl. compile {compile_ms:.0f} ms)")
     top = np.argsort(probs)[::-1][:3]
     print(f"  model inference:       {len(probs)} classes, top-3 "
           f"{[(class_lookup.get(int(i), {}).get('label', i), round(float(probs[i]), 3)) for i in top]}")
@@ -302,6 +385,9 @@ def parse_args(argv=None):
     parser.add_argument("--lang", choices=["en", "ur", "both"], default="both",
                         help="output language: en (English only), ur (Urdu only), "
                              "or both (default: both)")
+    parser.add_argument("--speak", choices=["en", "ur", "both", "none"],
+                        help="spoken language(s) (default: same as --lang); Urdu needs "
+                             "clips from src/make_urdu_audio.py")
     parser.add_argument("--no-tts", action="store_true",
                         help="disable text-to-speech (auto-disabled in --lang ur mode)")
     parser.add_argument("--self-test", action="store_true",
@@ -351,21 +437,29 @@ def main() -> int:
     show_en = args.lang in ("en", "both")
     show_ur = args.lang in ("ur", "both")
 
-    # ---- init TTS (English only; auto-disabled in Urdu-only mode) ----
-    tts_enabled = not args.no_tts and show_en
-    tts = TTSEngine(enabled=tts_enabled)
-    if args.lang == "ur" and not args.no_tts:
-        print("note: TTS auto-disabled in --lang ur mode (English speech not applicable)")
-    print(f"language: {args.lang} | TTS: {'on' if tts.enabled else 'off'}")
+    # ---- init speech: English via the system voice, Urdu via pre-made clips ----
+    speak = "none" if args.no_tts else (args.speak or args.lang)
+    tts = TTSEngine({"en": ("en",), "ur": ("ur",), "both": ("en", "ur"), "none": ()}[speak])
+    print(f"language: {args.lang} | speech: {speak if tts.enabled else 'off'}")
+    if tts.enabled and "ur" in tts.languages:
+        missing = [info["label"] for info in class_lookup.values()
+                   if not (URDU_AUDIO_DIR / f"{info['label']}.mp3").is_file()]
+        if missing:
+            print(f"note: {len(missing)} of {len(class_lookup)} signs have no Urdu audio yet — "
+                  "run python src/make_urdu_audio.py" + (f" --run {run_name}" if vocab else " --all"))
 
     # ---- state ----
-    buffer: deque[np.ndarray] = deque(maxlen=WINDOW_MAX_FRAMES)
+    words = {cid: Word(info["label"],
+                       display_text(info["label"], "en", info["en"]),
+                       display_text(info["label"], "ur", info["ur"]))
+             for cid, info in class_lookup.items()}
+    overlay = Overlay([words[cid] for cid in sorted(words)], show_en, show_ur)
+    history: deque = deque()     # (timestamp_ms, (75, 5) landmarks) over WINDOW_SECONDS
     frame_count = 0
-    current_prediction = ""      # displayed text
-    current_urdu = ""
-    current_confidence = 0.0
-    stable_count = 0             # consecutive frames with same prediction
-    last_predicted_label = ""    # last confirmed label (for TTS dedup)
+    status = "idle"              # idle | signing | hold (classifying a finished sign)
+    top3: list = []              # [(Word, probability)] of the latest inference
+    stable_count = 0             # consecutive inferences with the same prediction
+    last_predicted_label = ""
     start_time = time.perf_counter()
     last_timestamp_ms = -1       # VIDEO mode needs increasing timestamps
 
@@ -373,7 +467,9 @@ def main() -> int:
     cap = cv2.VideoCapture(args.camera)
     if not cap.isOpened():
         sys.exit(f"cannot open camera {args.camera}")
-    print(f"camera {args.camera} opened — press 'q' or ESC to quit")
+    overlay.open_window()
+    print(f"camera {args.camera} opened — keys: d panel, s skeleton, f full screen, "
+          "c clear, q / ESC quit")
 
     try:
         while True:
@@ -396,85 +492,58 @@ def main() -> int:
             holistic_result = holistic.detect_for_video(mp_image, timestamp_ms)
 
             landmarks = extract_landmarks_holistic(holistic_result)
-            buffer.append(landmarks)
+            history.append((timestamp_ms, landmarks))
+            while timestamp_ms - history[0][0] > WINDOW_SECONDS * 1000:
+                history.popleft()
             frame_count += 1
 
-            # Mirror for a natural selfie view, and draw with mirrored x
-            frame = cv2.flip(frame, 1)
-            draw_landmarks(frame, holistic_result, mirrored=True)
+            # ---- periodic inference on the most recent sign ----
+            sign = None
+            if frame_count % args.interval == 0 and len(history) >= 2:
+                times, frames = zip(*history)
+                sign, idle_frames = last_sign(resample_window(times, frames))
+                if sign is None or idle_frames > HOLD_SECONDS * FPS:
+                    # hands down: the next sign needs fresh confirmations
+                    status, stable_count, last_predicted_label = "idle", 0, ""
+                    sign = None
+                else:
+                    status = "signing" if idle_frames <= SIGN_GAP_FRAMES else "hold"
+                    if len(sign) < MIN_SIGN_FRAMES:
+                        sign = None
 
-            # ---- periodic inference ----
-            if frame_count % args.interval == 0 and len(buffer) >= 10:
-                seq = np.array(list(buffer))  # (T, 75, 5)
-                seq = fit_length(normalize_frame(seq))  # (80, 75, 5)
-                features = to_features(seq)              # (80, 225)
-
-                # Handle feature_dim mismatch (375 if model was trained with confidence)
-                if cfg.feature_dim == 375:
-                    features = seq.reshape(len(seq), -1)
-
-                x = features[np.newaxis]  # (1, 80, feat_dim)
-                logits = model(x, training=False).numpy()
-                probs = softmax(logits)[0]
+            if sign is not None:
+                features = preprocess(sign, cfg.max_frames, cfg.velocity, cfg.include_confidence)
+                # compiled forward pass (~30 ms); an eager model(x) call runs the
+                # BiLSTM recurrence op by op and blocks the video loop for seconds
+                probs = softmax(model.predict_on_batch(features[np.newaxis]))[0]
+                top3 = [(words[int(i)], float(probs[i]))
+                        for i in np.argsort(probs)[::-1][:3] if int(i) in words]
                 pred_id = int(np.argmax(probs))
                 confidence = float(probs[pred_id])
+                word = words.get(pred_id)
 
-                if confidence >= args.threshold:
-                    info = class_lookup.get(pred_id)
-                    if info:
-                        label = info["label"]
-                        en_text = info["en"][0] if info["en"] else label
-                        ur_text = info["ur"][0] if info["ur"] else ""
-
-                        # Stability check: same prediction multiple times
-                        if label == last_predicted_label:
-                            stable_count += 1
-                        else:
-                            stable_count = 1
-                            last_predicted_label = label
-
-                        if stable_count >= STABLE_CONFIRM_FRAMES:
-                            current_prediction = en_text
-                            current_urdu = ur_text
-                            current_confidence = confidence
-                            tts.speak(en_text)
+                if confidence >= args.threshold and word is not None:
+                    # Stability check: same prediction several times in a row
+                    if word.label == last_predicted_label:
+                        stable_count += 1
+                    else:
+                        stable_count, last_predicted_label = 1, word.label
+                    if stable_count == STABLE_CONFIRM_FRAMES:
+                        overlay.confirm(word, confidence)
+                        tts.speak(word.en, word.label)
+                    elif stable_count > STABLE_CONFIRM_FRAMES:
+                        overlay.refresh(word, confidence)
                 else:
-                    # Below threshold — clear display
-                    current_prediction = ""
-                    current_urdu = ""
-                    current_confidence = 0.0
-                    stable_count = 0
-                    last_predicted_label = ""
+                    stable_count, last_predicted_label = 0, ""
 
-            # ---- overlay text ----
-            h, w = frame.shape[:2]
-            y_offset = h - 50
-            if current_prediction:
-                # English text (left side)
-                if show_en:
-                    en_display = f"Sign: {current_prediction}"
-                    conf_display = f"({current_confidence:.0%})"
-                    cv2.putText(frame, en_display, (20, y_offset - 30),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
-                    cv2.putText(frame, conf_display, (20, y_offset),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 200, 0), 1)
-                # Urdu text (right side)
-                if show_ur and current_urdu:
-                    cv2.putText(frame, current_urdu, (w - 300, y_offset - 30),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 0), 2)
-            else:
-                cv2.putText(frame, "...", (20, y_offset - 30),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1.0, (150, 150, 150), 1)
+            # ---- draw: mirrored selfie view, skeleton, caption, panel ----
+            view = overlay.fit(cv2.flip(frame, 1))
+            overlay.draw_tracking(view, holistic_result, POSE_CONNECTIONS, HAND_CONNECTIONS)
+            span_ms = history[-1][0] - history[0][0]
+            fps = (len(history) - 1) * 1000.0 / span_ms if span_ms > 0 else 0.0
+            overlay.show(overlay.render(view, status, fps, top3))
 
-            # Frame counter and mode indicator
-            mode_label = f"[{args.lang.upper()}] frames: {len(buffer)}/{WINDOW_MAX_FRAMES}"
-            cv2.putText(frame, mode_label,
-                        (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
-
-            cv2.imshow("PSL Sign Language Translator", frame)
-
-            key = cv2.waitKey(1) & 0xFF
-            if key in (ord("q"), 27):  # q or ESC
+            if overlay.handle_key(cv2.waitKey(1) & 0xFF) == "quit":
                 break
 
     except KeyboardInterrupt:

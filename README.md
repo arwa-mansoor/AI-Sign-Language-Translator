@@ -15,9 +15,9 @@ pk-hfad-1 landmark CSVs (788 sign videos)
         +
 data/mappings/pk-dictionary-mapping.json
         ↓
-preprocess (normalize, pad/trim sequences, encode labels)
+preprocess (trim rest frames, normalize body + hands, 65 landmarks + velocity, pad/resample)
         ↓
-train sequence model
+train sequence model (fresh augmented variants every epoch)
         ↓
 [landmark sequence] → ML model → PSL sign → English / Urdu text
 ```
@@ -30,6 +30,10 @@ Webcam
 OpenCV captures frames
    ↓
 MediaPipe extracts pose + hand landmarks (same format as training data)
+   ↓
+resample to the dataset's 25 fps, cut out the latest sign (last hand-active span)
+   ↓
+same preprocessing as training (data.dataset.preprocess)
    ↓
 trained sequence model
    ↓
@@ -49,7 +53,9 @@ AI-Sign-Language-Translator/
 │
 ├── data/
 │   ├── landmarks/
-│   │   └── pk-hfad-1.landmarks-mediapipe-world-csv/   # 788 landmark CSVs (~110 MB, gitignored)
+│   │   ├── pk-hfad-1.landmarks-mediapipe-world-csv/   # 788 landmark CSVs (~110 MB, gitignored)
+│   │   └── pk-hfad-1.landmarks-replay-csv/            # same videos via the live app's MediaPipe (gitignored)
+│   ├── videos/                                        # optional source videos (330 MB, gitignored)
 │   ├── mappings/
 │   │   └── pk-dictionary-mapping.json                 # label → English/Urdu word mapping
 │   └── splits/
@@ -66,9 +72,11 @@ AI-Sign-Language-Translator/
 │   │   └── split.py          # train/val/test split generation
 │   ├── model.py              # BiLSTM and Transformer architectures
 │   ├── train.py              # training loop with early stopping and checkpointing
-│   ├── evaluate.py           # test-set evaluation with confidence sweep
+│   ├── evaluate.py           # test / replay evaluation with confidence sweep
+│   ├── extract_replay.py     # re-extract source videos with the live app's MediaPipe
 │   ├── sanity_check.py       # landmark CSV validation
 │   ├── visualize_samples.py  # skeleton and trajectory plots
+│   ├── show_sign.py          # render a sign's landmarks as an animated GIF
 │   └── app.py                # real-time webcam recognition app (Phase 5)
 │
 ├── requirements.txt
@@ -101,12 +109,12 @@ Expand-Archive "data\landmarks\pk-hfad-1.landmarks-mediapipe-world-csv.zip" -Des
 Invoke-WebRequest "https://raw.githubusercontent.com/sign-language-translator/sign-language-datasets/main/parallel_texts/pk-dictionary-mapping.json" -OutFile "data\mappings\pk-dictionary-mapping.json"
 ```
 
-### What is intentionally NOT downloaded
+### What is NOT downloaded by default
 
 | File | Why not |
 |---|---|
 | `pk-hfad-1.landmarks-mediapipe-image-csv.zip` | Image-space coordinates (fractions of frame width/height) instead of world coordinates (meters). Don't mix coordinate systems — stick to `mediapipe-world`. |
-| `pk-hfad-1.videos-mp4.zip` (release v0.0.3) | Raw videos. Landmarks are already extracted, so re-running MediaPipe over thousands of frames is unnecessary. Only needed later if you re-extract with a different model. |
+| `pk-hfad-1.videos-mp4.zip` (release v0.0.3, 330 MB) | Raw videos (25 fps, 640×480). Not needed for training. Optional: `src/extract_replay.py` re-runs them through the live app's MediaPipe to measure train/serve parity (see *Phase 4*); download instructions are in that script. |
 
 ### Landmark CSV format
 
@@ -239,7 +247,17 @@ python src/evaluate.py
 
 # Evaluate a specific run
 python src/evaluate.py --run bilstm --split test
+
+# Train/serve parity: replay the source videos through the live app's MediaPipe
+# (one-time: download the videos as described in src/extract_replay.py, ~40 min on a laptop CPU)
+python src/extract_replay.py
+python src/evaluate.py --run bilstm --split replay
 ```
+
+`val`/`test` are augmented copies of the training videos, so they measure robustness to
+perturbation. `replay` feeds the model landmarks exactly as the webcam app produces them
+(newer MediaPipe, live code path) — it catches train/serve mismatches that `test` cannot,
+and its confidence sweep is the guide for `app.py --threshold`.
 
 ### Phase 5 — real-time webcam app
 
@@ -252,19 +270,59 @@ python src/app.py --run bilstm
 
 # Output language
 python src/app.py --lang en       # English only
-python src/app.py --lang ur       # Urdu only (TTS auto-disabled)
+python src/app.py --lang ur       # Urdu only (text and speech)
 python src/app.py --lang both     # English + Urdu (default)
 
-# Toggle speech and camera
-python src/app.py --no-tts        # disable text-to-speech
+# Speech: English uses the Windows voice; Urdu plays clips generated once (needs internet)
+python src/make_urdu_audio.py               # Urdu clips for the demo words -> data/audio/ur/
+python src/make_urdu_audio.py --run demo20-me   # ...or for a run's vocabulary (--all: every sign)
+python src/app.py --speak en      # show both languages, speak English only
+python src/app.py --no-tts        # no speech
+
+# Camera
 python src/app.py --camera 1      # use second webcam
 
 # Fine-tune inference
 python src/app.py --threshold 0.7   # higher confidence gate (default 0.6)
-python src/app.py --interval 5      # inference every N frames (default 8)
+python src/app.py --interval 2      # inference every N frames (default 4)
+
+# Check the checkpoint + MediaPipe wiring without a camera
+python src/app.py --self-test
 ```
 
-Press **q** or **ESC** in the webcam window to quit.
+The camera view is kept clear (only the skeleton is drawn on it). Everything else is in
+the side panel: the status (*Ready* / *Watching* / *Recognised*), the recognised word in
+English and Urdu with a confidence bar, the recent words, and the list of signs the model
+knows, ticking off those you have signed (models with more than 30 signs show the top-3
+guesses instead).
+
+Keys: **d** sign list on/off, **s** skeleton on/off, **f** full screen (for a projector),
+**c** clear recent words, **q** or **ESC** quit.
+
+How the app decides what to classify: it keeps the last 4 s of frames, resamples them to
+the dataset's 25 fps using their timestamps (MediaPipe runs at ~15–20 fps on a laptop
+CPU, and the model learned signing speed in 25 fps frames), and classifies only the most
+recent *hand-active span* — like the training clips, which run from raising the hands to
+lowering them. **Lower your hands briefly (≥0.4 s) between signs**; a sign is confirmed
+once the same prediction clears the threshold 3 times in a row. The status in the top-left
+corner shows the camera rate and `idle` / `signing` / `hold` (classifying a finished sign).
+
+### Teach it your signing (optional, recommended for demos)
+
+The dataset has a single signer. A few takes of each demo word by you make the model
+recognise *your* signing:
+
+```powershell
+python src/record.py airplane name                  # 10 takes per word, webcam
+python src/train.py --classes-file models/vocab-demo20.txt --recordings data/recordings --run-name demo20-me --epochs 60 --patience 60
+python src/evaluate.py --run demo20-me --split recordings   # held-out takes = honest score
+python src/app.py --run demo20-me
+```
+
+For each take: lower your hands until the screen says **GO**, sign once, lower your hands —
+recording stops by itself. Keys: **SPACE** start/stop by hand, **u** undo the last take,
+**n** next word, **q** quit. Takes are saved to `data/recordings/` (gitignored); the last 2
+takes of each word are kept out of training so `--split recordings` can check them.
 
 ### Demo
 
@@ -285,10 +343,11 @@ for a live demo:
 | **Vocabulary size** | 775 distinct signs from the pk-hfad-1 dataset. Any sign outside this vocabulary will be misclassified into the closest known class. |
 | **Lighting and camera sensitivity** | MediaPipe landmark detection degrades in low light, strong backlight, or cluttered backgrounds. A well-lit, plain background works best. |
 | **One-hand vs two-hand signs** | Both are supported (MediaPipe Holistic tracks two hands), but signs that rely on subtle finger-shape differences between one-hand and two-hand variants may confuse the classifier. |
-| **No sentence-level grammar** | The model predicts one isolated sign at a time from an 80-frame sliding window. It does not model sign-to-sign transitions, grammar, or syntax — signing a sequence of words will produce a sequence of independent predictions, not a coherent sentence. |
+| **No sentence-level grammar** | The model predicts one isolated sign at a time — the most recent hand-active span, so signs must be separated by briefly lowering the hands. It does not model sign-to-sign transitions, grammar, or syntax — signing a sequence of words will produce a sequence of independent predictions, not a coherent sentence. |
 | **Person-generalization** | Training data comes from a single signer (Hamza Foundation Academy instructor). Accuracy on a different signer, body proportions, or signing speed will be noticeably lower than the test-set metrics. |
-| **Latency** | Inference runs every 8 frames on a ~2M parameter model. On CPU-only machines there is a perceptible lag; a GPU or a smaller model improves this. |
-| **Urdu text rendering** | OpenCV's `putText` does not support Arabic/Urdu script natively (no RTL, no ligatures). Urdu tokens are overlaid as-is and may render as boxes or reversed characters. A Pillow + font-based renderer would fix this. |
+| **Latency** | MediaPipe Holistic dominates: ~50 ms per frame on a laptop CPU (~15–20 fps). Model inference is a compiled call of ~30 ms every 4 frames (an eager `model(x)` call took 2–3 s for the BiLSTM and froze the video loop). |
+| **MediaPipe version drift** | The dataset was extracted with an older MediaPipe than the app's Tasks API. Hand shapes agree within ~4 mm, but pose depth (z) differs by ~5 cm per clip, and hand detection differs on ~20% of frames. `evaluate.py --split replay` measures what this costs. |
+| **Urdu text rendering** | Urdu is drawn with Pillow (right-to-left, joined letters) in the Windows *Urdu Typesetting* Nastaliq font, falling back to Noto Nastaliq / Segoe UI / Arial. It needs Pillow built with raqm (the standard Windows wheels are); the app prints a note otherwise. |
 | **Confidence calibration** | Softmax probabilities are not perfectly calibrated — a 60% confidence threshold is a reasonable default but the optimal value depends on the specific checkpoint. |
 
 ## License & attribution

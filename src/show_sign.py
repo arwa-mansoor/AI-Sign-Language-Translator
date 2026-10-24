@@ -83,10 +83,13 @@ def render(label: str) -> Path | None:
 
 def main() -> int:
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
-    vocab = [l.strip() for l in open(VOCAB_FILE, encoding="utf-8") if l.strip()]
 
     args = sys.argv[1:]
     if not args or args[0] == "--list":
+        if not VOCAB_FILE.is_file():
+            sys.exit(f"no {VOCAB_FILE.relative_to(REPO_ROOT)}; name signs directly, "
+                     "e.g. python src/show_sign.py house book milk")
+        vocab = [l.strip() for l in open(VOCAB_FILE, encoding="utf-8") if l.strip()]
         print("demo20 vocabulary:")
         for label in vocab:
             print(f"  {label.replace('pk-hfad-1_', '')}")

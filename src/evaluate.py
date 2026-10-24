@@ -15,7 +15,15 @@ pipeline as training, and reports:
 Runs trained with a vocabulary subset (--classes-file in train.py) have a
 models/{run}.vocab.json; the split is restricted and re-indexed to match.
 
-Outputs (regenerable, gitignored):
+--split replay evaluates one clip per sign re-extracted from the source videos
+by the live app's MediaPipe (src/extract_replay.py): the train/serve parity
+check. Its confidence sweep is the best guide for app.py --threshold.
+
+--split recordings lists what the model predicts for each of your own takes
+(src/record.py), separating takes held out of training from takes a
+--recordings run has seen: the "does it recognise me" check.
+
+Outputs (regenerable, gitignored; non-test splits add a -{split} suffix):
   models/{run}.evaluation.txt   the report
   models/{run}.per-class.csv    label,en,support,precision,recall,f1
 
@@ -23,6 +31,8 @@ Run:
   python src/evaluate.py                          # newest checkpoint in models/
   python src/evaluate.py --run bilstm             # specific run, test split
   python src/evaluate.py --run bilstm-vocab100 --worst 30
+  python src/evaluate.py --run bilstm --split replay
+  python src/evaluate.py --run demo20-me --split recordings
 """
 
 import argparse
@@ -37,8 +47,11 @@ import pandas as pd
 from sklearn.metrics import precision_recall_fscore_support
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from data.dataset import PSLDataset, SPLITS_DIR  # noqa: E402
-from train import MODELS_DIR, load_trained_model  # noqa: E402
+from data.dataset import (  # noqa: E402
+    LANDMARKS_DIR, RECORDINGS_DIR, PSLDataset, REPLAY_DIR, SPLITS_DIR, parse_csv, preprocess,
+    recording_index,
+)
+from train import MODELS_DIR, dataset_options, load_trained_model  # noqa: E402
 
 CONFIDENCE_THRESHOLDS = (0.3, 0.5, 0.7, 0.8, 0.9, 0.95, 0.99)
 
@@ -59,8 +72,10 @@ def available_runs(models_dir=MODELS_DIR) -> list[str]:
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Evaluate a trained PSL checkpoint")
     parser.add_argument("--run", help="run name under models/ (default: newest checkpoint)")
-    parser.add_argument("--split", default="test", choices=["test", "val"],
-                        help="split to evaluate (default: test)")
+    parser.add_argument("--split", default="test", choices=["test", "val", "replay", "recordings"],
+                        help="split to evaluate (default: test); replay = source videos "
+                             "re-extracted by the live app's MediaPipe; recordings = "
+                             "your own takes from src/record.py")
     parser.add_argument("--worst", type=int, default=20,
                         help="how many worst classes to list (default: 20)")
     parser.add_argument("--batch-size", type=int, default=256)
@@ -84,7 +99,16 @@ def load_split_data(cfg, run_name, split, models_dir=MODELS_DIR) -> tuple[PSLDat
     --classes-file carry a vocab.json (explicit label list, dense ids by list
     position); --dry-run runs use the first num_classes label ids.
     """
-    index = pd.read_csv(SPLITS_DIR / f"{split}.csv")
+    landmarks_dir = LANDMARKS_DIR
+    if split == "replay":  # one un-augmented clip per class, re-extracted live
+        if not any(REPLAY_DIR.glob("*.csv")):
+            sys.exit(f"no replay CSVs in {REPLAY_DIR} — run python src/extract_replay.py")
+        index = pd.read_csv(SPLITS_DIR / "test.csv").drop_duplicates("label_id")
+        index = index.assign(aug_seed=-1)
+        index = index[index["file"].map(lambda f: (REPLAY_DIR / f).is_file())]
+        landmarks_dir = REPLAY_DIR
+    else:
+        index = pd.read_csv(SPLITS_DIR / f"{split}.csv")
     vocab_file = Path(models_dir) / f"{run_name}.vocab.json"
     if vocab_file.is_file():
         with open(vocab_file, encoding="utf-8") as f:
@@ -99,13 +123,66 @@ def load_split_data(cfg, run_name, split, models_dir=MODELS_DIR) -> tuple[PSLDat
     with tempfile.TemporaryDirectory() as tmp_dir:
         path = Path(tmp_dir) / f"{split}.csv"
         index.to_csv(path, index=False)
-        ds = PSLDataset(path, include_confidence=cfg.feature_dim == 375)
+        ds = PSLDataset(path, landmarks_dir=landmarks_dir, **dataset_options(cfg))
 
     with open(SPLITS_DIR / "label_map.json", encoding="utf-8") as f:
         label_map = json.load(f)
     en = [", ".join(t for t in label_map.get(label, {}).get("en", [])[:2] if t)
           for label in labels]
     return ds, labels, en
+
+
+def recordings_report(model, cfg, run_name, models_dir=MODELS_DIR) -> list[str]:
+    """Per-take predictions for your own takes, held-out takes summarised separately."""
+    train_rows, held = recording_index(RECORDINGS_DIR)
+    takes = pd.concat([held.assign(held_out=True),
+                       train_rows[train_rows["aug_seed"] < 0].assign(held_out=False)])
+    if takes.empty:
+        sys.exit(f"no takes in {RECORDINGS_DIR} — record some with python src/record.py")
+    vocab_file = Path(models_dir) / f"{run_name}.vocab.json"
+    with open(SPLITS_DIR / "label_map.json", encoding="utf-8") as f:
+        label_map = json.load(f)
+    if vocab_file.is_file():
+        with open(vocab_file, encoding="utf-8") as f:
+            labels = json.load(f)
+    else:
+        labels = sorted(label_map, key=lambda l: label_map[l]["id"])[:cfg.num_classes]
+    train_file = Path(models_dir) / f"{run_name}.train.json"
+    trained_on = False
+    if train_file.is_file():
+        with open(train_file, encoding="utf-8") as f:
+            trained_on = bool(json.load(f).get("recordings"))
+    word = lambda label: (label_map[label]["en"] or [label])[0]  # noqa: E731
+
+    skipped = sorted(set(takes["label"]) - set(labels))
+    takes = takes[takes["label"].isin(labels)].sort_values(["label", "file"])
+    if takes.empty:
+        sys.exit(f"none of the recorded words are in {run_name}'s vocabulary")
+    X = np.stack([preprocess(parse_csv(f), cfg.max_frames, cfg.velocity, cfg.include_confidence)
+                  for f in takes["file"]])
+    probs = softmax(predict(model, X))
+    pred, conf = probs.argmax(1), probs.max(1)
+    truth = np.array([labels.index(l) for l in takes["label"]])
+    ok = pred == truth
+    held_mask = takes["held_out"].to_numpy()
+    seen = "seen in training" if trained_on else "not trained on"
+    lines = [f"PSL evaluation — {run_name} on your recordings ({RECORDINGS_DIR})",
+             f"model: {cfg.model}, {cfg.num_classes} classes | "
+             f"{'trained with' if trained_on else 'trained without'} --recordings", ""]
+    if held_mask.any():
+        lines.append(f"held-out takes:   {ok[held_mask].mean():6.1%}  ({ok[held_mask].sum()}/{held_mask.sum()})"
+                     "   <- the honest number")
+    if (~held_mask).any():
+        lines.append(f"other takes:      {ok[~held_mask].mean():6.1%}  ({ok[~held_mask].sum()}/"
+                     f"{(~held_mask).sum()}, {seen})")
+    lines += ["", "per take (predicted word, confidence):"]
+    for (_, row), p, c, good in zip(takes.iterrows(), pred, conf, ok):
+        tag = "held-out" if row["held_out"] else seen
+        lines.append(f"  {'ok ' if good else 'BAD'} {word(row['label']):>12s} {Path(row['file']).stem}"
+                     f"  -> {word(labels[p]):<12s} {c:4.0%}   ({tag})")
+    if skipped:
+        lines += ["", "skipped (not in this run's vocabulary): " + ", ".join(skipped)]
+    return lines
 
 
 def history_summary(run_name, models_dir=MODELS_DIR) -> str:
@@ -128,7 +205,8 @@ def softmax(logits: np.ndarray) -> np.ndarray:
 
 
 def predict(model, X, batch_size=256) -> np.ndarray:
-    return np.concatenate([model(X[i:i + batch_size], training=False).numpy()
+    # predict_on_batch is compiled; eager model(x) is ~30-100x slower for the BiLSTM
+    return np.concatenate([model.predict_on_batch(X[i:i + batch_size])
                            for i in range(0, len(X), batch_size)])
 
 
@@ -177,6 +255,11 @@ def main() -> int:
     t0 = time.perf_counter()
 
     model, cfg = load_trained_model(args.run)
+    if args.split == "recordings":
+        text = "\n".join(recordings_report(model, cfg, args.run))
+        print(text)
+        (MODELS_DIR / f"{args.run}.evaluation-recordings.txt").write_text(text + "\n", encoding="utf-8")
+        return 0
     ds, labels, en = load_split_data(cfg, args.run, args.split)
     if len(labels) != cfg.num_classes or ds.num_classes != cfg.num_classes:
         sys.exit(f"class mismatch: checkpoint has {cfg.num_classes} classes, "
@@ -195,6 +278,7 @@ def main() -> int:
     p, r, f1, sup = precision_recall_fscore_support(
         y, pred, labels=range(cfg.num_classes), zero_division=0)
     weight = sup / sup.sum()
+    suffix = "" if args.split == "test" else f"-{args.split}"
     report = [
         f"PSL evaluation — {args.run} on {args.split}",
         f"model: {cfg.model} ({model.count_params():,} params), "
@@ -216,21 +300,26 @@ def main() -> int:
         "",
         *confidence_sweep(probs, y),
         "",
-        "caveat: samples are augmented variants of the same videos as training "
-        "(one recording per sign), so this measures perturbation robustness, "
-        "not person-generalization; live-webcam accuracy will be lower.",
+        ("caveat: replay clips are the training signer's own videos, re-extracted by the "
+         "live app's MediaPipe, so this measures train/serve parity — an upper bound for "
+         "new signers, whose live-webcam accuracy will be lower."
+         if args.split == "replay" else
+         "caveat: samples are augmented variants of the same videos as training "
+         "(one recording per sign), so this measures perturbation robustness, "
+         "not person-generalization; live-webcam accuracy will be lower."),
         "",
-        f"artifacts: models/{args.run}.evaluation.txt, models/{args.run}.per-class.csv",
+        f"artifacts: models/{args.run}.evaluation{suffix}.txt, "
+        f"models/{args.run}.per-class{suffix}.csv",
     ]
 
     text = "\n".join(report)
     print()
     print(text)
     print(f"\n(evaluated {len(y)} samples in {time.perf_counter() - t0:.1f}s)")
-    (MODELS_DIR / f"{args.run}.evaluation.txt").write_text(text + "\n", encoding="utf-8")
+    (MODELS_DIR / f"{args.run}.evaluation{suffix}.txt").write_text(text + "\n", encoding="utf-8")
     pd.DataFrame({"label": labels, "en": en, "support": sup,
                   "precision": p, "recall": r, "f1": f1}
-                 ).to_csv(MODELS_DIR / f"{args.run}.per-class.csv", index=False)
+                 ).to_csv(MODELS_DIR / f"{args.run}.per-class{suffix}.csv", index=False)
     return 0
 
 

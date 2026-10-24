@@ -220,6 +220,9 @@ __marimo__/
 # Dataset files (large, re-downloadable — see README.md)
 data/landmarks/*
 !data/landmarks/.gitkeep
+data/videos/
+data/recordings/
+data/audio/
 
 # Trained model weights
 models/*.h5

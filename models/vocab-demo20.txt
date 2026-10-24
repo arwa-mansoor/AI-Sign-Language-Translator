@@ -1,0 +1,21 @@
+# demo vocabulary: reliable on the live pipeline and mutually distinct
+pk-hfad-1_school
+pk-hfad-1_name
+pk-hfad-1_weather
+pk-hfad-1_today
+pk-hfad-1_family
+pk-hfad-1_brother
+pk-hfad-1_watermelon
+pk-hfad-1_doctor(physician)
+pk-hfad-1_work
+pk-hfad-1_milk
+pk-hfad-1_book
+pk-hfad-1_what
+pk-hfad-1_good
+pk-hfad-1_friend
+pk-hfad-1_tea
+pk-hfad-1_time
+pk-hfad-1_car
+pk-hfad-1_biscuit
+pk-hfad-1_airplane
+pk-hfad-1_help

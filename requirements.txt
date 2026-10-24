@@ -8,6 +8,7 @@ pandas
 # Webcam capture + landmark extraction (same format as the dataset)
 opencv-python
 mediapipe
+pillow          # Urdu text on the live overlay (needs its raqm text-shaping support)
 
 # Sequence model training (LSTM / Transformer)
 # Swap for `torch` if you prefer PyTorch instead of TensorFlow.
@@ -16,8 +17,11 @@ tensorflow
 # Metrics, label encoding, train/test splits
 scikit-learn
 
-# Text-to-speech output (offline, works on Windows via SAPI5)
+# Text-to-speech output (offline). On Windows the app drives the system voice
+# (SAPI5) directly through comtypes, which pyttsx3 installs; pyttsx3 itself is
+# the fallback on other systems.
 pyttsx3
+edge-tts        # one-time generation of the spoken Urdu clips (src/make_urdu_audio.py, needs internet)
 
 # Plots and notebooks
 matplotlib

@@ -1,0 +1,6 @@
+{
+  "_about": "Words shown on screen and spoken by src/app.py when the dictionary's first token is not the everyday word. Keys are sign labels; give 'en' and/or 'ur'. After changing an 'ur' word, delete data/audio/ur/<label>.mp3 and run python src/make_urdu_audio.py to re-record it.",
+  "pk-hfad-1_car": {
+    "ur": "گاڑی"
+  }
+}

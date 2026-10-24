@@ -1,8 +1,10 @@
 """Phase 3 — train the PSL sign classifier.
 
 Standard training loop over the Phase 1 splits with the Phase 2 models:
-SparseCategoricalCrossentropy(from_logits=True), Adam/AdamW, cosine LR decay,
-early stopping on val accuracy with best-weight restore.
+label-smoothed cross-entropy, Adam/AdamW, cosine LR decay, early stopping on
+val accuracy with best-weight restore. With one video per sign, augmentation
+is the only source of variation, so every epoch draws fresh augmented variants
+of the train rows; val/test keep their fixed aug_seed variants.
 
 Artifacts written to models/ (run_name defaults to the model type):
   {run}.weights.h5    best checkpoint, by val accuracy
@@ -20,12 +22,19 @@ Run:
     python src/train.py                    # full 775-class run
     python src/train.py --config configs/transformer.json --epochs 80
     python src/train.py --classes-file models/vocab-100.txt --run-name bilstm-vocab100
+    python src/train.py --classes-file models/vocab-demo20.txt --recordings data/recordings --run-name demo20-me
 Config precedence: defaults < --config JSON < explicit CLI flags.
 
 With --classes-file (one sign label per line), training is restricted to that
 vocabulary: label ids are remapped to dense 0..K-1 and the ordered label list
 is saved as models/{run}.vocab.json so src/evaluate.py can restrict a split
 the same way.
+
+With --recordings (takes made with src/record.py), your own takes join the
+training split: each take as 1 original + 3 augmented rows per epoch, except the
+last 2 takes of each word, which stay held out for
+`python src/evaluate.py --split recordings`. The TrainConfig of every run is
+saved as models/{run}.train.json.
 """
 
 import argparse
@@ -42,8 +51,10 @@ import tensorflow as tf
 from tensorflow import keras
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from data.dataset import LANDMARKS_DIR, PSLDataset, SPLITS_DIR  # noqa: E402
-from model import ModelConfig, build_model  # noqa: E402
+from data.dataset import (  # noqa: E402
+    AugmentConfig, LANDMARKS_DIR, PSLDataset, SPLITS_DIR, recording_index,
+)
+from model import ModelConfig, add_field_argument, build_model  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MODELS_DIR = REPO_ROOT / "models"
@@ -59,10 +70,13 @@ class TrainConfig:
     weight_decay: float = 1e-4      # AdamW only
     optimizer: str = "adamw"        # "adam" | "adamw"
     lr_schedule: str = "cosine"     # "cosine" | "none"
+    label_smoothing: float = 0.1
+    augment_strength: float = 1.0   # multiplies every AugmentConfig range (0 = off)
     patience: int = 8               # early stopping on val accuracy
     seed: int = 42
     run_name: str = ""              # default: model type ("dry-run-<model>" with --dry-run)
     classes_file: str = ""          # optional: one label per line; train on this vocabulary only
+    recordings: str = ""            # optional: dir of your own takes (src/record.py) to train on
     dry_run: bool = False
     dry_run_classes: int = 24
 
@@ -72,11 +86,7 @@ def parse_args(argv=None) -> tuple[ModelConfig, TrainConfig]:
     parser = argparse.ArgumentParser(description="Train the PSL sign classifier")
     parser.add_argument("--config", type=Path, help="JSON file with config overrides")
     for field in dataclasses.fields(ModelConfig) + dataclasses.fields(TrainConfig):
-        flag = f"--{field.name.replace('_', '-')}"
-        if field.type is bool:
-            parser.add_argument(flag, action="store_true", default=None)
-        else:
-            parser.add_argument(flag, type=field.type, default=None)
+        add_field_argument(parser, field)
     args = parser.parse_args(argv)
 
     train_fields = {f.name for f in dataclasses.fields(TrainConfig)}
@@ -96,7 +106,10 @@ def parse_args(argv=None) -> tuple[ModelConfig, TrainConfig]:
             target = train_values if name in train_fields else model_values
             target[name] = getattr(args, name)
 
-    model_cfg = ModelConfig(**model_values)
+    try:
+        model_cfg = ModelConfig(**model_values)
+    except ValueError as e:
+        parser.error(str(e))
     if model_cfg.model not in ("bilstm", "transformer"):
         parser.error(f"unknown model type: {model_cfg.model}")
     cfg = TrainConfig(**train_values)
@@ -135,21 +148,30 @@ def restrict_index(index: pd.DataFrame, allowed_labels) -> pd.DataFrame:
     return index
 
 
-def load_split(index_file, n_classes, include_confidence, tmp_dir,
-               allowed_labels=None) -> PSLDataset:
+def dataset_options(model_cfg: ModelConfig) -> dict:
+    """PSLDataset feature options matching a model config (train, evaluate, app)."""
+    return {"max_frames": model_cfg.max_frames, "velocity": model_cfg.velocity,
+            "include_confidence": model_cfg.include_confidence}
+
+
+def load_split(index_file, n_classes, tmp_dir, allowed_labels=None, extra_rows=None,
+               **dataset_kwargs) -> PSLDataset:
     """PSLDataset for one split, optionally restricted to a class subset:
     n_classes keeps the first n label ids (dry runs); allowed_labels keeps an
-    explicit vocabulary (--classes-file) with ids remapped to dense 0..K-1."""
-    if n_classes is None and allowed_labels is None:
-        return PSLDataset(index_file, include_confidence=include_confidence)
+    explicit vocabulary (--classes-file) with ids remapped to dense 0..K-1.
+    extra_rows (same columns, e.g. your recordings) are added before restricting."""
+    if n_classes is None and allowed_labels is None and extra_rows is None:
+        return PSLDataset(index_file, **dataset_kwargs)
     index = pd.read_csv(index_file)
+    if extra_rows is not None:
+        index = pd.concat([index, extra_rows], ignore_index=True)
     if n_classes is not None:
         index = index[index["label_id"] < n_classes]
     if allowed_labels is not None:
         index = restrict_index(index, allowed_labels)
     path = Path(tmp_dir) / Path(index_file).name
     index.to_csv(path, index=False)
-    return PSLDataset(path, include_confidence=include_confidence)
+    return PSLDataset(path, **dataset_kwargs)
 
 
 def class_info(train_ds) -> tuple[list, list]:
@@ -196,7 +218,9 @@ def evaluate(model, loss_fn, X, y, batch_size):
     for start in range(0, n, batch_size):
         xb = X[start:start + batch_size]
         yb = y[start:start + batch_size]
-        logits = model(xb, training=False).numpy()
+        # compiled forward pass: an eager model(x) call runs the BiLSTM
+        # recurrence op by op and is ~30-100x slower on CPU
+        logits = model.predict_on_batch(xb)
         total_loss += float(loss_fn(yb, logits)) * len(yb)
         top5_idx = np.argsort(-logits, axis=1)[:, :5]
         correct += int((top5_idx[:, 0] == yb).sum())
@@ -205,17 +229,27 @@ def evaluate(model, loss_fn, X, y, batch_size):
     return total_loss / n, correct / n, top5 / n, preds
 
 
-def train(model, cfg: TrainConfig, loss_fn, optimizer,
-          X_train, y_train, X_val, y_val, models_dir, run_name):
+def make_train_loss(num_classes: int, label_smoothing: float):
+    """Cross-entropy on logits for integer labels, optionally label-smoothed."""
+    cce = keras.losses.CategoricalCrossentropy(from_logits=True, label_smoothing=label_smoothing)
+    return lambda y, logits: cce(tf.one_hot(y, num_classes), logits)
+
+
+def train(model, cfg: TrainConfig, train_loss_fn, eval_loss_fn, optimizer,
+          train_data, X_val, y_val, models_dir, run_name):
     """Per-epoch train/val logging, best-checkpoint saving, early stopping on
-    val accuracy with best-weight restore. Returns (rows, best_val_acc, best_epoch)."""
+    val accuracy with best-weight restore. train_data(epoch) -> (X, y) returns
+    that epoch's (freshly augmented) training arrays. They are built inline:
+    on a 2-core CPU a background thread fights the training loop for the GIL
+    and made epochs ~1.5x slower than building them serially.
+    Returns (rows, best_val_acc, best_epoch)."""
     rng = np.random.default_rng(cfg.seed)
 
     @tf.function(reduce_retracing=True)
     def train_step(xb, yb):
         with tf.GradientTape() as tape:
             logits = model(xb, training=True)
-            loss = loss_fn(yb, logits)
+            loss = train_loss_fn(yb, logits)
         grads = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(grads, model.trainable_variables))
         return loss, logits
@@ -224,10 +258,11 @@ def train(model, cfg: TrainConfig, loss_fn, optimizer,
     with open(history_file, "w", encoding="utf-8") as f:
         f.write("epoch,train_loss,train_acc,val_loss,val_acc,lr,seconds,is_best\n")
 
-    best_val_acc, best_epoch, best_weights = -1.0, 0, None
+    best_val_acc, best_val_loss, best_epoch, best_weights = -1.0, np.inf, 0, None
     rows = []
     for epoch in range(1, cfg.epochs + 1):
         t0 = time.perf_counter()
+        X_train, y_train = train_data(epoch)
         order = rng.permutation(len(y_train))
         tr_loss = tr_correct = 0
         for start in range(0, len(y_train), cfg.batch_size):
@@ -235,12 +270,14 @@ def train(model, cfg: TrainConfig, loss_fn, optimizer,
             loss, logits = train_step(X_train[idx], y_train[idx])
             tr_loss += float(loss) * len(idx)
             tr_correct += int((logits.numpy().argmax(-1) == y_train[idx]).sum())
-        val_loss, val_acc, _, _ = evaluate(model, loss_fn, X_val, y_val, cfg.batch_size)
+        val_loss, val_acc, _, _ = evaluate(model, eval_loss_fn, X_val, y_val, cfg.batch_size)
         seconds = time.perf_counter() - t0
 
-        is_best = val_acc > best_val_acc
+        # val is augmented copies of the training videos and saturates near 100%,
+        # so ties in accuracy are broken by val loss
+        is_best = (val_acc, -val_loss) > (best_val_acc, -best_val_loss)
         if is_best:
-            best_val_acc, best_epoch = val_acc, epoch
+            best_val_acc, best_val_loss, best_epoch = val_acc, val_loss, epoch
             best_weights = model.get_weights()
             model.save_weights(models_dir / f"{run_name}.weights.h5")
 
@@ -254,7 +291,7 @@ def train(model, cfg: TrainConfig, loss_fn, optimizer,
               + ("  *" if is_best else ""), flush=True)
 
         if epoch - best_epoch >= cfg.patience:
-            print(f"early stopping: no val accuracy improvement for {cfg.patience} epochs")
+            print(f"early stopping: no val improvement for {cfg.patience} epochs")
             break
 
     if best_weights is not None:
@@ -342,9 +379,6 @@ def main() -> int:
     model_cfg, cfg = parse_args()
     keras.utils.set_random_seed(cfg.seed)
 
-    if model_cfg.feature_dim not in (225, 375):
-        sys.exit(f"unsupported feature_dim {model_cfg.feature_dim} (training expects 225 or 375)")
-
     gpus = tf.config.list_physical_devices("GPU")
     print(f"run: {cfg.run_name} | model: {model_cfg.model} | {cfg.optimizer} "
           f"(lr {cfg.learning_rate:g}, {cfg.lr_schedule}) | devices: {len(gpus)} GPU, "
@@ -354,7 +388,6 @@ def main() -> int:
               "verifying the full loop end-to-end")
 
     n_classes = cfg.dry_run_classes if cfg.dry_run else None
-    include_confidence = model_cfg.feature_dim == 375
     allowed_labels = load_class_ids(cfg.classes_file) if cfg.classes_file else None
     if cfg.classes_file and not allowed_labels:
         sys.exit(f"no labels found in {cfg.classes_file}")
@@ -362,17 +395,29 @@ def main() -> int:
         sys.exit(f"no landmark CSVs in {LANDMARKS_DIR}\n"
                  "the dataset is gitignored — download it first, see README "
                  "'To reproduce the downloads'")
+    recordings = None
+    if cfg.recordings:
+        recordings, held_out = recording_index(cfg.recordings)
+        if recordings.empty:
+            sys.exit(f"no takes found in {cfg.recordings} (record some with src/record.py)")
+        n_takes = int((recordings["aug_seed"] < 0).sum())
+        print(f"recordings: {n_takes} takes of {recordings['label'].nunique()} words for training, "
+              f"{len(held_out)} held out for evaluate.py --split recordings")
     t0 = time.perf_counter()
+    # only training augmentation is tunable; val/test keep the default ranges so
+    # runs with different --augment-strength stay comparable
+    augment_cfgs = {"train": AugmentConfig().scaled(cfg.augment_strength),
+                    "val": AugmentConfig(), "test": AugmentConfig()}
     with tempfile.TemporaryDirectory() as tmp_dir:
-        data = {}
-        for name in ("train", "val", "test"):
-            ds = load_split(SPLITS_DIR / f"{name}.csv", n_classes, include_confidence,
-                            tmp_dir, allowed_labels)
-            print(f"materializing {name:5s} ({len(ds)} samples)...", flush=True)
-            data[name] = (ds, *ds.as_arrays())
-    train_ds, X_train, y_train = data["train"]
-    _, X_val, y_val = data["val"]
-    _, X_test, y_test = data["test"]
+        splits = {name: load_split(SPLITS_DIR / f"{name}.csv", n_classes, tmp_dir, allowed_labels,
+                                   recordings if name == "train" else None,
+                                   augment_cfg=augment_cfg, **dataset_options(model_cfg))
+                  for name, augment_cfg in augment_cfgs.items()}
+    train_ds = splits["train"]
+    print(f"materializing val ({len(splits['val'])}) and test ({len(splits['test'])}) samples; "
+          f"train ({len(train_ds)}) is re-augmented every epoch...", flush=True)
+    X_val, y_val = splits["val"].as_arrays()
+    X_test, y_test = splits["test"].as_arrays()
 
     if model_cfg.num_classes <= 0:
         model_cfg.num_classes = train_ds.num_classes
@@ -384,27 +429,30 @@ def main() -> int:
         if missing:
             print(f"warning: {len(missing)} classes from {cfg.classes_file} not in the dataset: "
                   + ", ".join(missing[:5]) + (" ..." if len(missing) > 5 else ""))
-    print(f"data ready in {time.perf_counter() - t0:.1f}s: {len(y_train)}/{len(y_val)}/{len(y_test)} "
+    print(f"data ready in {time.perf_counter() - t0:.1f}s: {len(train_ds)}/{len(y_val)}/{len(y_test)} "
           f"train/val/test samples, {model_cfg.num_classes} classes, "
-          f"feature_dim {model_cfg.feature_dim}")
+          f"feature_dim {model_cfg.feature_dim}, augment strength {cfg.augment_strength:g}")
 
     model = build_model(model_cfg)
     print(f"model: {model_cfg.model}, {model.count_params():,} params")
 
     loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-    total_steps = ((len(y_train) + cfg.batch_size - 1) // cfg.batch_size) * cfg.epochs
+    train_loss_fn = make_train_loss(model_cfg.num_classes, cfg.label_smoothing)
+    total_steps = ((len(train_ds) + cfg.batch_size - 1) // cfg.batch_size) * cfg.epochs
     optimizer = make_optimizer(cfg, total_steps)
     optimizer.build(model.trainable_variables)
 
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     with open(MODELS_DIR / f"{cfg.run_name}.config.json", "w", encoding="utf-8") as f:
         json.dump(dataclasses.asdict(model_cfg), f, indent=2)
+    with open(MODELS_DIR / f"{cfg.run_name}.train.json", "w", encoding="utf-8") as f:
+        json.dump(dataclasses.asdict(cfg), f, indent=2)
     if allowed_labels is not None:
         with open(MODELS_DIR / f"{cfg.run_name}.vocab.json", "w", encoding="utf-8") as f:
             json.dump(labels, f, ensure_ascii=False)
 
-    rows, best_val_acc, best_epoch = train(model, cfg, loss_fn, optimizer,
-                                           X_train, y_train, X_val, y_val,
+    rows, best_val_acc, best_epoch = train(model, cfg, train_loss_fn, loss_fn, optimizer,
+                                           train_ds.as_arrays, X_val, y_val,
                                            MODELS_DIR, cfg.run_name)
 
     val_loss, val_acc, _, val_preds = evaluate(model, loss_fn, X_val, y_val, cfg.batch_size)
@@ -417,7 +465,7 @@ def main() -> int:
         f"PSL training report — {cfg.run_name}",
         f"model: {model_cfg.model} ({model.count_params():,} params) | {len(rows)} epochs, "
         f"best epoch {best_epoch} (val acc {best_val_acc:.4f})",
-        f"data: {len(y_train)}/{len(y_val)}/{len(y_test)} train/val/test, "
+        f"data: {len(train_ds)}/{len(y_val)}/{len(y_test)} train/val/test, "
         f"{model_cfg.num_classes} classes, feature_dim {model_cfg.feature_dim}",
         f"final (best weights): val acc {val_acc:.4f} (loss {val_loss:.4f}) | "
         f"test acc {test_acc:.4f} (loss {test_loss:.4f}), top-5 {test_top5:.4f}",

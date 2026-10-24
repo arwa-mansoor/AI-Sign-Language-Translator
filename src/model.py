@@ -4,10 +4,11 @@ Two architectures behind one config-driven factory:
   bilstm       Bidirectional LSTM baseline (default; simpler, faster to debug)
   transformer  small pre-LN Transformer encoder (swap-in alternative)
 
-Input:  (batch, frames, feature_dim) float32 landmark features from PSLDataset
-        (225 = xyz only, the pipeline default; 375 with include_confidence=True).
-Output: (batch, num_classes) raw logits — train with
-        SparseCategoricalCrossentropy(from_logits=True).
+Input:  (batch, frames, feature_dim) float32 landmark features from
+        data.dataset.preprocess (344 = pose x/y + hand x/y/z of 65 landmarks,
+        plus velocity, the default; the feature flags below are saved with
+        every checkpoint).
+Output: (batch, num_classes) raw logits — train with cross-entropy on logits.
 
 Padding handling: padded / missing-detection frames are all-zero, so a boolean
 frame mask is derived from "any feature != 0". The BiLSTM uses keras Masking
@@ -31,6 +32,9 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from data.dataset import MAX_FRAMES, feature_dim  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LABEL_MAP_FILE = REPO_ROOT / "data" / "splits" / "label_map.json"
 
@@ -40,7 +44,10 @@ LABEL_MAP_FILE = REPO_ROOT / "data" / "splits" / "label_map.json"
 @dataclasses.dataclass
 class ModelConfig:
     model: str = "bilstm"          # "bilstm" | "transformer"
-    feature_dim: int = 225         # 225 xyz-only, 375 with confidence channels
+    feature_dim: int = 0           # 0 = derived from the feature flags below
+    velocity: bool = True          # features: append frame-to-frame motion
+    include_confidence: bool = False  # features: append visibility/presence
+    max_frames: int = MAX_FRAMES   # frames per sample after resample / pad
     num_classes: int = 0           # 0 = auto-detect from label_map.json
     hidden_size: int = 128         # LSTM units per direction / transformer d_model
     num_layers: int = 2            # stacked BiLSTM layers / encoder blocks
@@ -48,14 +55,24 @@ class ModelConfig:
     num_heads: int = 4             # transformer only
     ff_dim: int = 256              # transformer feed-forward width
 
+    def __post_init__(self):
+        expected = feature_dim(self.velocity, self.include_confidence)
+        if self.feature_dim <= 0:
+            self.feature_dim = expected
+        elif self.feature_dim != expected:
+            raise ValueError(
+                f"feature_dim {self.feature_dim} does not match the feature pipeline "
+                f"({expected} for velocity={self.velocity}, include_confidence="
+                f"{self.include_confidence}); checkpoints from before the 65-landmark "
+                "pipeline must be retrained")
+
     @classmethod
     def from_args(cls, argv=None) -> "ModelConfig":
         """defaults < --config JSON < explicit CLI flags."""
         parser = argparse.ArgumentParser(description="PSL sequence classifier")
         parser.add_argument("--config", type=Path, help="JSON file with config overrides")
         for field in dataclasses.fields(cls):
-            parser.add_argument(f"--{field.name.replace('_', '-')}",
-                                type=field.type, default=None)
+            add_field_argument(parser, field)
         args = parser.parse_args(argv)
 
         values = {}
@@ -66,12 +83,24 @@ class ModelConfig:
             cli = getattr(args, field.name)
             if cli is not None:
                 values[field.name] = cli
-        cfg = cls(**values)
+        try:
+            cfg = cls(**values)
+        except ValueError as e:
+            parser.error(str(e))
         if cfg.model not in ("bilstm", "transformer"):
             parser.error(f"unknown model type: {cfg.model}")
         if cfg.num_classes <= 0:  # auto-detect from Phase 1 label map
             cfg.num_classes = num_classes_from_label_map() or 775
         return cfg
+
+
+def add_field_argument(parser, field):
+    """--flag for a dataclass field; bools get --flag / --no-flag."""
+    flag = f"--{field.name.replace('_', '-')}"
+    if field.type is bool:
+        parser.add_argument(flag, action=argparse.BooleanOptionalAction, default=None)
+    else:
+        parser.add_argument(flag, type=field.type, default=None)
 
 
 def num_classes_from_label_map(path=LABEL_MAP_FILE) -> int | None:
@@ -178,27 +207,28 @@ def _smoke_test(cfg: ModelConfig) -> int:
     model = build_model(cfg)
     model.summary()
 
-    # 1. forward pass: batch of 4, last 30 of 80 frames zero-padded
+    # 1. forward pass: batch of 4, last frames zero-padded
     rng = np.random.default_rng(0)
-    x = rng.normal(size=(4, 80, cfg.feature_dim)).astype(np.float32)
-    x[:, 50:] = 0.0
+    real = cfg.max_frames * 5 // 8
+    x = rng.normal(size=(4, cfg.max_frames, cfg.feature_dim)).astype(np.float32)
+    x[:, real:] = 0.0
     logits = model(x, training=False).numpy()
     assert logits.shape == (4, cfg.num_classes), logits.shape
     assert np.isfinite(logits).all(), "non-finite logits"
     print(f"\nforward pass:      x {x.shape} -> logits {logits.shape}  [OK]")
 
     # 2. padding invariance: same real frames, with vs without trailing padding
-    trimmed = model(x[:, :50], training=False).numpy()
+    trimmed = model(x[:, :real], training=False).numpy()
     max_diff = float(np.abs(logits - trimmed).max())
     assert max_diff < 1e-4, f"padding changed logits by {max_diff}"
     print(f"padding invariance: max |logits(padded) - logits(trimmed)| = {max_diff:.2e}  [OK]")
 
     # 3. real data, if Phase 1 splits exist
     train_index = REPO_ROOT / "data" / "splits" / "train.csv"
-    if train_index.is_file() and cfg.feature_dim in (225, 375):
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
+    if train_index.is_file():
         from data.dataset import PSLDataset
-        ds = PSLDataset(train_index, include_confidence=cfg.feature_dim == 375)
+        ds = PSLDataset(train_index, max_frames=cfg.max_frames, velocity=cfg.velocity,
+                        include_confidence=cfg.include_confidence)
         xb = np.stack([ds[i][0] for i in range(4)])
         yb = np.array([ds[i][1] for i in range(4)])
         real_logits = model(xb, training=False).numpy()
@@ -206,7 +236,7 @@ def _smoke_test(cfg: ModelConfig) -> int:
         print(f"real batch:        x {xb.shape}, labels {yb.tolist()} -> "
               f"logits {real_logits.shape}  [OK]")
     else:
-        print("real batch:        skipped (no data/splits/train.csv or custom feature_dim)")
+        print("real batch:        skipped (no data/splits/train.csv)")
 
     print(f"\n{cfg.model} smoke test passed. params: {model.count_params():,}")
     return 0
