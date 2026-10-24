@@ -63,6 +63,7 @@ AI-Sign-Language-Translator/
 │       ├── label_map.json                             # label → class ID + tokens
 │       └── excluded.txt                               # labels excluded from all splits
 │
+├── docs/           # browser version (GitHub Pages): index.html, js/, css/, model/, audio/
 ├── models/         # saved checkpoints (.weights.h5, .config.json, .history.csv)
 ├── notebooks/      # exploration & visualization notebooks
 │
@@ -323,6 +324,27 @@ For each take: lower your hands until the screen says **GO**, sign once, lower y
 recording stops by itself. Keys: **SPACE** start/stop by hand, **u** undo the last take,
 **n** next word, **q** quit. Takes are saved to `data/recordings/` (gitignored); the last 2
 takes of each word are kept out of training so `--split recordings` can check them.
+
+### Web version (runs in the browser)
+
+`docs/` is a static site with the same live recognition, running entirely in the visitor's
+browser — MediaPipe Holistic for tracking, and the feature pipeline and BiLSTM re-implemented
+in JavaScript (`docs/js/pipeline.js`, `docs/js/model.js`). The camera video never leaves the
+device. It is published with GitHub Pages: *Settings → Pages → Deploy from a branch →
+`main` / `docs`*, then it is live at `https://<user>.github.io/AI-Sign-Language-Translator/`.
+
+After training a new model, update the site:
+
+```powershell
+python src/make_urdu_audio.py --run demo20-me   # Urdu clips for its signs
+python src/export_web.py --run demo20-me        # weights + manifest + clips -> docs/
+python src/check_web.py --run demo20-me         # browser code vs Python on real clips (needs Node.js)
+```
+
+`check_web.py` runs the same clips through the Python app path and the JavaScript port and
+fails if features or predictions differ. To try the site locally:
+`python -m http.server 8000 --directory docs`, then open http://localhost:8000.
+Add `?threshold=0.5` to the URL to change the confidence gate.
 
 ### Demo
 

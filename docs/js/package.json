@@ -1,0 +1,5 @@
+{
+  "type": "module",
+  "private": true,
+  "description": "ES modules of the browser app; lets Node run them for src/check_web.py"
+}

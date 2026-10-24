@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PSL Translator</title>
+  <meta name="description" content="Real-time Pakistan Sign Language recognition in your browser — English and Urdu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%2328cdeb%27/%3E%3Cstop offset=%271%27 stop-color=%27%23cd50d7%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27bold%27 font-size=%2722%27 fill=%27white%27 text-anchor=%27middle%27%3EPSL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app" id="app">
+    <section class="stage" id="stage" data-state="idle">
+      <canvas id="view" width="640" height="480" aria-label="Camera view with hand tracking"></canvas>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="flash" id="flash"></div>
+      <div class="live"><span class="live-dot"></span>LIVE</div>
+
+      <div class="intro" id="intro">
+        <div class="intro-card">
+          <div class="logo big">PSL</div>
+          <h1><span class="grad">PSL Translator</span></h1>
+          <p class="lead">Sign in front of your camera — the AI recognises Pakistan Sign Language
+            and shows the word in English and <span class="ur-inline">اردو</span>.</p>
+          <button class="start" id="start" disabled>Loading AI models…</button>
+          <p class="fine">Everything runs in your browser: your video never leaves your device.
+            Works best in Chrome or Edge on a laptop, in good light, with your upper body in view.</p>
+          <p class="error" id="error" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <header class="brand">
+        <div class="logo">PSL</div>
+        <div>
+          <div class="title grad">PSL Translator</div>
+          <div class="subtitle">Pakistan Sign Language · AI</div>
+        </div>
+        <div class="fps" id="fps"></div>
+      </header>
+
+      <div class="status" id="status"><span class="dot"></span><span id="status-text">Press Start</span></div>
+
+      <div class="card" id="card">
+        <canvas class="confetti" id="confetti"></canvas>
+        <div class="placeholder" id="placeholder">
+          <div class="ph-main" id="ph-main">Sign a word</div>
+          <div class="ph-sub">lower your hands between signs</div>
+        </div>
+        <div class="result" id="result" hidden>
+          <div class="word-en grad" id="word-en"></div>
+          <div class="word-ur" id="word-ur" lang="ur" dir="rtl"></div>
+          <div class="match">
+            <svg class="ring" viewBox="0 0 60 60" aria-hidden="true">
+              <circle class="ring-bg" cx="30" cy="30" r="25"></circle>
+              <circle class="ring-fg" id="ring" cx="30" cy="30" r="25"></circle>
+            </svg>
+            <span class="ring-value" id="ring-value">0</span>
+            <span class="match-label">% match</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent"><span class="label">Recent</span><div class="chips" id="chips"></div></div>
+
+      <section class="signs" id="signs">
+        <div class="signs-head"><h2>Signs I know</h2><span id="count">0 / 0</span></div>
+        <div class="progress"><div id="progress"></div></div>
+        <ul class="sign-list" id="sign-list"></ul>
+      </section>
+
+      <div class="controls">
+        <button class="toggle on" id="speak-en" title="Speak English">🔊 EN</button>
+        <button class="toggle on" id="speak-ur" title="Speak Urdu">🔊 اردو</button>
+        <button class="toggle on" id="btn-skeleton" title="Show tracking (s)">Tracking</button>
+        <button class="toggle" id="btn-full" title="Full screen (f)">Fullscreen</button>
+        <button class="toggle" id="btn-clear" title="Clear (c)">Clear</button>
+      </div>
+      <footer class="credits">
+        Data: <a href="https://github.com/sign-language-translator/sign-language-datasets" target="_blank" rel="noopener">sign-language-translator datasets</a>
+        (CC BY 4.0), videos by the Hamza Foundation Academy for the Deaf, Lahore.
+        <a href="https://github.com/arwa-mansoor/AI-Sign-Language-Translator" target="_blank" rel="noopener">Source code</a>
+      </footer>
+    </aside>
+  </main>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
